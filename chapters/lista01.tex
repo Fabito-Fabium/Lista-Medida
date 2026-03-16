@@ -1,0 +1,193 @@
+\newcommand{\bigline}{\noindent\rule{\textwidth}{0.4pt}\newline\noindent}
+\newcommand{\mysubsec}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+  \mysubsec{Exercício 1}
+\bigline
+\textbf{Seja $X$ um conjunto não-enumerável. Considere a seguinte coleção:
+$$\mathcal F = 
+\{A \subseteq X ; A \text{ ou } A^C \text{ é enumerável}\}.$$ 
+  Mostre que $\mathcal F$ é uma $\sigma$-álgebra.}
+\\
+
+\begin{proof}[\textbf{Dem:}]
+ Ora, visto que $\emptyset$ é enumerável, $\emptyset \in \mathcal F$. 
+E, já que $\emptyset = X^C$, temos $X \in \mathcal F$. Mais ainda,
+para qualquer $A \in \mathcal F$ temos que $A$ ou $A^C$ é enumerável. 
+Em ambos os casos, podemos concluír que $A^C \in \mathcal F$. Desse modo, $\mathcal F$ 
+satisfaz as duas primeiras condições de uma $\sigma$-álgebra de $X$.
+
+Para verificar a terceira condição, seja 
+$\{A_n\}_{n \in \mathbb N} \subset \mathcal F$. Note que 
+podemos recair a dois casos, são eles:
+\begin{enumerate}
+  \item Existe $k \in \mathbb N$ tal que $A_k^C$ é enumerável;
+  \item Para todo $n \in \mathbb N$ temos $A_n^C$ não-enumerável. 
+\end{enumerate}
+
+Assumindo (1), já que subconjuntos de conjuntos enumeráveis são 
+enumeráveis, segue que $\bigcap A_n^C \subset A_k^C$ é enumerável, ou seja 
+$\left(\bigcap A_n^C\right)^C = \bigcup A_n \in \mathcal F$. 
+
+Caso contrário, assumindo (2), já que para todo $n \in \mathbb N$, 
+temos $A_n^C$ não-enumerável e $A_n \in \mathcal F$, então todo $A_n$ é enumerável.
+Desse modo, visto que a união enumerável de enumeráveis é enumerável, temos 
+$\bigcup A_n$ enumerável, ou seja $\bigcup A_n \in \mathcal F$. Portanto 
+$\mathcal F$ satisfaz as condições de uma $\sigma$-álgebra de $X$, 
+como queríamos. 
+\end{proof}
+\bigline
+\newpage
+\mysubsec{Exercício 2}
+\bigline
+\textbf{Caracterize a $\sigma$-álgebra de Borel de $\mathbb R$.}
+\noindent\textbf{} 
+\begin{proof}[\textbf{Dem:}]
+Considere os seguintes conjuntos:
+\begin{align*}
+  &E_1 = \{(a, b) ; a<b\}, &&E_2= \{[a, b]; a< b\},\\
+  &E_3 = \{(a, b] ; a<b\}, &&E_4= \{[a, b); a< b\},\\
+  &E_5 = \{(a, +\infty) ; a\in\mathbb R\}, &&E_6= \{(+\infty, a); a \in \mathbb R\}, \\
+  &E_7 = \{[a, +\infty) ; a\in\mathbb R\}, &&E_8= \{(+\infty, a]; a \in \mathbb R\}.
+\end{align*}
+Vejamos que para cada $n \in \mathbb N_{\leq 8}$, $\mathcal B(\mathbb R, \tau)$
+é gerada por $E_n$.
+
+(i) (\subseteq) Note que $E_1 \subseteq \tau \subset \sigma(\tau)$, 
+desse modo $\sigma(E_1) \subseteq \sigma(\tau)$.\\ 
+
+(i)($\supseteq$) Por outro lado, visto que todo elemento de $\tau$ é um aberto
+e, todo aberto pode ser escrito como a união enumerável de elementos de $E_1$, 
+segue que $\tau \subseteq \sigma(E_1)$. Com isso, temos $\sigma(\tau) \subseteq \sigma(E_1)$.
+Dito isso, segue que $E_1$ gera $\sigma(\tau)=\mathcal B (\mathbb R)$. 
+
+(ii) (\subseteq) Ora, para cada $[a, b] \in E_2$, 
+$$[a, b] = \bigcap\limits_{n \in \mathbb N} (a - 1/n, b + 1/n),$$
+portanto $E_2 \subseteq \sigma(E_1)$, isto é, $\sigma(E_2) \subseteq \sigma(E_1)$. 
+
+(ii) (\supseteq) Por outro lado, para cada $(a, b) \in E_1$,
+$$(a, b) = \bigcup\limits_{n \ge 3} [a + (b-a)/n, b - (b-a)/n],$$
+desse modo, $E_1 \subseteq \sigma(E_2)$, ou seja, $\sigma(E_1) \subseteq \sigma(E_2)$.\\
+Sendo assim, $\sigma(E_1) = \sigma(E_2)$, isto é, $E_2$ gera $\mathcal B(\mathbb R)$.
+
+(iii) e (iv) Já que cada elemento de $E_1$, $E_3$ e $E_4$ 
+podem ser rescritos das seguintes formas: 
+\begin{align*}
+  &(a, b] = \bigcap\limits_{n \in \mathbb N} (a, b+1/n), 
+  &&(a, b) = \bigcup\limits_{n \ge 2} (a, b-(b-a)/n],\\
+  &[a, b) = \bigcap\limits_{n \in \mathbb N} (a-1/n, b), 
+  &&(a, b) = \bigcup\limits_{n \ge 2} [a+(b-a)/n, b).
+\end{align*}
+Segue de argumentos similares a (ii) que $E_3$ e $E_4$ geram $\mathcal B(\mathbb R, \tau)$.
+
+  (v), (vi), (vii) e (viii) Note que $\sigma(E_5) = \sigma(E_8)$, $\sigma(E_6) = \sigma(E_7)$ e 
+  $\sigma(E_5) = \sigma(E_7)$ por argumentos semelhantes a (i). Daqui, visto que 
+\begin{align*}
+  &(a, +\infty) = \bigcup\limits_{n \in \mathbb N} (a, b+n), 
+  &(a, b) = (a, +\infty) \cap \left(\bigcup\limits_{n \in \mathbb N} (b-1/n, +\infty)^C \right)
+\end{align*}
+  temos $\sigma(E_1) = \sigma(E_5)$. Com isso, para todo $n \in \mathbb N_{\le 8}$, $E_n$ gera 
+  $\mathcal B(\mathbb R, \tau)$, como queríamos.
+\end{proof}
+\bigline
+
+\newpage
+\mysubsec{Exercício 3}
+\bigline 
+\textbf{Para $E \in \mathcal B(\mathbb R)$, considere $E_1 = E \cup \{+\infty\}$, 
+$E_2 = E \cup \{-\infty\}$ e $E_3 = E \cup \{-\infty, +\infty\}$. Prove que 
+$\{E, E_1, E_2, E_3; E\in \mathcal B(\mathbb R)\}$ 
+é uma $\sigma$-álgebra de $\overline{\mathbb R}$}. 
+\begin{proof}[\textbf{Dem:}] Defina $\mathcal C = \{E, E_1, E_2, E_3; E
+\in \mathcal B(\mathbb R)\}$,
+visto que $\emptyset\in \mathcal B(\mathbb R)$, segue que $\emptyset \in \mathcal C$.
+De maneira análoga, temos $\overline{\mathbb R} \in \mathcal C$. Agora, seja $A \in C$, 
+\begin{itemize}
+  \item Para $A \not\supseteq \{-\infty, +\infty\}$, temos $A \in \mathcal B(\mathbb R)$, 
+    desse modo, $\mathbb R\setminus A \in \mathcal B(\mathbb R)$, sendo assim,
+    $\left(\mathbb R \setminus A \right)\cup \{-\infty, +\infty\} = A^C \in \mathcal C$.
+
+  \item Para $A \supset \{+ \infty\}$ sem conter $\{- \infty\}$,
+    note que $A^C = X \cup \{- \infty\}$ com 
+    $X \in \mathcal B (\mathbb R)$, sendo assim, $A^C \in E_2 \subset \mathcal C$. 
+  \item Para $A \supset \{- \infty\}$ sem conter $\{+ \infty\}$,
+    segue de maneira análoga ao 
+    caso anterior que $A^C \in \mathcal C$. 
+  \item Para $A \supset \{- \infty, + \infty\}$, temos $A^C \in \mathcal B\{\mathbb R\}$, 
+    portanto, $A^C \in \mathcal C$
+\end{itemize}
+Para verificar que $\mathcal C$ obedesce a terceira propriedade de $\sigma$-álgebra,
+note que todo $A \in \mathcal C$ 
+temos $A = B \cup D$, onde $B \in \mathcal B (\mathbb R)$ e 
+$D \in \mathbb P (\{-\infty, +\infty\}) $. Portanto, dada qualquer 
+sequência $\{A_k\}_{k \in \mathbb N}
+\subset \mathcal C$, temos $\bigcup A_k = \bigcup \left(B_k \cup D_k\right)$ para algum 
+$\{B_k\} \subset \mathcal B (\mathbb R)$ e 
+  $\{D_k\}\subset \mathbb P (\{-\infty, +\infty\})$. Daqui, já que 
+\begin{align*}
+  \bigcup A_k &= \bigcup \left(B_k \cup D_k\right),\\
+  &= \left(\bigcup B_m\right) \cup \left(\bigcup D_n\right), 
+\end{align*}
+e, $\bigcup D_n \in \mathbb P (\{-\infty, +\infty\}) \subset \mathcal C$, assim como 
+  $\bigcup B_m \in \mathcal B(\mathbb R) \subset \mathcal C$, então 
+  $\bigcup A_k \in \mathcal C$.
+\end{proof}
+\bigline
+\newpage
+\mysubsec{Exercício 4}
+\bigline 
+\textbf{Sejam $f \in M(X, \mathcal F)$ e $n \in \mathbb N$. Considere o truncamento de $f$, 
+$f_n: X \rightarrow \mathbb R$ definido por
+\begin{align*}
+  f_n(x) =\begin{cases}
+    -n, &\text{se } f(x) < -n,\\
+    f(x), &\text{se } |f(x)| \le n,\\
+    n, &\text{se } f(x)>n.
+  \end{cases}
+\end{align*}
+Mostre que $f_n$ é mensurável para todo $n \in \mathbb N$ e que $\lim f_n(x) = f(x)$, 
+para todo $x \in X$.}
+\begin{proof}[\textbf{Dem:}] Fixado $n \in \mathbb N$, seja $\alpha \in \mathbb R$. 
+
+\begin{itemize}
+  \item Para $\alpha < -n$, temos $\{x \in X; f_n(x) > \alpha\}
+  = X \in \mathcal F$;
+  \item   Para $-n \le \alpha < n$, $f_n = f$, sendo assim, $\{x \in X; f_n(x) > \alpha\} = 
+    \{x \in X; f(x) > \alpha\}$. Visto que $f$ é mensurável, 
+    $\{x \in X; f_n(x) > \alpha\} \in \mathcal F$;
+  \item Por fim, para $\alpha \ge n$, $\{x \in X; f(x) > \alpha\} = \emptyset \in \mathcal F$.
+\end{itemize}
+Portanto, para todo $n \in \mathbb N$ temos $f_n$ mensurável. 
+
+Vejamos que $\lim f_n(x) = f(x)$.
+Dado $x \in X$, como $f(x) \in \mathbb R$, existe $M \in \mathbb N$ tal que $-M\le f(x)\le M$ 
+(e.g o menor inteiro maior que o valor absoluto de $f(x)$).
+Desse modo, para inteiros $n \ge M$, temos $f_n(x) = f(x)$, 
+ou seja, para todo $\epsilon > 0$, $|f_n(x) - f(x)| = 0 < \epsilon$, 
+isto é, $\lim f_n (x) = f(x)$, como queríamos.
+\end{proof}
+\bigline
+\newpage 
+\mysubsec{Exercício 5}
+\bigline 
+\textbf{Mostre que a soma, o produto, o valor absoluto, e limites de funções mensurável
+a valores complexos são mensuráveis.}\\
+\bigline 
+\newpage 
+\mysubsec{Exercício 6}
+\bigline 
+\textbf{Seja $f: X \rightarrow Y$ uma função. Mostre que se $\mathcal G$ 
+for uma $\sigma$-álgebra de Y, então 
+$$\mathcal F= \{f^{-1}(E);E\in\mathcal G\} $$
+é uma $\sigma$-álgebra de X.
+}
+
+\bigline
+\newpage
+\mysubsec{Exercício 7}
+\bigline
+\textbf{Seja $f:X \rightarrow Y$ uma função. Mostre que se $\mathcal F$ 
+for uma $\sigma$-álgebra de $X$, então 
+$$\mathcal G = \{E \subset Y; f^{-1}(E)\mathcal F\}$$ 
+é uma $\sigma$-álgebra de Y.
+}
+
+\bigline

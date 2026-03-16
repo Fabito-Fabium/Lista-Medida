@@ -1,0 +1,19 @@
+\renewcommand{\contentsname}{Sumário}
+\renewcommand{\chaptername}{Capítulo}
+\usepackage{caption}
+\DeclareCaptionLabelFormat{noname}{#2}
+
+\captionsetup[algorithm]{labelformat=noname}
+\newlength\myindent
+\setlength\myindent{2em}
+\newcommand\bindent[1][\myindent]{%
+  \begingroup
+  \setlength{\itemindent}{#1}
+  \addtolength{\algorithmicindent}{#1}
+}
+\newcommand\eindent{\endgroup}
+\usepackage{indentfirst}
+
+\renewcommand*{\proofname}{Dem}
+\renewcommand{\qedsymbol}{$\square$}
+
