@@ -168,8 +168,37 @@ isto é, $\lim f_n (x) = f(x)$, como queríamos.
 \newpage 
 \mysubsec{Exercício 5}
 \bigline 
-\textbf{Mostre que a soma, o produto, o valor absoluto, e limites de funções mensurável
-a valores complexos são mensuráveis.}\\
+\textbf{Mostre que a soma, o produto, o valor absoluto, e limites de funções mensuráveis
+a valores complexos são mensuráveis.}
+\begin{proof}[\textbf{Dem:}] Por definição, uma função a valores complexos é mensurável se, 
+  e somente se, a parte real e a parte imaginária da função são elementos de $\mathcal M (X, \mathcal F)$. 
+  Desse modo, sejam $f, g: X \rightarrow \mathbb C$ funções mensuráveis, tais que 
+  $f_1, f_2, g_1, g_2: X \rightarrow \mathbb R$ satisfazem $f(x) = f_1(x)+if_2(x)$
+  e $g(x)=g_1(x)+ig_2(x)$ para todo $x \in X$.
+  \vspace{5mm}
+
+\noindent
+(Soma:) Ora,
+\begin{align*}
+  (f+g)(x) &= f(x) + g(x) = [f_1(x)+if_2(x)] + [g_1(x)+ig_2(x)],\\
+  &= [f_1(x) + g_1(x)] + i[f_2(x) + g_2(x)].
+\end{align*}
+Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)$ mensurável. Analogmante temos 
+  $(f_2+g_2)(x)$ mensurável. Já que a parte real e a parte imaginária de $(f+g)(x)$ é mensurável, temos 
+  $(f+g)(x)$ mensurável, como queríamos.
+  \vspace{5mm}
+
+\noindent
+  (Produto:) Já que, 
+\begin{align*}
+  (f\cdot g)(x) &= f(x)\cdot g(x) = [f_1(x)+if_2(x)]\cdot[g_1(x) + ig_2(x)], \\
+  &= [(f_1\cdot g_1)(x) - (f_2\cdot g_2)(x)] + i[(f_1\cdot g_2)(x) + (f_2 \cdot g_1)(x)],\\
+\end{align*}
+  e temos $f_n,g_n: X \rightarrow \mathbb R$ mensuráveis para $n=1, 2$, segue que $(f_i\cdot g_j)(x)$ é 
+  mensurável para todo par $i, j \in \{1, 2\}$. Sendo assim, $(f_1\cdot g_1)(x) - (f_2\cdot g_2)(x)$ e 
+  $(f_1\cdot g_2)(x) + (f_2 \cdot g_1)(x)$ são também mensuráveis, ou seja $(f\cdot g)(x)$ é mensurável.
+\end{proof}
+
 \bigline 
 \newpage 
 \mysubsec{Exercício 6}
@@ -178,6 +207,22 @@ a valores complexos são mensuráveis.}\\
 for uma $\sigma$-álgebra de Y, então 
 $$\mathcal F= \{f^{-1}(E);E\in\mathcal G\} $$
 é uma $\sigma$-álgebra de X.
+\begin{proof}[\textbf{Dem:}]
+Ora, como $\emptyset \in \mathcal G$, então $f^{-1}(\emptyset) = \emptyset \in \mathcal F$. E, visto que 
+  $Y \in \mathcal G$, então $f^{-1}(Y) = X \in \mathcal F$. Daqui, note que para todo $A \in \mathcal F$, 
+  existe $B \in \mathcal G$ tal que $f^{-1}(B) = A$. Como $\mathcal G$ é $\sigma$-álgebra de $Y$, temos 
+  $B^C \in \mathcal G$, sendo assim, 
+  $$f^{-1}(B^C) = \left(f^{-1}(B)\right)^C = A^C \in \mathcal F.$$
+  Por fim, 
+  note que para toda sequência $\{A_n\}_{n \in \mathbb N} \subset \mathcal F$, existe uma sequência 
+  $\{B_n\}_{n \in \mathbb N}$ tal que $f^{-1}(B_n) = A_n$ para todo $n 
+  \in \mathbb N$. Como $\bigcup B_n \in \mathcal G$
+  \begin{align*}
+    f^{-1}\left(\bigcup\limits_{n \in \mathbb N} B_n\right) = \bigcup\limits_{n \in \mathbb N} 
+    f^{-1}(B_n) = \bigcup\limits_{n \in \mathbb N} A_n \in \mathcal F.
+  \end{align*}
+Com isso, temos que $\mathcal F$ é uma $\sigma$-álgebra de $X$, como queríamos. 
+\end{proof}
 }
 
 \bigline
@@ -186,8 +231,31 @@ $$\mathcal F= \{f^{-1}(E);E\in\mathcal G\} $$
 \bigline
 \textbf{Seja $f:X \rightarrow Y$ uma função. Mostre que se $\mathcal F$ 
 for uma $\sigma$-álgebra de $X$, então 
-$$\mathcal G = \{E \subset Y; f^{-1}(E)\mathcal F\}$$ 
+$$\mathcal G = \{E \subset Y; f^{-1}(E)\in \mathcal F\}$$ 
 é uma $\sigma$-álgebra de Y.
 }
+\begin{proof}[\textbf{Dem:}]
+  Ora, como $X \in \mathcal F$ e $f^{-1}(Y) = X$, então $Y \in \mathcal G$. Mais ainda, 
+  $\emptyset \in \mathcal F$ e $f^{-1}(\emptyset) = \emptyset$, portanto $\emptyset \in \mathcal G$.
+
+  Daqui, note que para todo $A \in \mathcal G$, existe $B \in \mathcal F$ tal que $B = f^{-1}(A)$. 
+  Visto que $\mathcal F$ é uma $\sigma$-álgebra de $X$, então $B^C \in \mathcal F$. Já que, 
+  $$B^C = (f^{-1}(A))^C = f^{-1}\left(A^C\right) \in \mathcal F,$$
+  temos $A^C \in \mathcal G$. Por fim, note que para toda sequência $\{A_n\}_{n\in \mathbb N} \subset \mathcal G$,
+  existe uma sequência $\{B_n\}_{n \in \mathbb N} \subset \mathcal F$, tal que
+  $B_n = f^{-1}(A_n)$ para todo $n \in \mathbb N$. Visto que $\mathcal F$ é uma $\sigma$-álgebra de $X$, temos 
+  $\bigcup B_n \in \mathcal F$, isto é,
+  \begin{align*}
+    \bigcup\limits_{n \in \mathbb N} B_n = \bigcup\limits_{n \in \mathbb N} f^{-1}(A_n) = 
+    f^{-1}\left(\bigcup\limits_{n \in \mathbb N} A_n\right) \in \mathcal F,
+  \end{align*}
+ ou seja, $\bigcup A_n \in \mathcal G$. Com isso, segue que $\mathcal G$ é uma $\sigma$-álgebra de $Y$.
+\end{proof}
 
 \bigline
+\newpage
+\mysubsec{Exercício 8}
+\bigline
+\textbf{Seja $(X, \mathcal F)$ um espaço mensurável e $f: X \rightarrow Y$ uma função. Seja $\mathcal C$ uma coleção de 
+subconjuntos de $Y$ tais que $f^{-1}(A) \in \mathcal F$, para todo $A \in \mathcal C$. Mostre que $f^{-1}(E) \in \mathcal F$, 
+para todo $E \in \sigma(\mathcal C)$}.
