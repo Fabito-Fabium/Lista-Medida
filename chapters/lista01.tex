@@ -321,21 +321,88 @@ da função $f$ vistas em aula coincidem ao considerar $Y=(\mathbb R, \mathcal B
 \textbf{Sejam $(X, \mathcal F)$ um espaço mensurável, $f:X \rightarrow \mathbb R$ 
 uma função mensurável e $\varphi: \mathbb R \rightarrow \mathbb R$ uma função contínua. 
 Mostre que $\varphi \circ f: X \rightarrow \mathbb R$ é mensurável.}
+\begin{proof}[\textbf{Dem:}]
+  Ora, como $\varphi$ é contínua, então dado $\alpha \in \mathbb R$ temos $\varphi^{-1}((\alpha, +\infty))$ 
+  aberto. Já que todo aberto pode ser escrito como uma união enumerável de elementos de $\mathcal B (\mathbb R)$,
+  segue que $$\varphi^{-1}((\alpha, +\infty))\in \mathcal B(\mathbb R).$$
+  Daqui, como $f$ é mensurável, para todo $E \in \mathcal B (\mathbb R)$, temos $f^{-1}(E) \in \mathcal F$. Sendo assim, 
+ tomando $E = \varphi^{-1}((\alpha, +\infty))$, segue que $f^{-1}(\varphi^{-1}((\alpha, +\infty))) \in 
+  \mathcal F$. Dito isso, note que 
+  \begin{align*}
+    f^{-1}(\varphi^{-1}((\alpha, +\infty))) &= (\varphi \circ f)^{-1}((\alpha, +\infty)),\\
+    &=\{x \in X; (\varphi \circ f)(x) > \alpha\} = A_{\alpha}.
+  \end{align*}
+  Já que para todo $\alpha \in \mathbb R$ temos $A_{\alpha} \in \mathcal F$, então $\varphi \circ f$ é mensurável.
+\end{proof}
 
 \bigline
 \newpage
 \mysubsec{Exercício 11}
 \bigline 
 \textbf{Sejam $(X, \mathcal F)$ um espaço mensurável, $f:X \rightarrow \mathbb R$ 
-uma função mensurável e $\psi$}
+uma função mensurável e $\psi: \mathbb R \rightarrow \mathbb R$ uma função Borel 
+mensurável. Mostre que $\psi \circ f: X \rightarrow \mathbb R$ é mensurável.}
+\begin{proof}[\textbf{Dem:}]
+  Já que $\psi$ é borel mensurável, dado $E \in \mathcal B(\mathbb R)$, 
+  temos $\psi^{-1}(E) \in \mathcal B(\mathbb R)$. Visto que $f$ é mensurável,  dado 
+  $A \in \mathcal B(\mathbb R)$, segue que $f^{-1}(A) \in \mathcal F$, Desse modo, 
+  tomando $A = \psi^{-1}(E)$, temos $f^{-1}(\psi^{-1}(E)) \in \mathcal F$. Note que, 
+\begin{align*}
+  f^{-1}(\psi^{-1}(E)) = (\psi \circ f)^{-1}(E),
+\end{align*}
+  ou seja, para todo $E \in \mathcal B(\mathbb R)$, temos $(\psi \circ f)^{-1}(E) \in \mathcal F$, ou seja 
+  $\psi \circ f$ é mensurável.
+\end{proof}
 
 \bigline
 \newpage
 \mysubsec{Exercício 12}
 \bigline 
+\textbf{Sejam $f: X \rightarrow Y$ uma função, $\mathcal F$ uma $\sigma$-álgebra de $X$ e 
+$\mathcal C \subset \mathcal P(Y)$. Mostre que 
+\begin{align*}
+  \sigma(\{f^{-1}(A); A \in \mathcal C\}) = \{f^{-1}(E); E \in \sigma(\mathcal C)\}
+\end{align*}
+}
+\begin{proof}[\textbf{Dem:}] 
+  Sejam $D = \{f^{-1}(A) ; A \in \mathcal C\}$ e $\mathcal G = \{f^{-1}(E); E \in \sigma(\mathcal C)\}$.
+  Vejamos que $\sigma(D) = \mathcal G$.
+  \vspace{3mm}
+
+  ($\subseteq$) Visto que $\mathcal C \subseteq \sigma(\mathcal C)$, então 
+  $$D = \{f^{-1}(E); E \in \mathcal C\} \subseteq \{f^{-1}(E); E \in \sigma(\mathcal C)\} = \mathcal G.$$
+  Pelo exercício 6, temos que $\mathcal G$ é uma $\sigma$-álgebra de $X$. Visto que $D$ é uma 
+  coleção de subconjuntos de $X$, temos $\sigma(D) \subseteq \mathcal G$. 
+
+  ($\supseteq$) Seja $\mathcal A = \{E \subseteq Y; f^{-1}(E) \in \sigma(D)\}$. Do exercício 7, temos que 
+  $\mathcal A$ é $\sigma$-álgebra de Y. Com isso, vejamos que $\mathcal C \subset \mathcal A$. 
+  Dado $A \in \mathcal C \subseteq Y$, temos $f^{-1}(A) \in D \subseteq \sigma(D)$, pela definição de $\mathcal A$, 
+  segue que $A \in \mathcal A$, isto é, $\mathcal C \subseteq \mathcal A$. Das propriedades de $\sigma$-álgebra gerada, 
+  temos $\sigma(D) \subseteq \mathcal A$. Daqui, segue que, 
+  \begin{align*}
+    f^{-1}(\sigma (D)) \subseteq f^{-1}(\mathcal A).
+  \end{align*}
+  Já que, 
+  \begin{align*}
+    f^{-1}(\sigma (D)) &= \{f^{-1}(E); E \in \sigma(D)\} = \mathcal G\\
+  \end{align*}
+  e, 
+  \begin{align*}
+    f^{-1}(\mathcal A)&=f^{-1}(\{A \subseteq Y; f^{-1}(A) \in \sigma(D)\}),\\
+    &=\sigma(\{f^{-1}(A); A \in \mathcal C\}) = \sigma(D),
+  \end{align*} 
+  temos que $\mathcal G \subseteq \sigma(D)$. Portanto, $\mathcal G = \sigma(D)$, como queríamos.
+
+  \href{https://math.stackexchange.com/questions/1620852/how-to-proof-that-
+  f-1-sigma-mathcal-c-subseteq-sigmaf-1-mathcal-c?noredirect=1&lq=1}{(Ver dica recebida)}
+\end{proof}
 
 \bigline
 \newpage
 \mysubsec{Exercício 13}
 \bigline 
+\textbf{Sejam $f: X \rightarrow Y$ uma função, $\mathcal F$ uma $\sigma$-álgebra de $X$ e $\mathcal C \subset \mathcal P(Y)$. 
+Mostre que $f: (X, \mathcal F) \rightarrow (Y, \sigma(\mathcal C))$ é mensurável se, e somente se, 
+para todo $A \in \mathcal C$, tem-se que $f^{-1}(A) \in \mathcal F$.}
+
 
