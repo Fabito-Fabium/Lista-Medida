@@ -1,5 +1,3 @@
-\newcommand{\bigline}{\noindent\rule{\textwidth}{0.4pt}\newline\noindent}
-\newcommand{\mysubsec}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
   \mysubsec{Exercício 1}
 \bigline
 \textbf{Seja $X$ um conjunto não-enumerável. Considere a seguinte coleção:
@@ -183,7 +181,7 @@ a valores complexos são mensuráveis.}
   (f+g)(x) &= f(x) + g(x) = [f_1(x)+if_2(x)] + [g_1(x)+ig_2(x)],\\
   &= [f_1(x) + g_1(x)] + i[f_2(x) + g_2(x)].
 \end{align*}
-Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)$ mensurável. Analogmante temos 
+Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)$ mensurável. Analogamente temos 
   $(f_2+g_2)(x)$ mensurável. Já que a parte real e a parte imaginária de $(f+g)(x)$ é mensurável, temos 
   $(f+g)(x)$ mensurável, como queríamos.
   \vspace{5mm}
@@ -200,7 +198,7 @@ Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)
   
   \vspace{5mm}
   \noindent
-  (Valor Absoluto:) Dado $r \in \mathbb Q$, considere $S_r = \{x \in X; (f_1(x))^2 > r\} \cap \{x \in X; (f_2(x))^2 > \alpha^2-r\}$.
+  (Valor Absoluto:) A demonstração será divida nas seguintes partes:\\
 
   Para $\alpha \ge 0$, 
   \begin{align*}
@@ -219,7 +217,17 @@ Visto que $f_1(x)$ e $g_1(x)$ são funções mensuráveis, temos $(f_1 + g_1)(x)
 
   \vspace{5mm}
   \noindent
-  (Limites de Funções:)
+  (Limites de Funções:) Seja $\{f_n(x)\}$ uma sequência de funções mensuráveis a valores complexos
+  que converge pontualmente para $f: X \rightarrow \mathbb C$. Vejamos que $f$ é mensurável. 
+  
+  Sabemos que $n \in \mathbb N$, existem $u_n, v_n: X \rightarrow \mathbb R$ mensuráveis
+  tais que $f_n(x) = u_n(x) + iv_n(x)$. Como $\{f_n\}$ converge, 
+  \begin{align*}
+    \lim f_n(x) = \lim [u_n(x) + iv_n(x)] = [\lim u_n(x)] + i[\lim v_n(x)].
+  \end{align*}
+  Daqui, já que $\{u_n\}$ e $\{v_n\}$ são sequências de funções mensuráveis que convergem 
+  pontualmente para $\Re{f}$ e $\Im{f}$, respectivamente, segue que $\Re{f}$ e $\Im{f}$ são 
+  mensuráveis, portanto $\lim f_n(x)= f(x)$ também é mensuráveis.
 \end{proof}
 
 \bigline 
