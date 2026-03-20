@@ -28,3 +28,106 @@ Desse modo, segue que $\lambda$ é uma medida, como queríamos.
 \stepcounter{dois}
 \mysubsec{Exercício \thedois}
 \bigline
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável $\mu_1, \cdots, \mu_n$ medidas em 
+$(X, \mcal F)$ e $a_1, \cdots, a_n$ reais não negativos. Mostre que a aplicação 
+$\lambda: \mcal F \rightarrow \xbR$ dada por 
+\begin{align*}
+  \lambda(E) = \sum_{k=1}^{n} a_k\mu_k(E)
+\end{align*}
+é uma medida em $(X, \mcal F)$.}
+\begin{proof}[\textbf{Dem:}]
+Visto que para todo $k \in \mbb N_{\le n}$, temos que $\mu_k$ é uma medida em $(X, \mathcal F)$,
+então, para cada uma das medidas, segue que:
+\begin{enumerate}
+  \item $\mu_k(\emptyset) = 0$; 
+  \item $\mu_k(E) \ge 0, \text{ para todo } E \in \mcal F$; 
+  \item Vale a $\sigma$-aditividade para sequências de conjuntos disjuntos.
+\end{enumerate}
+Desse modo,
+\begin{align*}
+  \lambda(\emptyset) = \sum_{k=1}^{n} a_k\mu_k(\emptyset) \stackrel{(1)}{=} 
+  \sum_{k=1}^{n} a_k \cdot0 = \sum_{k=1}^n 0 = 0. 
+\end{align*}
+Mais ainda, visto que $a_1, \dots, a_n$ é uma sequência de números não negativos,
+  temos por $(2)$, que $a_k \mu_k \ge 0$ para todo $k \in \mbb N_{\le n}$. Ou seja 
+\begin{align*}
+  \lambda(E) = \sum_{k=1}^n a_k \mu_k(E) \ge 0, \text{ para todo } E \in \mcal F.
+\end{align*}
+  Por fim, dada uma sequência $\{E_j\}_{j \in \mbb N}$ em $\mcal F$ disjunto dois a dois,
+  temos, 
+  \begin{align*}
+    \lambda\left(\bigcup\limits_{j\in \mbb N} E_j \right) &= 
+    \sum_{k=1}^{n} \left[a_k \mu_k\left(\bigcup\limits_{j\in \mbb N} E_j\right)\right]
+    \stackrel{(3)}{=}\sum_{k=1}^{n} \left[a_k \sum_{j \in \mbb N}\mu_k(E_j)\right]\\ 
+    &= \sum_{k=1}^{n} \left[\sum_{j \in \mbb N}a_k\mu_k(E_j)\right]
+    \end{align*}
+Como a soma em $k$ é finita, podemos trocar a ordem das somas, obtendo
+\begin{align*}
+    &= \sum_{j \in \mbb N} \left[\sum_{k \in \mbb N_{\le n}}a_k\mu_k(E_j)\right]
+    = \sum_{j \in \mbb N} \lambda(E_j).
+  \end{align*}
+  Com isso, temos que $\lambda$ é uma medida em $(X, \mcal F)$.
+\end{proof}
+
+\bigline
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline 
+\textbf{
+  Sejam $(X, \mcal F)$ um espaço mensurável e $(\mu_n)_{n \in \mbb N}$ uma sequência 
+  de medidas em $(X, \mcal F)$ tal que $\mu_k(X) = 1$, para todo $k \in \mbb N$. 
+  Mostre que a aplicação $\lambda: \mcal F \rightarrow \xbR$ dada por 
+\begin{align*}
+  \lambda(E) = \sum_{k \in \mbb N} \frac{\mu_k(E)}{2^k},
+\end{align*}
+é uma medida e $\lambda(X) = 1$.
+}
+\begin{proof}[\textbf{Dem:}] Vejamos que $\lambda(\emptyset) = 0$. 
+Ora, $\lambda(\emptyset) = \sum_{k \in \mbb N} \frac{\mu_k(\emptyset)}{2^k}$. Já que 
+  $\mu_k(\emptyset) = 0$ para todo $k \in \mbb N$, temos $\lambda(\emptyset) = 0$.
+  Daqui, visto que para cada $E \in \mcal F$ e $k \in \mbb N$ temos $\mu_k(E)/2^k \ge 0$, 
+então, para todo $E \in \mcal F$,
+  \begin{align*}
+    \lambda(E) = \sum_{k \in \mbb N} \frac{\mu_k(E)}{2^k} \ge 0.
+  \end{align*}
+  Com isso, vejamos que $\lambda$ é $\sigma$-aditiva. Dada uma sequência 
+  $\{E_j\}_{j \in \mbb N}$ em $\mcal F$ disjunto dois a dois, temos, 
+  \begin{align*}
+    \lambda\left(\bigcup E_j\right) = 
+    \sum_{k \in \mbb N} \frac{\mu_k \left(\bigcup E_j\right)}{2^k}.
+  \end{align*}
+  Já que vale a $\sigma$-aditividade para todo $\mu_k$, temos,
+  \begin{align*}
+    \lambda\left(\bigcup E_j\right) = 
+    \sum_{k \in \mbb N}\left(\sum_{j \in \mbb N} \frac{\mu_k (E_j)}{2^k} \right).
+  \end{align*}
+  Como $\mu_k(E_j)/2^k \ge 0$ para cada $j,k \in \mbb N$,
+ \begin{align*}
+    \lambda\left(\bigcup E_j\right) = 
+    \sum_{j \in \mbb N}\left(\sum_{k \in \mbb N} \frac{\mu_k (E_j)}{2^k} \right) = 
+    \sum_{j \in \mbb N}\lambda(E_j).
+  \end{align*}
+ Por fim, visto que $\mu_k(X) = 1$ para todo $k \in \mbb N$, 
+\begin{align*}
+  \lambda(X) = \sum_{k \in \mbb N} \frac{\mu_k(X)}{2^k} 
+  = \sum_{k \in \mbb N} \frac{1}{2^k} = 1. 
+\end{align*}
+Com isso, temos o que queríamos.
+\end{proof}
+
+\bigline
+\newpage 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Seja $(\mbb N, \mcal P(\mbb N))$ e $(a_n)_{n \in \mbb N}$ uma sequência 
+de números reais estendidos não negativos. Defina $\mu: \mcal P(\mbb N) \rightarrow \xbR$
+por $\mu(\emptyset) = 0$ e, para $E \neq \emptyset$,
+\begin{align*}
+  \mu(E) = \sum_{n \in E} a_n.
+\end{align*}
+Mostre que $\mu$ é uma medida em $\mbb N$. Reciprocamente, mostre que toda medida 
+em $(\mbb N, \mcal P(\mbb N))$ é obtida desta maneira, para alguma sequência 
+$(a_n)$ em $\xbR$.
+}
