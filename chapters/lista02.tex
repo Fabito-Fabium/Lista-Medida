@@ -530,6 +530,145 @@ Mostre que $\overline{\mcal F}$ é uma $\sigma$-álgebra, chamada de complemento
 \begin{proof}[\textbf{Dem:}]
 Visto que $\mu(\emptyset) = 0$, temos $\emptyset \in \mcal Z$. E, como $\emptyset \in \mcal F$, segue que 
   $\emptyset \cup \emptyset = \emptyset \in \overline{\mcal F}$. Mais ainda, visto que $X \in \mcal F$ e, 
-  para todo $Z \subset N \in \mcal Z \subset \mcal F$, temos $X \cup Z = X$, então $X \in \overline{\mcal F}$. 
+  para todo $Z \subseteq N \in \mcal Z \subset \mcal F$, temos $X \cup Z = X$, então $X \in \overline{\mcal F}$. 
   Daqui, vejamos que se $A \in \overline{\mcal F}$, então $A^C \in \overline{\mcal F}$.
+  
+  \noindent 
+  Note que, se $A \in \overline{\mcal F}$, então existem $E \in
+  \mcal F$ e $Z \subset N\in\mcal Z$
+  tais que $A = E \cup Z$. Portanto, 
+  \begin{align*}
+    A^C &= (E \cup Z)^C = E^C \cap Z^C = E^C\cap Z^C \cap (N \cup N^C)\\
+    &= (E^C \cap Z^C \cap N) \cup (E^C \cap Z^C \cap N^C).
+  \end{align*}
+  Já que $Z \subseteq N$, temos $N^C \subseteq Z^C$, ou seja, 
+  \begin{align*}
+    A^C &= (E^C \cap Z^C \cap N) \cup (E^C \cap N^C).
+  \end{align*}
+  Daqui, note que $\tilde Z = E^C \cap Z^C \cap N \subset N$ e $\tilde A = E^C \cap N^C \in 
+  \mcal F$, isto é, $A^C = \tilde A \cup \tilde Z \in \overline{\mcal F}$. 
+
+  \noindent
+  Vejamos que dada uma sequência $\{A_K\}$ em $\overline{\mcal F}$,
+  temos $\bigcup A_k \in \overline{\mcal F}$. Já que, para todo 
+  $k \in \mbb N$, temos $A_k \in \overline{\mcal F}$, então, existe $E_k \in \mcal F$ e 
+  $Z_k \subset N_k$ para algum $N_k \in \mcal Z$. Com isso, 
+  \begin{align*}
+    \bigcup_{k \in \mbb N} A_k = \bigcup_{k \in \mbb N} (E_k \cup Z_k) = 
+    \left(\bigcup_{k \in \mbb N} E_k \right)\cup \left(\bigcup_{k \in \mbb N} Z_k\right).
+  \end{align*}
+  Daqui, note que $\bigcup E_k \in \mcal F$ e $\bigcup Z_k \subseteq 
+  \bigcup N_k \in \mcal Z$, portanto $\bigcup A_k \in \overline{\mcal F}$.
 \end{proof}
+\biglinend 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Considere a aplicação $\overline \mu: \overline{\mcal F} \rightarrow \xbR$ dada por 
+\begin{align*}
+  \overline \mu (E\cup Z) \coloneq \mu(E),
+\end{align*}
+em que $E\in \mcal F$ e $Z \subset N$, para algum $N \in \mcal Z$. Mostre que:} 
+\begin{enumerate}[label=(\alph*), wide, labelindent=0pt]
+  \item \textbf{$\overline \mu$ está bem definida, isto é, 
+    se $E_1 \cup Z_1 = E_2 \cup Z_2$ então $\overline \mu (E_1 \cup Z_1) = 
+    \overline \mu (E_2 \cup Z_2)$}.
+    \begin{proof}[\textbf{Dem:}]Ora, dados $N_1, N_2 \in \mcal Z$ tais que $Z_1 \subset N_1$ 
+      e $Z_2 \subset N_2$, temos,
+      \begin{align*}
+        \overline{\mu}(E_1\cup Z_1) &= \mu(E_1) \le \mu(E_1 \cup N_1)
+        \le \mu((E_1 \cup Z_1) \cup N_1)\\
+        &=\mu((E_2 \cup Z_2) \cup N_1) = \mu(E_2 \cup (N_1 \cup N_2)).
+      \end{align*}
+      Visto que $N_1 \cup N_2 \in \mcal Z$, temos,
+      \begin{align*}
+        &\le\mu(E_2) + \mu(N_1 \cup N_2) = \mu(E_2) = \overline{\mu}(E_2 \cup Z_2), 
+      \end{align*}
+      analogamente, segue o outro lado da desigualdade. Com isso, temos o que queríamos.
+    \end{proof}
+  \item \textbf{$\overline \mu$ é uma medida em $(X, \overline{\mcal F})$}. 
+    \begin{proof}[\textbf{Dem:}]
+      Note que $\overline\mu(\emptyset) = \mu(\emptyset) = 0$ e para todo $A \in 
+      \overline{\mcal F}$, existe $E \in \mcal F$ e $Z \subset N \in \mcal Z$ tal que 
+      $A = E \cup Z$, 
+      segue que $\overline \mu(A) = \mu(E) \ge 0$. Com isso, basta verificar a 
+      $\sigma$-aditividade para concluír que $\overline \mu$ é uma medida em $(X, \mcal F)$.
+      Para isso, considere ${A_k}$ uma sequência em $\overline{\mcal F}$ 
+      disjunto dois a dois. Então, para 
+      cada $k \in \mbb N$, existe $E_k \in \mcal F$ e $Z_k \subset N_k \in \mcal Z$ 
+      para algum $N_k$, desse modo, já que $\bigcup N_k \in \mcal Z$ e 
+      $\bigcup Z_k \subseteq \bigcup N_k$, 
+
+      \begin{align*}
+        \overline \mu\left(\bigcup_{k \in \mbb N} A_k \right) &=
+        \overline\mu\left(\left[\bigcup_{k \in \mbb N} E_k \right] \cup 
+        \left[\bigcup_{k \in \mbb N} Z_k \right]\right)\\ 
+        &= \mu\left(\bigcup_{k \in \mbb N} E_k\right) = 
+        \sum_{k \in \mbb N} \mu(E_k)\\
+        &= \sum_{k \in \mbb N} \overline \mu(E_k \cup Z_k)
+        =\sum_{k \in \mbb N} \overline \mu(A_k),
+      \end{align*}
+      como queríamos.
+    \end{proof}
+  \item \textbf{o espaço de medida $(X, \overline{\mcal F}, \overline \mu)$ é completo.}
+    \begin{proof}[\textbf{Dem:}] Considere $A \in \overline{\mcal F}$ satisfazendo 
+      $\overline{\mu}(A) = 0$. Basta observar que $A \in \mcal Z$ e 
+      todo subconjunto $Z \subset A$
+      pode ser escrito como $\emptyset \cup Z \in \overline{\mcal F}$, já que 
+      $\emptyset \in \mcal F$. 
+            
+    \end{proof}
+  \item \textbf{$\overline \mu$ coincide com $\mu$ em $\mcal F$}
+    \begin{proof}[\textbf{Dem:}]Ora, dado $A \in \mcal F$, sabendo que 
+      $\emptyset \subset \emptyset \in \mcal Z$, temos $A \in \overline {\mcal F}$,
+      desse modo, 
+      \begin{align*}
+        \overline \mu(A) = \overline \mu(A \cup \emptyset) = \mu(A).
+      \end{align*}
+      Portanto, $\overline \mu|_{\mcal F} = \mu$.
+    \end{proof}
+\end{enumerate}
+\biglinend 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Utilizando propriedades da medida exterior $m^*$ em $\mbb R$, mostre 
+que $[0, 1]$ é não-enumerável. Conclua que $\mbb R$ é não-enumerável.
+}
+\begin{proof}[\textbf{Dem:}] A fim de contradição, suponhamos que $[0, 1]$ é 
+  enumerável. Sabemos que todo conjunto enumerável tem medida exterior zero,
+  portanto $m^*([0, 1]) = 0$. Entretanto, $[0, 1]$ é também um intervalo,
+  sendo assim, $m^*([0, 1]) = 1-0 = 1$, uma contradição. De maneira análoga
+  ao apresentado, a fim de contradição, suponha $\mbb R$ enumerável, 
+  ou seja, $m^*(\mbb R) = 0$. 
+  Entretanto, $[0, 1] \subset \mbb R$, ou seja, $m^*(\mbb R) \ge 1$, 
+  uma contradição.
+  
+\end{proof}
+\biglinend 
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Utilizando propriedades da medida exterior, prove que se $m^*(A) = 0$, 
+então $m^*(A\cup B) = m^*(B)$.}
+\begin{proof}[\textbf{Dem:}] Ora, dados $A, B \subset \mbb R$, temos $B \subset (A \cup B)$,
+  portanto, 
+  \begin{align*}
+    m^*(B) \le m^*(A\cup B) \le m^*(A) + m^*(B).
+  \end{align*}
+  Já que $m^*(A) = 0$, temos o que queríamos.
+\end{proof}
+\biglinend
+\newpage
+\stepcounter{dois}
+\mysubsec{Exercício \thedois}
+\bigline
+\textbf{Verifique que os seguintes itens são equivalentes:
+\begin{enumerate}
+  \item $E$ é mensurável. 
+  \item Para todo $\epsilon > 0$, existe um fechado $F$, com 
+    $F \subseteq E$, tal que $m^*(E\setminus F) < \epsilon$. 
+  \item Existe um conjunto $F_{\sigma}$, denotado por $H$, 
+    com $H \subseteq E$, tal que $m^*(E\setminus H) = 0$
+\end{enumerate}}
+\bigline
