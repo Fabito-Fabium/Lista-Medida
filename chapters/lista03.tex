@@ -1,0 +1,27 @@
+\newcounter{tres}
+\stepcounter{tres}
+\mysubsec{Exercício \thetres}
+\bigline
+\textbf{Sejam $A, B \subseteq X$ conjuntos quaisquer e denote por $\chi_A$, $\chi_B$ suas respectivas 
+funções características. Demonstre as seguintes propriedades:
+\begin{enumerate}[label=(\alph*), wide, labelindent=0pt]
+  \item $\chi_{A \cap B} = \chi_A\chi_B$
+  \begin{proof}[\textbf{Dem:}]
+    Note que, se $x \not \in A$ ou $x \not \in B$, segue que $x \not \in A\cap B$,
+    desse modo, 
+    $$\chi_{A\cap B}(x) = 0 = 0\cdot\chi_B(x) = (\chi_A\chi_B)(x)$$ ou 
+    $$\chi_{A\cap B}(x) = 0 =\chi_A(x)\cdot 0 = (\chi_A\chi_B)(x).$$
+    Caso contrário, se $x \in A$ e $x \in B$, 
+    temos $x \in A\cap B$, portanto, $\chi_{A\cap B}(x)=1=1\cdot 1 = (\chi_A\chi_B)(x)$, como queríamos.
+  \end{proof}
+  \item $\chi_{A\cup B} = \chi_A + \chi_B - \chi_{A}\chi_B$
+  \begin{proof}[\textbf{Dem:}]
+  Note que, se $x \in A$ ou $x \in B$, temos $\chi_{A\cup B}(x) = 1$. Se $x$ está em ambos os conjuntos,
+  $$\chi_A(x) + \chi_B(x) - (\chi_A\chi_B)(x) = 1 + 1 - 1 = 1 = \chi_{A\cup B}(x).$$ Se $x \not \in B$ 
+  e $x \in A$, $\chi_A(x) +\chi_B(x) - (\chi_A\chi_B)(x) = 1 + 0 - 0 = 1 = \chi_{A\cup B}(x)$. De modo análogo segue 
+  o caso em que $x \not \in A$ e $x \in B$. Para $x \not \in A\cup B$, temos $x \not \in A$ e $x \not \in B$, 
+  ou seja, 
+  $$\chi_{A\cup B}(x) = 0 = 0 + 0 - 0 = \chi_A(x) + \chi_B(x) - \chi_A\chi_B(x).$$
+  Com isso, temos o que queríamos.
+  \end{proof}
+\end{enumerate}}
