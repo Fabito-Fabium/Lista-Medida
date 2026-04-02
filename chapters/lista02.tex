@@ -838,9 +838,9 @@ Prove os seguintes itens:
 \mysubsec{Exercício \thedois}
 \bigline 
 \textbf{Seja $(E_n)_{n \in \mbb N}$ uma coleção enumerável de conjuntos Lebesgue mensuráveis disjuntos. Prove 
-que para todo $A \in \mcal P(\mbb R)$ vale 
+que para todo $A \in \mcal P(\mbb R)$ vale
 \begin{align*}
-  m^*\left(A\cap \bigcup\limit_{n \in \mbb N} E_n\right) = \sum_{n \in \mbb N} m^*(A \cap E_n).
+  m^*\left(A \cap \bigcup\limits_{n \in \mbb N} E_n\right) = \sum_{n \in \mbb N}m^*(A\cap E_n).
 \end{align*}}
 \begin{proof}[\textbf{Dem:}]
   Ora, se $m^*(A \cap \bigcup E_n) = +\infty$, a igualdade segue diretamente da $\sigma$-subaditividade. Suponhamos 
@@ -871,7 +871,46 @@ $0 < L < m(E)$. Defina a função $f: [0, +\infty) \rightarrow \mbb R$ dada por 
 \begin{enumerate}[label=(\alph*), wide, labelindent=0pt]
   \item Mostre que $f$ é uma função Lipschitziana.
     \begin{proof}[\textbf{Dem:}]
-      Sejam $x, a \in [0, +\infty)$. Visto que, 
+        Sejam $x, a \in [0, +\infty)$. Sem perda de generalidade, suponha $x \ge a$. 
+        Desse modo, 
+      \begin{align*}
+        |f(x) - f(a)| = |m(E\cap [-x, x]) - m(E\cap [-a, a])|.
+      \end{align*}
+      Já que $E\cap [-a,a] \subset E\cap [-x, x]$, então, 
+      \begin{align*}
+        |f(x) - f(a)| &= |m(E\cap [-x, x] \setminus [E\cap [-a, a]])|\\ 
+        &= |m([-x, -a] \cup [a, x])| = |m([-x, -a]) + m([a, x])|\\ 
+        &= |-a + x +x - a| = 2|x-a|.
+      \end{align*}
+      Com isso, segue que $f$ é uma função Lipschitziana.
     \end{proof}
+  \item Determine os valores de $f(0)$ e $\lim\limits_{x \rightarrow \infty} f(x)$.
+    \begin{proof}[\textbf{Solução:}]
+      Para determinar o valor de $f(0)$, note que $E\cap[-0, 0] = E\cap\{0\}$ é 
+      igual a $\{0\}$ ou $\emptyset$.
+      Se $E\cap\{0\} = \{0\}$, temos $f(0) = 0$. Caso $E\cap\{0\} = \emptyset$
+      temos $f(0)=0$. Desse modo, $f(0)=0$.\\
+      \noindent
+      Para determinar o valor de $\lim_{x\rightarrow \infty} f(x)$, note que 
+      $E \subseteq \mbb R = (-\infty, \infty)$. Portanto, 
+      \begin{align*}
+        \lim_{x \rightarrow \infty} f(x) = \lim_{x \rightarrow \infty} m(E \cap [-x, x])
+        = m(E\cap(-\infty, \infty)) = m(E).
+      \end{align*}
+      Com isso, temos o que queríamos.
+    \end{proof}
+    \item Utilize o Teorema do Valor Intermediário para concluir que existe um subconjunto
+      mensurável $B_L \subseteq E$ tal que $m(B_L) = L$.
+      \begin{proof}[\textbf{Dem:}]
+        Já que $f$ é Lipschitziana, temos $f$ uniformemente contínua.
+        Desse modo, do Teorema do Valor 
+        Intermediário, visto que $L \in (0, m(E)) = (f(0), \lim f(x))$ e $[0, +\infty)$
+        é fechado, segue que existe $c \in [0, +\infty)$ tal que $f(c) = L$. Portanto, 
+        \begin{align*}
+          L = f(c) = m(E\cap[-c, c]),
+        \end{align*}
+        isto é, $B_L = E\cap [-c, c]$.
+      \end{proof}
 \end{enumerate}
 }
+
