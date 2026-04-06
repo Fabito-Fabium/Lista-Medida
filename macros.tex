@@ -30,16 +30,38 @@
 
 \newcommand{\borelR}{\mathcal B(\mathbb R)}
 \newcommand{\preim}[1]{#1^{-1}}
-\newcommand{\mcal}{\mathcal}
+\newcommand{\mcal}{\mathscr}
 \newcommand{\mbb}{\mathbb}
 \newcommand{\bR}{\mathbb R}
 \newcommand{\xbR}{\overline {\mathbb R}}
 \newcommand{\bN}{\mathbb N}
 \newcommand{\bC}{\mathbb c}
 \newcommand{\st}{\text{;}}
+\newcommand{\parth}[1]{\left(#1\right)}
+\newcommand{\cparth}[1]{\left[#1\right]}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\seqn}[3]{\set{#1_#2}_{#2 \in #3}}
+\newcommand{\mycap}[2]{\bigcap\limits_{#1 \in #2}}
+\newcommand{\mycup}[2]{\bigcup\limits_{#1 \in #2}}
+\newcommand{\sigg}[1]{\sigma\parth{#1}}
+\newcommand{\siggmc}[1]{\sigma\parth{\mcal #1}}
+\newcommand{\pset}[1]{\mcal P\parth{#1}}
+\newcommand{\sigmaalg}{\sigma\text{-álgebra}}
+\newcommand{\borel}[1]{\mcal B(#1)}
+\newcommand{\myiff}{\Leftrightarrow}
+\newcommand{\myimplies}{\Rightarrow}
+\newcommand{\fplus}[1]{#1^+}
+\newcommand{\fminus}[1]{#1^-}
+\newcommand{\extmu}[1]{m^*\parth{#1}}
 
 \newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Solution:}}\setlength{\parindent}{1cm} }
 \newcommand{\solve}[1]{\setlength{\parindent}{0cm}\textbf{\textit{Solution: }}\setlength{\parindent}{1cm}#1 \Qed}
 \newcommand{\bigline}{\noindent\rule{\textwidth}{0.4pt}\newline}
 \newcommand{\biglinend}{\noindent\rule{\textwidth}{0.4pt}}
 \newcommand{\mysubsec}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+\newcommand{\mysec}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+
+\newcommand{\myexe}[1]{%
+  \subsection*{Exercício #1}%
+  \addcontentsline{toc}{subsection}{Ex #1}%
+}

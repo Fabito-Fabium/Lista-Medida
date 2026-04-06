@@ -1,0 +1,152 @@
+\mysec{Medidas}
+\begin{definition*}{}
+Sejam $(X, \mathcal{F})$ um espaço mensurável. Dizemos que $\mu: \mathcal{F} \rightarrow \overline{\mathbb{R}}$ é uma medida se satisfazer as seguintes condições:
+\begin{itemize}
+    \item[i)] $\mu(\emptyset) = 0$
+    \item[ii)] $\mu(E) \ge 0$, $\forall E \in \mathcal{F}$
+    \item[iii)]  Se $\{E_n\}_{n \in \mathbb{N}}$ é uma coleção enumerável de conjuntos disjuntos em $\mathcal{F}$, então 
+    $$ \mu\left(\bigcup_{n \in \mathbb{N}} E_n\right) = \sum_{n=1}^{+\infty} \mu(E_n). $$
+    (Note que se a série for divergente, assume o valor $+\infty$).
+\end{itemize}
+\end{definition*}
+
+Dizemos que uma medida é \textbf{finita} se $\mu(X) < +\infty$. Dizemos que é \textbf{$\sigma$-finita} se existe uma sequência $\{E_n\}_{n \in \mathbb{N}}$ em $\mathcal{F}$ tal que $X = \bigcup_{n \in \mathbb{N}} E_n$ e $\mu(E_n) < +\infty$.
+
+\vspace{5mm}
+\noindent\textbf{Exemplos:}
+\begin{enumerate}
+    \item[1)] Seja $(X, \mathcal{F})$ um espaço mensurável. Definindo $\mu_1 : \mathcal{F} \rightarrow \overline{\mathbb{R}}$ por $\mu_1(E) = 0$, $\forall E \in \mathcal{F}$, obtemos uma medida finita. 
+    
+    Definindo $\mu_2 : \mathcal{F} \rightarrow \overline{\mathbb{R}}$ por $\mu_2(\emptyset) = 0$ e $\mu_2(E) = +\infty$ se $E \neq \emptyset$, obtemos uma medida não finita e não $\sigma$-finita.
+    
+    Fixado $p \in X$, defina $\mu_p : \mathcal{F} \rightarrow \overline{\mathbb{R}}$ por $\mu_p(E) = 1$ se $p \in E$, e $\mu_p(E) = 0$ se $p \notin E$. Então $\mu_p$ é uma medida finita, chamada de \textit{medida unitária concentrada em $p$} ou \textit{medida de Dirac}.
+    
+    \item[2)] Considere $(\mathbb{N}, \mathcal{P}(\mathbb{N}))$. Defina $\mu : \mathcal{P}(\mathbb{N}) \rightarrow \overline{\mathbb{R}}$ por
+    $$ \mu(E) = \begin{cases} 
+    \# E, & \text{se } E \text{ é finito} \\ 
+    +\infty, & \text{se } E \text{ é infinito} 
+    \end{cases} $$
+    Então $\mu$ é uma medida, chamada de \textit{medida de contagem} em $\mathbb{N}$. Note que $\mu$ não é finita, mas é $\sigma$-finita: $\mathbb{N} = \bigcup_{n \in \mathbb{N}} \{n\}$, e $\mu(\{n\}) = 1$.
+    
+    \item[3)] Considere $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$. Definiremos nas próximas aulas uma medida $\mu: \mathcal{B}(\mathbb{R}) \rightarrow \overline{\mathbb{R}}$ em que $\mu((a,b)) = b - a$. Essa medida coincide com o valor da medida de Lebesgue (que também definiremos nas próximas aulas). Essa medida é chamada de \textit{medida de Borel}.
+\end{enumerate}
+
+\begin{definition*}{}
+Chamamos $(X, \mathcal{F}, \mu)$ de espaço de medida, em que $(X, \mathcal{F})$ é um espaço mensurável e $\mu$ é uma medida.
+\end{definition*}
+
+\begin{lemma*}{}
+Seja $(X, \mathcal{F})$ um espaço mensurável e $\{A_n\}_{n \in \mathbb{N}}$ uma sequência em $\mathcal{F}$. Então existe uma sequência $\{B_n\}_{n \in \mathbb{N}}$ em $\mathcal{F}$ tal que:
+\begin{itemize}
+    \item[i)] $B_n \cap B_m = \emptyset$, para $n \neq m$
+    \item[ii)] $B_n \subseteq A_n$, $\forall n \in \mathbb{N}$
+    \item[iii)] $\bigcup_{n \in \mathbb{N}} A_n = \bigcup_{n \in \mathbb{N}} B_n$
+\end{itemize}
+\end{lemma*}
+
+\begin{proof}[\textbf{Dem:}]
+Defina $B_1 := A_1$ e $B_n := A_n \cap \left[ \bigcup_{j=1}^{n-1} A_j \right]^c$ para $n \ge 2$. 
+Como $\mathcal{F}$ é $\sigma$-álgebra, segue que $B_n \in \mathcal{F}, \forall n \in \mathbb{N}$. Para $n \neq m$, temos por construção que $B_n \cap B_m = \emptyset$, bem como $B_n \subseteq A_n, \forall n \in \mathbb{N}$.
+
+Vejamos agora que $\bigcup_{n \in \mathbb{N}} A_n = \bigcup_{n \in \mathbb{N}} B_n$.
+
+($\subseteq$) Seja $x \in \bigcup_{n \in \mathbb{N}} A_n$. Assim, existe $n \in \mathbb{N}$ tal que $x \in A_n$. Tome 
+  $$n_0 = \min \{m \in \mathbb{N} ; x \in A_m\}.$$ Então $x \in A_{n_0}$ e $x \notin A_j$, para $j=1,\dots,n_0-1$, ou seja, $x \in B_{n_0}$ e, portanto, $x \in \bigcup_{n \in \mathbb{N}} B_n$.
+
+($\supseteq$) Como $B_n \subseteq A_n, \forall n \in \mathbb{N}$, temos que $\bigcup_{n \in \mathbb{N}} B_n \subseteq \bigcup_{n \in \mathbb{N}} A_n$.
+\end{proof}
+
+\mysubsec{Propriedades de Medidas}
+
+\begin{prop*}{}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida.
+\begin{enumerate}
+    \item[1)] \textbf{Aditividade Finita:} Se $\{E_k\}_{k=1}^n$ é uma coleção finita disjunta de conjuntos em $\mathcal{F}$, então $\mu\left(\bigcup_{k=1}^n E_k\right) = \sum_{k=1}^n \mu(E_k)$.
+    \item[2)] \textbf{Monotonicidade:} Se $A, B \in \mathcal{F}$ e $A \subseteq B$, então $\mu(A) \le \mu(B)$.
+    \item[3)] \textbf{Excisão:} Se $A, B \in \mathcal{F}$ com $A \subseteq B$ e $\mu(A) < +\infty$, então $\mu(B \setminus A) = \mu(B) - \mu(A)$. Em particular, se $\mu(A) = 0$, então $\mu(B \setminus A) = \mu(B)$.
+    \item[4)] \textbf{Subaditividade Enumerável:} Se $E \in \mathcal{F}$ e $\{E_k\}_{k \in \mathbb{N}}$ é uma coleção enumerável de conjuntos em $\mathcal{F}$ tal que $E \subseteq \bigcup_{k \in \mathbb{N}} E_k$, então $\mu(E) \le \sum_{k \in \mathbb{N}} \mu(E_k)$.
+\end{enumerate}
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]. 
+
+\noindent
+  1) Dada uma sequência disjunta $\{E_k\}$ em $\mcal F$
+  com $E_k \neq \emptyset$ para finitos $k \in \mbb N$, 
+  reordene a sequência de modo que $E_k = \emptyset$ para $k > n \in \mbb N$. 
+  Dessa forma, $\{E_k\}_{k \in \mathbb{N}}$ é uma coleção enumerável
+  de conjuntos disjuntos. Como $\mu(\emptyset) = 0$, obtemos:
+$$ \mu\left(\bigcup_{k=1}^n E_k\right) = \mu\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \sum_{k=1}^{+\infty} \mu(E_k) = \sum_{k=1}^n \mu(E_k). $$
+
+\noindent
+2) Sejam $A, B \in \mathcal{F}$ com $A \subseteq B$. Assim, $B = A \cup (B \setminus A)$ e $B \setminus A = B \cap A^c \in \mathcal{F}$. Pelo item 1,
+$$ \mu(B) = \mu(A \cup (B \setminus A)) = \mu(A) + \mu(B \setminus A) \ge \mu(A), $$
+pois $A \cap (B \setminus A) = \emptyset$ e $\mu(B \setminus A) \ge 0$.
+
+\noindent
+3) Do item anterior, obtemos $\mu(B) = \mu(A) + \mu(B \setminus A)$. Como $\mu(A) < +\infty$, podemos subtrair $\mu(A)$ e obter $\mu(B \setminus A) = \mu(B) - \mu(A)$. Em particular, se $\mu(A) = 0$, $\mu(B \setminus A) = \mu(B)$.
+
+\noindent
+4) Seja $\{E_k\}_{k \in \mathbb{N}}$ uma coleção enumerável de conjuntos em $\mathcal{F}$ tal que $E \subseteq \bigcup_{k \in \mathbb{N}} E_k$ com $E \in \mathcal{F}$. Pelo item 2, $\mu(E) \le \mu\left(\bigcup_{k \in \mathbb{N}} E_k\right)$. Pelo lema anterior, existe uma sequência $\{B_k\}_{k \in \mathbb{N}}$ em $\mathcal{F}$, disjunta, tais que $B_k \subseteq E_k, \forall k \in \mathbb{N}$ e $\bigcup_{k \in \mathbb{N}} B_k = \bigcup_{k \in \mathbb{N}} E_k$. Portanto,
+$$ \mu(E) \le \mu\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \mu\left(\bigcup_{k \in \mathbb{N}} B_k\right) = \sum_{k \in \mathbb{N}} \mu(B_k) \le \sum_{k \in \mathbb{N}} \mu(E_k). $$
+\end{proof}
+
+\begin{definition*}{}
+Seja $\{A_k\}_{k \in \mathbb{N}}$ uma sequência de conjuntos. Dizemos que a sequência é crescente se $A_k \subseteq A_{k+1}, \forall k \in \mathbb{N}$, e decrescente se $A_k \supseteq A_{k+1}, \forall k \in \mathbb{N}$.
+\end{definition*}
+
+\begin{prop*}{Continuidade da Medida}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida.
+\begin{itemize}
+    \item[a)] Se $\{E_k\}_{k \in \mathbb{N}}$ é uma sequência crescente em $\mathcal{F}$, então $\mu\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \lim_{k \to \infty} \mu(E_k)$.
+    \item[b)] Se $\{F_k\}_{k \in \mathbb{N}}$ é uma sequência decrescente em $\mathcal{F}$ com $\mu(F_1) < +\infty$, então $\mu\left(\bigcap_{k \in \mathbb{N}} F_k\right) = \lim_{k \to \infty} \mu(F_k)$.
+\end{itemize}
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+a) Se para algum $n \in \mathbb{N}$ tivermos $\mu(E_n) = +\infty$, a igualdade já é satisfeita. Suponha então que $\mu(E_n) < +\infty, \forall n \in \mathbb{N}$. Considere a sequência $\{A_k\}_{k \in \mathbb{N}}$ dada por $A_1 = E_1$ e $A_k = E_k \setminus E_{k-1}$ para $k \ge 2$. Note que $A_k \cap A_m = \emptyset$ se $k \neq m$, e que $\bigcup_{k=1}^n A_k = E_n, \forall n \in \mathbb{N}$, logo $\bigcup_{k \in \mathbb{N}} A_k = \bigcup_{k \in \mathbb{N}} E_k$. Portanto, pelas propriedades de medida, obtemos:
+$$ \mu\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \mu\left(\bigcup_{k \in \mathbb{N}} A_k\right) = \sum_{k=1}^{+\infty} \mu(A_k) = \lim_{n \to \infty} \sum_{k=1}^n \mu(A_k) = \lim_{n \to \infty} \mu\left(\bigcup_{k=1}^n A_k\right) = \lim_{n \to \infty} \mu(E_n). $$
+
+b) Seja $\{F_k\}_{k \in \mathbb{N}}$ uma sequência decrescente em $\mathcal{F}$ com $\mu(F_1) < +\infty$. Defina $E_n := F_1 \setminus F_n, \forall n \in \mathbb{N}$. Note que $\{E_n\}_{n \in \mathbb{N}}$ é uma sequência crescente em $\mathcal{F}$ (pois $F_{n+1} \subseteq F_n \implies F_1 \setminus F_n \subseteq F_1 \setminus F_{n+1} \implies E_n \subseteq E_{n+1}$).
+Pelo item anterior e por excisão ($\mu(F_1) < +\infty$):
+$$ \mu\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \lim_{k \to \infty} \mu(E_k) = \lim_{k \to \infty} \mu(F_1 \setminus F_k) = \lim_{k \to \infty} [\mu(F_1) - \mu(F_k)] = \mu(F_1) - \lim_{k \to \infty} \mu(F_k). $$
+Por outro lado, 
+$$ \bigcup_{k \in \mathbb{N}} E_k = \bigcup_{k \in \mathbb{N}} (F_1 \setminus F_k) = \bigcup_{k \in \mathbb{N}} (F_1 \cap F_k^c) = F_1 \cap \left(\bigcup_{k \in \mathbb{N}} F_k^c\right) = F_1 \cap \left(\bigcap_{k \in \mathbb{N}} F_k\right)^c = F_1 \setminus \bigcap_{k \in \mathbb{N}} F_k. $$
+Assim, por excisão:
+$$ \mu\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \mu\left(F_1 \setminus \bigcap_{k \in \mathbb{N}} F_k\right) = \mu(F_1) - \mu\left(\bigcap_{k \in \mathbb{N}} F_k\right). $$
+Combinando as duas igualdades e usando novamente que $\mu(F_1) < +\infty$, segue a  
+igualdade que queríamos.
+\end{proof}
+
+\begin{definition*}{Propriedades válidas em quase-$\mu$ todo ponto ($\mu$-q.t.p.)}
+Dizemos que uma propriedade $P$ vale em quase-$\mu$ todo ponto num espaço de medida $(X, \mathcal{F}, \mu)$ se existe um conjunto $N \in \mathcal{F}$ com $\mu(N) = 0$, tal que a propriedade $P$ é válida em $X \setminus N$.
+\end{definition*}
+\vspace{5mm}
+Por exemplo, dizemos que $f, g: X \to \overline{\mathbb{R}}$ são \textbf{iguais em quase todo ponto} se existe $N \in \mathcal{F}$ com $\mu(N) = 0$ tal que $f(x) = g(x), \forall x \in X \setminus N$. Neste caso, escrevemos $f = g$, $\mu$-q.t.p.
+
+Dizemos que $f_n$ \textbf{converge para $f$ pontualmente em quase todo ponto} se existe $N \in \mathcal{F}$ com $\mu(N) = 0$ tal que $f_n(x) \to f(x), \forall x \in X \setminus N$. Neste caso, escrevemos $f_n \to f$ q.t.p.
+\vspace{5mm}
+\begin{definition*}{Espaços de Medida Completos}
+Dizemos que um espaço de medida $(X, \mathcal{F}, \mu)$ é completo se todo subconjunto de um conjunto mensurável de medida nula é mensurável, isto é:
+$$ A \subseteq E, \ E \in \mathcal{F} \ \text{e} \ \mu(E) = 0 \implies A \in \mathcal{F}. $$
+Note que neste caso, $\mu(A) = 0$.
+\end{definition*}
+
+\begin{prop*}{}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida completo e $f, g: X \to \overline{\mathbb{R}}$ funções. Se $f$ é mensurável e $f=g$ $\mu$-q.t.p., então $g$ é mensurável.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Suponha que $f$ é mensurável e $f=g$ $\mu$-q.t.p., ou seja, existe $N \in \mathcal{F}$ tal que $\mu(N) = 0$ e $f(x) = g(x), \forall x \in N^c$. 
+Defina $A = \{x \in X; f(x) \neq g(x)\}$. Temos que $A \subseteq N$. Como $(X, \mathcal{F}, \mu)$ é completo, $A \in \mathcal{F}$ e $\mu(A) = 0$.
+
+Dado $\alpha \in \mathbb{R}$, o conjunto $B_\alpha = \{x \in A; g(x) > \alpha\}$ satisfaz $B_\alpha \subseteq A$, e, novamente pela completude do espaço, $B_\alpha \in \mathcal{F}$ e $\mu(B_\alpha) = 0$.
+
+Como $f$ é mensurável, o conjunto $\{x \in X; f(x) > \alpha\} \in \mathcal{F}$. Portanto,
+$$ \{x \in X; g(x) > \alpha\} = \{x \in A; g(x) > \alpha\} \cup \{x \in A^c; g(x) > \alpha\} = B_\alpha \cup \{x \in A^c; f(x) > \alpha\} \in \mathcal{F}. $$
+Assim, $g$ é mensurável. 
+
+A segunda parte da proposição segue do fato que para $E \in \mathcal{F}$, vale:
+$$ \{x \in E; f(x) > \alpha\} = \{x \in X; f(x) > \alpha\} \cap E. $$
+Com isso, temos o que queríamos.
+\end{proof}

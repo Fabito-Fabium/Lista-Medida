@@ -1,0 +1,180 @@
+\mysec{$\sigma$-álgebras}
+\begin{definition*}{$\sigma$-álgebra}
+Seja $X$ um conjunto e $\mcal F$ uma família de subconjuntos de $X$. Dizemos que $\mcal F$
+é uma $\sigma$-álgebra se satisfazer as seguintes condições:
+\begin{enumerate}
+    \item $\emptyset \in \mcal F$ e $X \in \mcal F$;
+    \item Se $A \in \mcal F$, então $A^C \coloneq X\setminus A \in \mcal F$;
+    \item Se $\{A_n\}$ é uma sequência de subconjuntos de $X$ com $A_n \in \mcal F$, 
+      $\forall n \in \mbb N$, então $\bigcup\limits_{n \in \mbb N} A_n \in \mcal F$.
+\end{enumerate}
+\end{definition*}
+\vspace{5mm}
+
+Chamamos de \textit{Espaço Mensurável} o par $(X,\mcal F)$. 
+As condições $2$ e $3$ implicam que toda $\sigma$-álgebra também é fechada para interseções 
+enumeráveis. De fato, seja $\{A_n\}$ uma sequência de conjuntos com $A_n \in \mcal F$, 
+$\forall n \in \mbb N$. Vejamos que $\bigcap A_n \in \mcal F$.
+
+Por $2$, temos que $A_n^C \in \mcal F$, $\forall n \in \mbb N$ e, por $3$, 
+obtemos que $\bigcup_{n \in \mbb N} A_n^C \in \mcal F$. Agora novamente por $2$, 
+concluímos que: 
+\begin{align*}
+  \left(\bigcup\limits_{n \in \mbb N} A_n^C\right)^C = \bigcap_{n \in \mbb N} A_n \in \mcal F.
+\end{align*}
+
+\noindent
+\textbf{Exemplos de $\sigma$-álgebra:}
+\begin{enumerate}
+  \item $\mcal F= \{\emptyset, X\}$;
+  \item $\mcal F = \mcal P(X) = {A; A\subseteq X}$;
+  \item Dado $A \subseteq X$, $\mcal F = \{\emptyset, A, A^C, X\}$ é uma 
+    $\sigma$-álgebra;
+  \item Suponha $X$ não-enumerável e seja $\mcal F = \set{A \subseteq X; A \text{ é 
+    enumerável ou } A^C \text{ é enumerável}}$. (Ver exercícios.)
+  \item Se $\seqn F i I$ é uma coleção de $\sigma$-álgebras de $X$, então 
+    $\mcal F = \mycap i I \mcal F_i$ é uma $\sigmaalg$.
+\end{enumerate}
+
+\newpage
+\begin{prop*}{Caracterização de $\sigmaalg$ gerada.}
+  Seja $\mathscr C$ uma coleção qualquer de subconjuntos de $X$. Então
+  existe uma única $\sigma$-álgebra $\sigg{\mcal C}$ tal que:
+  \begin{enumerate}[label=(\roman*)]
+    \item  $\mcal C \subseteq \siggmc C$;
+    \item Se $\mcal F$ é uma $\sigma$-álgebra tal que $\mcal C \subseteq \mcal F$,
+      então $\siggmc C \subseteq F$.
+  \end{enumerate}
+\end{prop*}
+\begin{proof}[\textbf{Dem:}] Considere $\Lambda = \set{\mcal F \st \mcal F 
+  \text{ é $\sigma$-álgebra e } \mcal C \subseteq F} $. Note que $\Lambda \neq \emptyset$
+  pois $\pset X \in \Lambda$. Defina $$\siggmc C \coloneq \mycap{\mcal F} \Lambda F.$$ 
+  Pelo exemplo 5 temos que $\siggmc C$ é uma $\sigma$-álgebra e como cada 
+  $\mcal F \in \Lambda$, temos que $\mcal C \subseteq \siggmc C$. 
+  Segue também direto da definição que se $\mcal F$ é uma $\sigmaalg$ com 
+  $\mcal C \subseteq \mcal F$, então $\mcal F \in \Lambda$ e, portanto, $\siggmc C \subseteq 
+  \mcal F$. A unicidade segue novamente de $(ii)$.
+\end{proof}
+
+\begin{corollary*}{}
+  Sejam $\mcal C$ e $\mcal D$ coleções de subconjuntos tais que $\mcal C \subseteq \siggmc D$. 
+  Então $\siggmc C \subseteq \siggmc D$.
+\end{corollary*}
+
+\begin{definition*}{}
+  Seja $(X, \tau)$ um espaço topológico. A \textit{álgebra de Borel} de $(X,\tau)$ é 
+  a $\sigmaalg$ gerada por $\tau$, $\sigg \tau$ e é indicada por $\borel{X, \tau}$. 
+\end{definition*}
+\vspace{5mm}
+
+Dizemos que $A \in \borel{X, \tau}$ é um $G_\delta$ se $A$ é uma interseção 
+enumerável de conjuntos abertos. No caso de $A$ ser uma união enumerável 
+de conjuntos fechados, dizemos que $A$ é um $F_\sigma$.
+
+Por simplicidade, adotaremos a convenção de que, para $\bR$ com a topologia usual, 
+a álgebra de Borel é simplesmente $\borelR$.
+
+\begin{prop*}{Caracterização da $\sigmaalg$ de Borel na reta.}
+  $\borelR$ é gerada por cada uma das coleções:
+  \begin{enumerate}[label=(\roman*)]
+    \item Intervalos abertos limitados : $\mcal E_1 = \set{(a, b) \st a<b}$;
+    \item Intervalos fechados limitados : $\mcal E_2 = \set{[a, b] \st a<b}$;
+    \item Intervalos limitados meio-abertos : $\mcal E_3 = \set{(a, b] \st a<b}$ 
+      ou $\mcal E_4 = \set{[a, b)\st a< b}$;
+    \item Raios abertos : $\mcal E_5 = \set{(a, +\infty)\st a \in \bR}$
+      ou $\mcal E_6 = \set{(-infty, a)\st a \in \bR}$;
+    \item Raios fechados: $\mcal E_7 = \set{[a, +\infty)\st a \in \bR}$
+      ou $\mcal E_8 = \set{(-\infty, a]\st a \in \bR}$.
+  \end{enumerate}
+\end{prop*}
+\begin{proof}[Demonstração da (i):] Note que $\mcal E_1 \subseteq \tau \subseteq \borelR$,
+  da proposição sobre $sigmaalg$ gerada, temos $\siggmc {E_1} \subseteq \borelR$. Por 
+  outro lado, temos que todo aberto pode ser escrito como união enumerável 
+  de elementos de $\mcal E_1$. Logo, $\tau \subseteq \siggmc{E_1}$, e 
+  novamente da proposição citada anteriormente, temos $\borelR \subseteq \siggmc{E_1}$. 
+  Com isso, temos o que queríamos.
+\end{proof}
+
+A demonstração dos outros itens estão na seção de exercícios.
+
+\bigline
+\mysec{Funções Mensuráveis}
+\begin{definition*}{Funções Mensuráveis.}
+  Seja $(X, \mcal F)$ um espaço mensurável. Uma função $f: X \rightarrow \bR$ é 
+  dita \textit{mensurável} se para cada $\alpha \in \bR$, vale que 
+  \begin{align*}
+    \set{x \in X\st f(x)> \alpha} \in \mcal F.
+  \end{align*}
+\end{definition*}
+
+\begin{lemma*}{Caracterização de funções mensuráveis.}
+  As seguintes afirmações são equivalentes para uma função $f:X\rightarrow \bR$:
+  \begin{enumerate}[label=\alph*)]
+    \item $A_\alpha = \set{x \in X \st f(x) > \alpha} \in \mcal F, \forall \alpha \in \mbb R$;
+    \item $B_\alpha = \set{x \in X \st f(x) \le \alpha} \in \mcal F, \forall \alpha \in \mbb R$;
+    \item $C_\alpha = \set{x \in X \st f(x) \ge \alpha} \in \mcal F, \forall \alpha \in \mbb R$;
+    \item $D_\alpha = \set{x \in X \st f(x) < \alpha} \in \mcal F, \forall \alpha \in \mbb R$;
+  \end{enumerate}
+\end{lemma*}
+\begin{proof}[\textbf{Dem:}] Como $B_\alpha = A_\alpha^C$ e $D_\alpha = C_\alpha^C$,
+  temos $(a) \Leftrightarrow (b)$ e $(c) \Leftrightarrow (d)$, visto que $\mcal F$ 
+  é $\sigmaalg$. 
+  \vspace{5mm}
+
+  \noindent
+  ($(a) \myimplies (c)$) Suponhamos que para todo $\alpha \in \bR$
+  temos $A_\alpha \in \mcal F$. Dado $x \in C_\alpha$, 
+  então $$f(x) \ge \alpha > \alpha - \frac{1}{n},$$ 
+  para todo $n \in \bN$, ou seja, $x \in A_{\alpha - 1/n}$, para todo $n \in \mbb N$, 
+  isto é, $x \in \mycap n \bN A_{\alpha - 1/n}$. Similarmente, se $x \in \mycap n 
+  \bN A_{\alpha - 1/n}$, então $f(x)> \alpha - 1/n$, para todo $n \in \bR$ e, portanto, 
+  $f(x) \ge \alpha$, isto é, $x \in C_\alpha$. Desse modo, segue que 
+  $C_\alpha = \mycap n \bN A_{\alpha - 1/n} \in \mcal F$.
+  \vspace{5mm}
+
+  \noindent
+  ($(c) \myimplies (a)$) Semelhante a construção anterior, já que $A_\alpha = \mycup 
+  n \bN C_{\alpha + 1/n}$, concluímos que $A_\alpha$ está na $\sigmaalg$.
+\end{proof}
+\bigline
+
+Logo, para $f: X \rightarrow R$ ser mensurável, basta satisfazer uma (e consequentemente
+todas) das afirmações do lema.
+
+\bigline
+\newpage
+\noindent
+\textbf{Exemplos de funções mensuráveis}
+\begin{enumerate}
+  \item Toda função constante é mensurável;
+  \item Seja $E \in \mcal F$. A função característica $\chi_E: X \rightarrow \bR$ é mensurável;
+  \item Seja $f:(\bR, \borelR) \rightarrow \bR$ uma função contínua. Então 
+  $f$ é mensurável;
+\end{enumerate}
+
+\begin{prop*}{}
+  Sejam $(X, \mcal F)$ um espaço mensurável e considere $f, g: X \rightarrow \bR$
+  funções mensuráveis e $c \in \bR$. Então as funções 
+  \begin{align*}
+    cf, \quad f^2, \quad f+g, \quad f\cdot g, \quad |f|
+  \end{align*}
+  são mensuráveis.
+\end{prop*}
+
+
+Dada uma função $f: X \rightarrow \bR$, definimos
+\begin{align*}
+  \fplus f(x) \coloneq \sup\set{f(x), 0}, \quad\quad \fminus f(x)\coloneq \sup\set{-f(x),0}.
+\end{align*}
+Note que $\fplus f$ e $\fminus f$ são funções não-negativas e satisfazem:
+\begin{align*}
+  f(x) = \fplus f(x) + \fminus f(x) \quad \text{ e }\quad |f(x)| = \fplus f(x) + \fminus f(x)
+\end{align*}
+portanto, 
+\begin{align*}
+  \fplus f(x) = \frac{|f(x)| +f(x)}{2} \quad \text{ e }\quad 
+  \fminus f(x) = \frac{|f(x)| - f(x)}{2}.
+\end{align*}
+\begin{corollary*}{}
+  Uma função $f: X \rightarrow \bR$ é mensurável se, e somente se, $f^+$ e $f^-$ são mensuráveis.
+\end{corollary*}

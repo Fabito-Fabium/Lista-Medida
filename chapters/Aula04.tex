@@ -1,0 +1,182 @@
+\mysec{A medida de Lebesgue em $\mathbb{R}$}
+
+\noindent
+Nosso objetivo será construir uma medida $m$ em $\mathbb{R}$ que satisfaz as seguintes propriedades:
+\begin{itemize}
+    \item[i)] $m(I) = b-a$ (comprimento de um intervalo $I = (a,b), (a,b], [a,b)$ ou $[a,b]$) e $m(I) = +\infty$ se $I$ for um intervalo ilimitado.
+    \item[ii)] $m(E+y) = m(E)$ (a medida é invariante para translações).
+    \item[iii)] $m(\emptyset) = 0$; $m(E) \ge 0$ e $m\left(\bigcup E_k\right) = \sum m(E_k)$ (é de fato uma medida).
+\end{itemize}
+
+Infelizmente tal medida não existe ao considerar $\mathcal{P}(\mathbb{R})$ como domínio. Primeiro construiremos uma $\sigma$-álgebra em que (i), (ii) e (iii) serão satisfeitas.
+
+\mysubsec{Medida Exterior de Lebesgue}
+
+Para um intervalo $I$ de $\mathbb{R}$, definimos seu comprimento $l(I) = b-a$, se $I = (a,b), (a,b], [a,b), [a,b]$, e $l(I) = +\infty$ se $I$ não for limitado.
+
+\begin{definition*}{}
+Para um conjunto $A \in \mathcal{P}(\mathbb{R})$, definimos sua medida exterior como
+$$ m^*(A) = \inf \left\{ \sum_{k \in \mathbb{N}} l(I_k) ; A \subseteq \bigcup_{k \in \mathbb{N}} I_k \right\} $$
+(Podemos restringir para que todos os $I_k$ sejam abertos).
+\end{definition*}
+
+Segue imediatamente da definição que $m^*(A) \ge 0, \forall A \in \mathcal{P}(\mathbb{R})$, $m^*(\emptyset) = 0$ e que se $A \subseteq B$, então $m^*(A) \le m^*(B)$, uma vez que toda cobertura por intervalos de $B$ também cobrirá $A$.
+
+\textbf{Exemplo:} Todo conjunto enumerável possui medida exterior zero. De fato, se $C = \{c_k\}_{k \in \mathbb{N}}$, dado $\epsilon > 0$ defina
+$$ I_k := \left(c_k - \frac{\epsilon}{2^{k+1}}, c_k + \frac{\epsilon}{2^{k+1}}\right). $$
+Assim, $C \subseteq \bigcup_{k \in \mathbb{N}} I_k$ e $\sum_{k \in \mathbb{N}} l(I_k) = \sum_{k \in \mathbb{N}} \frac{\epsilon}{2^k} = \epsilon \implies m^*(C) \le \epsilon$. Como vale para todo $\epsilon > 0$, obtemos $m^*(C) = 0$.
+
+\begin{prop*}{1}
+  Para todo intervalo $I$ de $\mathbb{R}$, $\extmu{I} = l(I)$.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Comecemos com o caso $I = [a,b]$. Dado $\epsilon > 0$, temos que $[a,b] \subset (a-\epsilon, b+\epsilon)$. Assim, $m^*([a,b]) \le b-a+2\epsilon$. Como vale para todo $\epsilon > 0$, temos que $m^*([a,b]) \le b-a$.
+
+Vejamos agora que $m^*([a,b]) \ge b-a$. Para isso, mostraremos que $b-a$ é uma cota inferior, ou seja, $\sum_{k \in \mathbb{N}} l(I_k) \ge b-a$, em que $\{I_k\}_{k \in \mathbb{N}}$ é uma cobertura enumerável por intervalos abertos de $[a,b]$, com $[a,b] \subseteq \bigcup_{k \in \mathbb{N}} I_k$.
+
+Como $[a,b]$ é compacto, existem finitos intervalos destes que cobrem $[a,b]$. Denotaremos por $\{I_k\}_{k=1}^n$. 
+Como $a \in [a,b]$, $a$ pertence a algum desses intervalos, que denotaremos por $(a_1, b_1)$, com $a_1 < a < b_1$.
+
+Se $b_1 > b$, então $\sum_{k=1}^n l(I_k) \ge b_1 - a_1 > b - a$.
+Se $b_1 \le b$, então $b_1 \in [a,b]$ e, portanto, existe um intervalo na coleção que contém $b_1$. Chamaremos de $(a_2, b_2)$, com $a_2 < b_1 < b_2$. Então
+$$ \sum_{k=1}^n l(I_k) \ge (b_1 - a_1) + (b_2 - a_2) = b_2 + (b_1 - a_2) - a_1 > b_2 - a_1. $$
+Se $b_2 \le b$, podemos continuar esse processo até encontrar $b_N > b$. Uma vez que temos um número finito de intervalos $\{I_k\}_{k=1}^n$, o processo termina.
+
+Assim, obtemos uma subcoleção $\{(a_j, b_j)\}_{j=1}^N$ de $\{I_k\}$ tal que $a_1 < a$, $a_j < b_{j-1} < b_j$ para $j=2, \dots, N$ e $b_N > b$.
+Portanto,
+\begin{align*}
+    \sum_{k \in \mathbb{N}} l(I_k) &\ge \sum_{k=1}^n l(I_k) \ge \sum_{j=1}^N l(a_j, b_j) = (b_N - a_N) + \dots + (b_1 - a_1) \\
+    &= b_N + (b_{N-1} - a_N) + (b_{N-2} - a_{N-1}) + \dots + (b_1 - a_2) - a_1 \\
+    &> b_N - a_1 > b - a.
+\end{align*}
+Com isso, $b-a \le m^*([a,b])$.
+
+Se $I$ é um intervalo limitado, dado $\epsilon > 0$, existem intervalos fechados $J_1$ e abertos $J_2$ tais que $J_1 \subseteq I \subseteq J_2$ com $l(I) - \epsilon < l(J_1) \le l(J_2) < l(I) + \epsilon$.
+Assim,
+$$ l(I) - \epsilon < l(J_1) = m^*(J_1) \le m^*(I) \le m^*(J_2) = l(J_2) < l(I) + \epsilon. $$
+Como vale para todo $\epsilon > 0$, obtemos $m^*(I) = l(I)$.
+
+Por fim, se $I$ é ilimitado, para cada $n \in \mathbb{N}$, existe um intervalo $J \subseteq I$ com $l(J) = n$. Assim, $m^*(I) \ge m^*(J) = l(J) = n \implies m^*(I) = +\infty = l(I)$.
+\end{proof}
+
+\begin{prop*}{2}
+A medida exterior $m^*$ é invariante por translações, isto é, $m^*(A+y) = m^*(A)$, em que $A+y = \{a+y ; a \in A\}$.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Note que $\{I_k\}_{k \in \mathbb{N}}$ é uma cobertura por intervalos de $A$ se, e somente se, $\{I_k+y\}_{k \in \mathbb{N}}$ é uma cobertura para $A+y$.
+Além disso, $l(I_k) = l(I_k+y)$. Portanto $\sum_{k \in \mathbb{N}} l(I_k) = \sum_{k \in \mathbb{N}} l(I_k+y)$. Logo, $m^*(A) = m^*(A+y)$.
+\end{proof}
+
+\begin{prop*}{3}
+A medida exterior é enumeravelmente subaditiva, isto é, se $\{E_k\}_{k \in \mathbb{N}}$ é qualquer coleção enumerável de conjuntos, então
+$$ m^*\left(\bigcup_{k \in \mathbb{N}} E_k\right) \le \sum_{k \in \mathbb{N}} m^*(E_k). $$
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Se algum $E_k$ satisfizer $m^*(E_k) = +\infty$, então a desigualdade segue trivialmente. Suponhamos então que $m^*(E_k) < +\infty$, para todo $k \in \mbb N$. 
+
+Dado $\epsilon > 0$, para cada $k \in \mathbb{N}$, existe uma coleção enumerável de intervalos $\{I_j^k\}_{j \in \mathbb{N}}$ tais que $E_k \subseteq \bigcup_{j \in \mathbb{N}} I_j^k$ com
+  $$ \sum_{j \in \mathbb{N}} l(I_j^k) < m^*(E_k) + \frac{\epsilon}{2^k}. $$
+Assim, $\{I_j^k\}_{j,k \in \mathbb{N}}$ é uma coleção enumerável de intervalos. Como $\bigcup_{k \in \mathbb{N}} E_k \subseteq \bigcup_{k \in \mathbb{N}} \bigcup_{j \in \mathbb{N}} I_j^k$, temos
+$$ m^*\left(\bigcup_{k \in \mathbb{N}} E_k\right) \le \sum_{k \in \mathbb{N}} \sum_{j \in \mathbb{N}} l(I_j^k) < \sum_{k \in \mathbb{N}} \left(m^*(E_k) + \frac{\epsilon}{2^k}\right) = \sum_{k \in \mathbb{N}} m^*(E_k) + \epsilon. $$
+Como vale para todo $\epsilon > 0$, concluímos que $m^*\left(\bigcup_{k \in \mathbb{N}} E_k\right) \le \sum_{k \in \mathbb{N}} m^*(E_k)$.
+
+A subaditividade finita segue da proposição anterior ao tomar $E_k = \emptyset$ para $k > n$, obtendo:
+$$ m^*\left(\bigcup_{k=1}^n E_k\right) = m^*\left(\bigcup_{k \in \mathbb{N}} E_k\right) \le \sum_{k \in \mathbb{N}} m^*(E_k) = \sum_{k=1}^n m^*(E_k). $$
+\end{proof}
+
+\mysubsec{Conjuntos Lebesgue Mensuráveis}
+
+Embora $m^*$ possua todas essas boas propriedades, ela falha em ser aditiva! Veremos nas próximas aulas que existem conjuntos disjuntos $A$ e $B$ tais que $m^*(A \cup B) < m^*(A) + m^*(B)$. Assim, precisaremos restringir o domínio de $m^*$ para conseguirmos a propriedade da aditividade enumerável.
+
+\begin{definition*}{}
+Dizemos que $E \in \mathcal{P}(\mathbb{R})$ é (Lebesgue) mensurável se
+$$ m^*(A) = m^*(A \cap E) + m^*(A \cap E^c), \quad \forall A \in \mathcal{P}(\mathbb{R}) $$
+(Condição de Carathéodory).
+\end{definition*}
+
+\noindent
+Note que se $A$ e $B$ forem disjuntos e um deles for mensurável (digamos $A$ mensurável), então
+$$ m^*(A \cup B) = m^*((A \cup B) \cap A) + m^*((A \cup B) \cap A^c) = m^*(A) + m^*(B). $$
+Além disso, note que $A = (A \cap E) \cup (A \cap E^c), \forall A \in \mathcal{P}(\mathbb{R})$, e portanto,
+$$ m^*(A) \le m^*(A \cap E) + m^*(A \cap E^c). $$
+Assim, para verificar se $E$ é mensurável, basta apenas mostrar que
+$$ m^*(A) \ge m^*(A \cap E) + m^*(A \cap E^c), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
+Como a desigualdade é satisfeita para $m^*(A) = +\infty$, basta se restringir para conjuntos com $m^*(A) < +\infty$.
+
+\begin{prop*}{4}
+Temos que $\emptyset$ e $\mathbb{R}$ são mensuráveis e se $E$ é mensurável, então $E^c$ é mensurável.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+$$ m^*(A \cap \emptyset) + m^*(A \cap \emptyset^c) = m^*(\emptyset) + m^*(A) = m^*(A), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
+$$ m^*(A \cap \mathbb{R}) + m^*(A \cap \mathbb{R}^c) = m^*(A) + m^*(\emptyset) = m^*(A), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
+Como $(E^c)^c = E$, segue que se $E$ é mensurável, então
+$$ m^*(A \cap E^c) + m^*(A \cap (E^c)^c) = m^*(A \cap E^c) + m^*(A \cap E) = m^*(A), \quad \forall A \in \mathcal{P}(\mathbb{R}). $$
+\end{proof}
+
+\begin{prop*}{5}
+Se $m^*(E) = 0$, então $E$ é mensurável.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Seja $A \in \mathcal{P}(\mathbb{R})$. Como $A \cap E \subseteq E$, então $m^*(A \cap E) \le m^*(E) = 0 \implies m^*(A \cap E) = 0$.
+Além disso, $A \cap E^c \subseteq A \implies m^*(A \cap E^c) \le m^*(A)$.
+Assim,
+$$ m^*(A \cap E) + m^*(A \cap E^c) \le 0 + m^*(A) = m^*(A). $$
+Portanto $E$ é mensurável.
+\end{proof}
+
+\begin{prop*}{6}
+A união finita de conjuntos mensuráveis é mensurável.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Inicialmente, provaremos que se $E_1, E_2$ são mensuráveis, então $E_1 \cup E_2$ é mensurável. Seja $A \in \mathcal{P}(\mathbb{R})$. Então
+$$ m^*(A) = m^*(A \cap E_1) + m^*(A \cap E_1^c) = m^*(A \cap E_1) + m^*([A \cap E_1^c] \cap E_2) + m^*([A \cap E_1^c] \cap E_2^c) $$
+Como $(A \cap E_1^c) \cap E_2^c = A \cap (E_1 \cup E_2)^c$ e $(A \cap E_1) \cup (A \cap E_1^c \cap E_2) = A \cap (E_1 \cup E_2)$, temos pela subaditividade que
+$$ m^*(A \cap (E_1 \cup E_2)) + m^*(A \cap (E_1 \cup E_2)^c) \le m^*(A \cap E_1) + m^*(A \cap E_1^c \cap E_2) + m^*(A \cap E_1^c \cap E_2^c) = m^*(A). $$
+Portanto $E_1 \cup E_2$ é mensurável. O caso geral segue por indução no número de conjuntos.
+\end{proof}
+
+\begin{prop*}{7}
+Seja $A \in \mathcal{P}(\mathbb{R})$ e $\{E_k\}_{k=1}^n$ uma coleção finita de conjuntos disjuntos mensuráveis. Então
+$$ m^*\left(A \cap \left(\bigcup_{k=1}^n E_k\right)\right) = \sum_{k=1}^n m^*(A \cap E_k). $$
+Em particular, $m^*\left(\bigcup_{k=1}^n E_k\right) = \sum_{k=1}^n m^*(E_k)$.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Provaremos por indução em $n$. O caso $n=1$ é trivial. Suponhamos a validade para $n-1$ e considere $\{E_k\}_{k=1}^n$ conjuntos disjuntos mensuráveis.
+Como eles são disjuntos, $A \cap \left(\bigcup_{k=1}^n E_k\right) \cap E_n = A \cap E_n$ e $A \cap \left(\bigcup_{k=1}^n E_k\right) \cap E_n^c = A \cap \left(\bigcup_{k=1}^{n-1} E_k\right)$.
+Assim, como $E_n$ é mensurável, obtemos
+\begin{align*}
+    m^*\left(A \cap \left(\bigcup_{k=1}^n E_k\right)\right) &= m^*\left(A \cap \left(\bigcup_{k=1}^n E_k\right) \cap E_n\right) + m^*\left(A \cap \left(\bigcup_{k=1}^n E_k\right) \cap E_n^c\right) \\
+    &= m^*(A \cap E_n) + m^*\left(A \cap \left(\bigcup_{k=1}^{n-1} E_k\right)\right) \\
+    &= m^*(A \cap E_n) + \sum_{k=1}^{n-1} m^*(A \cap E_k) = \sum_{k=1}^n m^*(A \cap E_k).
+\end{align*}
+A última igualdade segue pela hipótese de indução.
+\end{proof}
+
+\begin{prop*}{8}
+A união enumerável de conjuntos mensuráveis é mensurável.
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Seja $\{B_k\}_{k \in \mathbb{N}}$ uma coleção enumerável de conjuntos mensuráveis. Pela mesma construção do lema da aula passada, existe uma coleção enumerável disjunta $\{E_k\}_{k \in \mathbb{N}}$ mensurável tal que $E_k \subseteq B_k, \forall k \in \mathbb{N}$ e $\bigcup_{k \in \mathbb{N}} B_k = \bigcup_{k \in \mathbb{N}} E_k = E$.
+
+Para cada $n \in \mathbb{N}$, defina $F_n = \bigcup_{k=1}^n E_k$. Assim, cada $F_n$ é mensurável e $F_n \subseteq E \implies E^c \subseteq F_n^c$.
+Assim, para $A \in \mathcal{P}(\mathbb{R})$,
+$$ m^*(A) = m^*(A \cap F_n) + m^*(A \cap F_n^c) \ge m^*(A \cap F_n) + m^*(A \cap E^c). $$
+Pela Proposição 7, $m^*(A \cap F_n) = \sum_{k=1}^n m^*(A \cap E_k)$. Assim, 
+$$ m^*(A) \ge \sum_{k=1}^n m^*(A \cap E_k) + m^*(A \cap E^c). $$
+Como essa desigualdade vale para todo $n \in \mathbb{N}$, temos que $m^*(A) \ge \sum_{k=1}^{+\infty} m^*(A \cap E_k) + m^*(A \cap E^c)$.
+Assim, pela subaditividade enumerável de $m^*$, obtemos
+$$ m^*(A \cap E) + m^*(A \cap E^c) \le \sum_{k \in \mathbb{N}} m^*(A \cap E_k) + m^*(A \cap E^c) \le m^*(A). $$
+Portanto $E$ é mensurável.
+\end{proof}
+
+\bigline
+\noindent
+\textbf{Conclusão:} A coleção $\mathcal{M} = \{E \in \mathcal{P}(\mathbb{R}) ; E \text{ é Lebesgue mensurável}\}$ é uma $\sigma$-álgebra.

@@ -1,0 +1,143 @@
+\mysec{Integração}
+
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida. Denotaremos por $\mathcal{M}(X, \mathcal{F})$ o espaço das funções $X \rightarrow \overline{\mathbb{R}}$ mensuráveis e por $\mathcal{M}^+(X, \mathcal{F})$ o conjunto das funções em $\mathcal{M}(X, \mathcal{F})$ que assumem valores não-negativos.
+
+\begin{definition*}{}
+Dizemos que uma função $\varphi: X \rightarrow \mathbb{R}$ é \textbf{simples} se ela assume apenas um número finito de valores. Neste caso, ela pode ser escrita na forma
+$$ \varphi = \sum_{j=1}^n a_j \chi_{E_j}, \quad \text{em que } a_j \in \mathbb{R} \text{ e } E_j \in \mathcal{F}. $$
+Dentre as representações de $\varphi$, existe uma \textbf{única representação padrão}, em que cada $a_j$ são distintos e os conjuntos $E_j$ são disjuntos com $X = \bigcup_{j=1}^n E_j$.
+\end{definition*}
+
+\begin{definition*}{}
+Seja $\varphi \in \mathcal{M}^+(X, \mathcal{F})$ uma função simples com representação padrão $\varphi = \sum_{j=1}^n a_j \chi_{E_j}$. Definimos a \textbf{integral de $\varphi$ com respeito a $\mu$} como
+$$ \int_X \varphi \, d\mu = \sum_{j=1}^n a_j \mu(E_j) \in \overline{\mathbb{R}}. $$
+\end{definition*}
+
+Lembremos das convenções em $\overline{\mathbb{R}}$: $x + (+\infty) = (+\infty) + x = +\infty$, e $x \cdot (+\infty) = (+\infty) \cdot x = +\infty$ se $x > 0$, bem como $0 \cdot (+\infty) = (+\infty) \cdot 0 = 0$.
+
+\begin{prop*}{}
+Sejam $\varphi, \psi \in \mathcal{M}^+(X, \mathcal{F})$ funções simples. Então:
+\begin{itemize}
+    \item[a)] $\int c \varphi \, d\mu = c \int \varphi \, d\mu$, $\forall c \ge 0$.
+    \item[b)] $\int (\varphi + \psi) \, d\mu = \int \varphi \, d\mu + \int \psi \, d\mu$.
+    \item[c)] Se $\varphi \le \psi$, então $\int \varphi \, d\mu \le \int \psi \, d\mu$.
+    \item[d)] A aplicação $\lambda: \mathcal{F} \rightarrow \overline{\mathbb{R}}$ dada por $\lambda(E) := \int \varphi \chi_E \, d\mu$ é uma medida em $(X, \mathcal{F})$.
+\end{itemize}
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]. 
+
+\noindent
+a) Se $c = 0$, então $c\varphi = 0$ e pela convenção $0 \cdot (+\infty) = 0$, a igualdade é satisfeita. Se $c > 0$ e $\varphi = \sum_{j=1}^n a_j \chi_{E_j}$ é a representação padrão de $\varphi$, então $c\varphi = \sum_{j=1}^n (ca_j) \chi_{E_j}$ também é uma representação padrão, pois os números $ca_j$ são distintos e os conjuntos $E_j$ são disjuntos. Assim,
+$$ \int c\varphi \, d\mu = \sum_{j=1}^n (ca_j) \mu(E_j) = c \sum_{j=1}^n a_j \mu(E_j) = c \int \varphi \, d\mu. $$
+
+\noindent
+b) Sejam $\varphi = \sum_{j=1}^n a_j \chi_{E_j}$ e $\psi = \sum_{k=1}^m b_k \chi_{F_k}$ as representações padrões. Como eles são partições de $X$, $E_j = E_j \cap X = E_j \cap \bigcup_{k=1}^m F_k = \bigcup_{k=1}^m (E_j \cap F_k)$. Analogamente, $F_k = \bigcup_{j=1}^n (E_j \cap F_k)$. Logo,
+$$ \chi_{E_j} = \sum_{k=1}^m \chi_{E_j \cap F_k} \quad \text{e} \quad \chi_{F_k} = \sum_{j=1}^n \chi_{E_j \cap F_k}. $$
+Assim, $\varphi = \sum_{j=1}^n \sum_{k=1}^m a_j \chi_{E_j \cap F_k}$ e $\psi = \sum_{j=1}^n \sum_{k=1}^m b_k \chi_{E_j \cap F_k}$. Portanto,
+$$ \varphi + \psi = \sum_{j=1}^n \sum_{k=1}^m (a_j + b_k) \chi_{E_j \cap F_k}. $$
+  Essa forma não é necessariamente a representação padrão de $\varphi + \psi$, 
+  pois os valores $(a_j + b_k)$ não são necessariamente distintos.
+  Portanto, considere a sequência $\{c_h\}_{h=1}^p$ que consiste dos valores distintos 
+  do conjunto $\{a_j + b_k \st j, k = 1, \cdots, m\}$ e seja $\{G_h\}_{h=1}^p$ definido por 
+  $G_h = \bigcup\limits_{j, k \in J_h} E_j \cap F_k$, onde $J_h = \{j,k = 1, \cdots, m \st 
+  a_j + b_k = c_h\}$. Assim, $\varphi + \psi = \sum_{h= 1}^p c_h \chi_{G_h}$ 
+  é uma representação padrão de $\varphi + \psi$. Sendo assim,
+
+\begin{align*}
+  \int (\varphi + \psi) \, d\mu &= \sum_{h=1}^p c_h \mu(G_h) =
+    \sum_{h=1}^p c_h \mu\parth{\bigcup_{j, k \in J_h} E_j \cap F_k} \\
+    &= \sum_{h=1}^p  \sum_{j, k \in J_h} c_h \mu(E_j \cap F_k)=
+    \sum_{j=1}^n \sum_{k=1}^m (a_j + b_k) \mu(E_j \cap F_k) \\
+    &= \sum_{j=1}^n \sum_{k=1}^m a_j \mu(E_j \cap F_k) + \sum_{k=1}^m \sum_{j=1}^n b_k \mu(E_j \cap F_k) \\
+    &= \sum_{j=1}^n a_j \mu\left(\bigcup_{k=1}^m E_j \cap F_k\right) + \sum_{k=1}^m b_k \mu\left(\bigcup_{j=1}^n E_j \cap F_k\right) \\
+    &= \sum_{j=1}^n a_j \mu(E_j) + \sum_{k=1}^m b_k \mu(F_k) = \int \varphi \, d\mu + \int \psi \, d\mu.
+\end{align*}
+
+\noindent
+c) Se $\varphi \le \psi$, temos que $a_j \le b_k$ sempre que $E_j \cap F_k \neq \emptyset$. Assim,
+$$ \int \varphi \, d\mu = \sum_{j=1}^n a_j \mu(E_j) = \sum_{j=1}^n \sum_{k=1}^m a_j \mu(E_j \cap F_k) \le \sum_{j=1}^n \sum_{k=1}^m b_k \mu(E_j \cap F_k) = \sum_{k=1}^m b_k \mu(F_k) = \int \psi \, d\mu. $$
+
+\noindent
+d) Sendo $\varphi = \sum_{j=1}^n a_j \chi_{E_j}$ a representação padrão de $\varphi$, temos que
+$$ \lambda(E) = \int \varphi \chi_E \, d\mu = \int \left( \sum_{j=1}^n a_j \chi_{E_j \cap E} \right) d\mu = \sum_{j=1}^n a_j \mu(E_j \cap E). $$
+Como $\mu$ é uma medida, a combinação linear não-negativa de medidas também é uma medida.
+\end{proof}
+
+\textbf{Exemplo:} Seja $(\mathbb{R}, \mathcal{M}, m)$ o espaço de medida de Lebesgue e considere a função de Dirichlet $\varphi: \mathbb{R} \rightarrow \mathbb{R}$ dada por
+$$ \varphi(x) = \begin{cases} 
+1, & x \in \mathbb{Q} \\ 
+0, & x \in \mathbb{R} \setminus \mathbb{Q} 
+\end{cases} $$
+Assim, $\varphi = 1 \cdot \chi_{\mathbb{Q}} + 0 \cdot \chi_{\mathbb{R} \setminus \mathbb{Q}}$.
+Logo, $\int \varphi \, dm = 1 \cdot m(\mathbb{Q}) + 0 \cdot m(\mathbb{R} \setminus \mathbb{Q}) = 1 \cdot 0 + 0 \cdot (+\infty) = 0$.
+
+\begin{definition*}{}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida e $f \in \mathcal{M}^+(X, \mathcal{F})$. Definimos a \textbf{integral de $f$ com respeito a $\mu$} como
+$$ \int_X f \, d\mu := \sup \left\{ \int_X \varphi \, d\mu ; \varphi \in \mathcal{M}^+(X, \mathcal{F}) \text{ é simples e } 0 \le \varphi(x) \le f(x), \forall x \in X \right\} \in \overline{\mathbb{R}}. $$
+Para $E \in \mathcal{F}$, definimos a integral de $f$ sobre $E$ com respeito a $\mu$ como
+$$ \int_E f \, d\mu := \int_X f \chi_E \, d\mu. $$
+\end{definition*}
+
+\begin{prop*}{}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida.
+\begin{itemize}
+    \item[a)] Se $f, g \in \mathcal{M}^+(X, \mathcal{F})$ e $f \le g$ em $X$, então $\int f \, d\mu \le \int g \, d\mu$.
+    \item[b)] Se $E, F \in \mathcal{F}$ e $E \subseteq F$, então $\int_E f \, d\mu \le \int_F f \, d\mu$.
+\end{itemize}
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+a) Segue diretamente das propriedades de supremo, já que qualquer função simples $\varphi \le f$ também satisfaz $\varphi \le g$.
+
+b) Como $E \subseteq F$, então $\chi_E \le \chi_F$, portanto $f\chi_E \le f\chi_F$. Do item (a), concluímos que
+$$ \int_E f \, d\mu = \int f\chi_E \, d\mu \le \int f\chi_F \, d\mu = \int_F f \, d\mu. $$
+\end{proof}
+
+\begin{prop*}{Desigualdade de Chebyshev}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida, $f \in \mathcal{M}^+(X, \mathcal{F})$ e $\lambda > 0$. Considere $E_\lambda = \{x \in X ; f(x) \ge \lambda\}$. Então
+$$ \mu(E_\lambda) \le \frac{1}{\lambda} \int f \, d\mu. $$
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Considere a função simples $\lambda \chi_{E_\lambda} \in \mathcal{M}^+(X, \mathcal{F})$. Note que $\lambda \chi_{E_\lambda}(x) \le f(x)$, $\forall x \in X$. Logo,
+$$ \int \lambda \chi_{E_\lambda} \, d\mu \le \int f \, d\mu \implies \lambda \mu(E_\lambda) \le \int f \, d\mu \implies \mu(E_\lambda) \le \frac{1}{\lambda} \int f \, d\mu. $$
+\end{proof}
+
+\begin{corollary*}{}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida e $f \in \mathcal{M}^+(X, \mathcal{F})$ tal que $\int f \, d\mu < +\infty$. Então $f$ é finita $\mu$-q.t.p. e o conjunto $E = \{x \in X ; f(x) > 0\}$ é $\sigma$-finito.
+\end{corollary*}
+
+\begin{proof}[\textbf{Dem:}]
+Mostraremos que o conjunto $E_\infty = \{x \in X ; f(x) = +\infty\}$ tem medida nula. Para cada $n \in \mathbb{N}$, defina $E_n = \{x \in X ; f(x) > n\}$. Note que $E_n \supseteq E_{n+1}$. Pela Desigualdade de Chebyshev, $\mu(E_n) \le \frac{1}{n} \int f \, d\mu < +\infty$.
+Como $E_\infty = \bigcap_{n \in \mathbb{N}} E_n$, temos por continuidade da medida que $\mu(E_\infty) = \lim_{n \to \infty} \mu(E_n)$.
+Uma vez que $\mu(E_n) \le \frac{1}{n} \int f \, d\mu$, $\forall n \in \mathbb{N}$, segue que $\lim_{n \to \infty} \mu(E_n) = 0$. Portanto $\mu(E_\infty) = 0$, o que implica que $f$ é finita $\mu$-q.t.p.
+
+Analogamente, note que $E_{1/n} = \{x \in X ; f(x) > 1/n\}$ tem medida $\mu(E_{1/n}) \le n \int f \, d\mu < +\infty$. Como $E = \bigcup_{n \in \mathbb{N}} E_{1/n}$, isto implica que $E$ é $\sigma$-finito.
+\end{proof}
+
+\begin{theorem*}{Teorema da Convergência Monótona}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida e $(f_n)_{n \in \mathbb{N}}$ uma sequência não-decrescente de funções em $\mathcal{M}^+(X, \mathcal{F})$ que converge pontualmente para $f$, isto é, $f_n(x) \le f_{n+1}(x)$, $\forall n \in \mathbb{N}, x \in X$ e $\lim_{n \to \infty} f_n(x) = f(x)$, $\forall x \in X$. Então
+$$ \int \left( \lim_{n \to \infty} f_n \right) d\mu = \int f \, d\mu = \lim_{n \to \infty} \int f_n \, d\mu. $$
+\end{theorem*}
+
+\begin{proof}[\textbf{Dem:}]
+Como $f$ é o limite pontual de uma sequência em $\mathcal{M}^+(X, \mathcal{F})$, então $f \in \mathcal{M}^+(X, \mathcal{F})$. Note que $f_n(x) \le f_{n+1}(x) \le f(x)$, $\forall x \in X$. Assim, pela monotonicidade, temos que
+$$ \int f_n \, d\mu \le \int f_{n+1} \, d\mu \le \int f \, d\mu. $$
+Logo, $\left( \int f_n \, d\mu \right)_{n \in \mathbb{N}}$ é uma sequência não-decrescente em $\overline{\mathbb{R}}$ e, portanto, converge, com
+$$ \lim_{n \to \infty} \int f_n \, d\mu \le \int f \, d\mu. $$
+
+Provaremos agora a desigualdade contrária. Seja $\alpha \in (0,1)$ e $\varphi \in \mathcal{M}^+(X, \mathcal{F})$ uma função simples com $0 \le \varphi \le f$. Considere o conjunto $A_n = \{x \in X ; f_n(x) \ge \alpha \varphi(x)\}$.
+Como a sequência $(f_n)$ é não-decrescente, temos que $A_n \subseteq A_{n+1}$, $\forall n \in \mathbb{N}$. Note que $X = \bigcup_{n \in \mathbb{N}} A_n$, pois caso contrário, existiria $x \in X$ tal que $f_n(x) < \alpha \varphi(x)$, $\forall n \in \mathbb{N}$, o que implicaria (tomando o limite) $f(x) \le \alpha \varphi(x)$, contradizendo $\varphi \le f$ já que $\alpha < 1$.
+
+Desse modo, da definição de $A_n$,
+$$ \int_{A_n} \alpha \varphi \, d\mu \le \int_{A_n} f_n \, d\mu \le \int_X f_n \, d\mu. $$
+Seja $\lambda(A) = \int \alpha \varphi \chi_A \, d\mu$ a medida induzida por $\alpha\varphi$. Como $A_n$ crescem para $X$, pela continuidade da medida, $\lambda(X) = \lim_{n \to \infty} \lambda(A_n)$, isto é,
+$$ \alpha \int_X \varphi \, d\mu = \lim_{n \to \infty} \int_{A_n} \alpha \varphi \, d\mu. $$
+Assim, de $\int_{A_n} \alpha \varphi \, d\mu \le \int_X f_n \, d\mu$, tomando o limite quando $n \to \infty$, obtemos
+$$ \alpha \int \varphi \, d\mu \le \lim_{n \to \infty} \int f_n \, d\mu. $$
+Como essa desigualdade vale para todo $\alpha \in (0,1)$, concluímos (fazendo $\alpha \to 1$) que $\int \varphi \, d\mu \le \lim_{n \to \infty} \int f_n \, d\mu$.
+Como isso vale para qualquer função simples $\varphi \in \mathcal{M}^+(X, \mathcal{F})$ com $0 \le \varphi \le f$, concluímos pela definição de supremo que $\lim_{n \to \infty} \int f_n \, d\mu$ é uma cota superior para as integrais, e portanto
+$$ \int f \, d\mu \le \lim_{n \to \infty} \int f_n \, d\mu. $$
+Desta forma, $\int f \, d\mu = \lim_{n \to \infty} \int f_n \, d\mu$.
+\end{proof}

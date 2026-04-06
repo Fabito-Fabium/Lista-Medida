@@ -4,6 +4,8 @@
 \usepackage{xfrac}
 \usepackage[makeroom]{cancel}
 \usepackage{mathtools}
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
 \usepackage{bookmark}
 \usepackage{enumitem}
 \usepackage{hyperref,theoremref}
@@ -185,7 +187,7 @@
 }
 {th}
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{corollary}{Corollary}
+\newtcbtheorem[number within=chapter]{corollary}{Corolário}
 {%
 	enhanced
 	,breakable
@@ -230,7 +232,7 @@
 {th}
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{lemma}{lemma}
+\newtcbtheorem[number within=chapter]{lemma}{Lema}
 {%
 	enhanced,
 	breakable,
@@ -319,7 +321,7 @@
 {th}
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{prop}{Proposition}
+\newtcbtheorem[number within=chapter]{prop}{Proposição}
 {%
 	enhanced,
 	breakable,
@@ -408,7 +410,7 @@
 %================================
 
 \newtcbtheorem[number within=section]{Definition}{Definição}{enhanced,
-	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!red,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
 	boxed title style={frame code={
 					\path[fill=tcbcolback]
@@ -416,8 +418,8 @@
 					arc[start angle=0,end angle=180,radius=1mm]
 					([yshift=-1mm,xshift=1mm]frame.north east)
 					arc[start angle=180,end angle=0,radius=1mm];
-					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
-						middle color=tcbcolback!80!black]
+					\path[left color=tcbcolback!60!red,right color=tcbcolback!60!red,
+						middle color=tcbcolback!80!red]
 					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
 					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
 					-- (frame.south east) -- (frame.south west)
@@ -427,8 +429,8 @@
 		},
 	fonttitle=\bfseries,
 	title={#2},#1}{def}
-\newtcbtheorem[number within=chapter]{definition}{Definition}{enhanced,
-	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!black,boxrule=0.5mm,
+\newtcbtheorem[number within=chapter]{definition}{Definição}{enhanced,
+	before skip=2mm,after skip=2mm, colback=red!5,colframe=red!80!red,boxrule=0.5mm,
 	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm,
 	boxed title style={frame code={
 					\path[fill=tcbcolback]
@@ -436,8 +438,8 @@
 					arc[start angle=0,end angle=180,radius=1mm]
 					([yshift=-1mm,xshift=1mm]frame.north east)
 					arc[start angle=180,end angle=0,radius=1mm];
-					\path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
-						middle color=tcbcolback!80!black]
+					\path[left color=tcbcolback!60!red,right color=tcbcolback!60!red,
+						middle color=tcbcolback!80!red]
 					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
 					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
 					-- (frame.south east) -- (frame.south west)

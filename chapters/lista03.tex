@@ -1,6 +1,7 @@
+\mysec{Exercícios - Lista 3}
 \newcounter{tres}
 \stepcounter{tres}
-\mysubsec{Exercício \thetres}
+\myexe{\thetres}
 \bigline
 \textbf{Sejam $A, B \subseteq X$ conjuntos quaisquer e denote por $\chi_A$, $\chi_B$ suas respectivas 
 funções características. Demonstre as seguintes propriedades:
@@ -25,3 +26,50 @@ funções características. Demonstre as seguintes propriedades:
   Com isso, temos o que queríamos.
   \end{proof}
 \end{enumerate}}
+\biglinend 
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(g_n)$ uma sequência em 
+$\mcal M^+(X, \mcal F)$. Demonstre que: 
+\begin{align*}
+  \int\parth{\sum_{n=1}^\infty g_n}d\mu = \sum_{n=1}^\infty\parth{\int g_n d\mu}
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Das propriedades de integrais de funções
+  em $\mcal M^+(X, \mcal F)$, segue que para todo $N \in \mbb N$, 
+\begin{align*}
+  \int\parth{\sum_{n=1}^N g_n}d\mu = \sum_{n=1}^N\parth{\int g_n d\mu}.
+\end{align*}
+  Visto que $f_N = \sum_{n=1}^N g_n$ é não-decrescente e 
+  converge para $f = \sum_{n=1}^\infty g_n$, do Teorema da Convergência Monótona, 
+\begin{align*}
+  \int f d\mu = \lim_{N \rightarrow \infty} \int f_n d\mu \implies 
+  \int \parth{\sum_{n=1}^\infty g_n} d\mu = \lim_{N \rightarrow \infty} 
+  \int \parth{\sum_{n=1}^N g_n} d\mu.
+\end{align*}
+Desse modo, 
+\begin{align*}
+  \int \parth{\sum_{n=1}^\infty g_n} d\mu = \lim_{N \rightarrow \infty} 
+  \int\parth{\sum_{n=1}^N g_n}d\mu = \lim_{N \rightarrow \infty }
+  \sum_{n=1}^N\parth{\int g_n d\mu} = \sum_{n=1}^\infty\parth{\int g_n d\mu},
+\end{align*}
+como queríamos.
+\end{proof}
+\biglinend 
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline 
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $\varphi \in \mcal M^+(X, \mcal F)$
+uma função simples com representação (não necessariamente padrão)
+\begin{align*}
+  \varphi = \sum_{k =1}^mb_k \chi_{F_k},
+\end{align*}
+em que $b_k \in \bR$ e $F_k \in \mcal F$, para todo $k=1, \cdots, m$. Mostre que 
+\begin{align*}
+  \int \varphi d\mu = \sum_{k=1}^m b_k \mu(F_k).
+\end{align*}}
+\begin{proof}[\textbf{Dem:}]
+  
+\end{proof}

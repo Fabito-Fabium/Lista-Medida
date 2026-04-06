@@ -1,0 +1,211 @@
+\begin{prop*}{9}
+Todo intervalo é mensurável.
+\end{prop*}{}
+
+\begin{proof}[\textbf{Dem:}]
+Como $\mathcal{M}$ é uma $\sigma$-álgebra, basta provar que $(a, +\infty) \in \mathcal{M}$, 
+ para todo $a \in \mathbb{R}$.
+
+Seja $A \in \mathcal{P}(\mathbb{R})$. Como $m^*(A) = m^*(A \setminus \{a\})$, podemos supor que $a \notin A$. Mostremos que
+$$ m^*(A \cap (a, +\infty)) + m^*(A \cap (-\infty, a)) \le m^*(A). $$
+Seja $\{I_k\}_{k \in \mathbb{N}}$ uma cobertura por intervalos abertos limitados de $A$. Considere $I_k' = I_k \cap (-\infty, a)$ e $I_k'' = I_k \cap (a, +\infty)$.
+Assim, $I_k'$ e $I_k''$ são intervalos e $l(I_k) = l(I_k') + l(I_k'')$.
+Note que 
+$$ A \cap (-\infty, a) \subseteq \bigcup_{k \in \mathbb{N}} I_k' \quad \text{e} \quad A \cap (a, +\infty) \subseteq \bigcup_{k \in \mathbb{N}} I_k''. $$
+Assim,
+$$ m^*(A \cap (-\infty, a)) + m^*(A \cap (a, +\infty)) \le \sum_{k \in \mathbb{N}} l(I_k') + \sum_{k \in \mathbb{N}} l(I_k'') = \sum_{k \in \mathbb{N}} l(I_k). $$
+Como essa desigualdade é válida para toda cobertura $\{I_k\}$, tomando o ínfimo, obtemos:
+$$ m^*(A \cap (-\infty, a)) + m^*(A \cap (a, +\infty)) \le m^*(A) \implies (a, +\infty) \text{ é mensurável!} $$
+\end{proof}
+
+\noindent
+\textbf{Conclusão:} $\mathcal{B}(\mathbb{R}) \subseteq \mathcal{M}$.
+De fato, como $\mathcal{B}(\mathbb{R}) = \sigma(\{(a, +\infty) ; a \in \mathbb{R}\}) \implies \mathcal{B}(\mathbb{R}) \subseteq \mathcal{M}$. 
+Portanto todo conjunto aberto, fechado, $G_\delta$, e $F_\sigma$ são mensuráveis!
+
+\begin{prop*}{10}
+A translação de conjuntos mensuráveis é mensurável.
+\end{prop*}{}
+
+\begin{proof}[\textbf{Dem:}]
+Seja $E$ um conjunto mensurável e $y \in \mathbb{R}$. Assim, para $A \in \mathcal{P}(\mathbb{R})$, temos
+\begin{align*}
+m^*(A) &= m^*(A - y) = m^*([A - y] \cap E) + m^*([A - y] \cap E^c) \\
+&= m^*([A - y] \cap E + y) + m^*([A - y] \cap E^c + y) \\
+&= m^*(A \cap [E + y]) + m^*(A \cap [E + y]^c) \implies E + y \text{ é mensurável!}
+\end{align*}
+\end{proof}
+
+\mysec{Medida de Lebesgue}
+
+\begin{definition*}{}
+A restrição da medida exterior para os conjuntos mensuráveis é chamada de medida de Lebesgue, $m: \mathcal{M} \rightarrow \overline{\mathbb{R}}$, $m(E) := m^*(E)$.
+\end{definition*}
+
+\begin{prop*}{11}
+A medida de Lebesgue é enumeravelmente aditiva, isto é, se $\{E_k\}_{k \in \mathbb{N}}$ é uma sequência de conjuntos mensuráveis disjuntos, então $m\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \sum_{k \in \mathbb{N}} m(E_k)$.
+\end{prop*}{}
+
+\begin{proof}[\textbf{Dem:}]
+Da subaditividade enumerável da medida exterior, temos que
+$$ m\left(\bigcup_{k \in \mathbb{N}} E_k\right) = m^*\left(\bigcup_{k \in \mathbb{N}} E_k\right) \le \sum_{k \in \mathbb{N}} m^*(E_k) = \sum_{k \in \mathbb{N}} m(E_k). $$
+Por outro lado, para cada $n \in \mathbb{N}$ fixado temos que $\bigcup_{k=1}^n E_k \subseteq \bigcup_{k \in \mathbb{N}} E_k$. Como $\{E_k\}_{k=1}^n$ é uma família finita disjunta, pela Proposição 7 temos que
+$$ m\left(\bigcup_{k=1}^n E_k\right) = m^*\left(\bigcup_{k=1}^n E_k\right) = \sum_{k=1}^n m^*(E_k) = \sum_{k=1}^n m(E_k). $$
+Logo,
+$$ \sum_{k=1}^n m(E_k) \le m^*\left(\bigcup_{k \in \mathbb{N}} E_k\right) = m\left(\bigcup_{k \in \mathbb{N}} E_k\right), \quad \forall n \in \mathbb{N}. $$
+Desta forma, tomando $n \to +\infty$,
+$$ \sum_{k \in \mathbb{N}} m(E_k) \le m\left(\bigcup_{k \in \mathbb{N}} E_k\right). $$
+Portanto $m\left(\bigcup_{k \in \mathbb{N}} E_k\right) = \sum_{k \in \mathbb{N}} m(E_k)$.
+\end{proof}
+
+\begin{prop*}{12}
+O espaço de medida $(\mathbb{R}, \mathcal{M}, m)$ é completo.
+\end{prop*}{}
+
+\begin{proof}[\textbf{Dem:}]
+Seja $A \subseteq E$, com $E \in \mathcal{M}$ e $m(E) = 0$. Assim, $m^*(E) = 0$, e como $A \subseteq E$, $m^*(A) \le m^*(E) = 0$. Logo $m^*(A) = 0$ e, pela Proposição 5, concluímos que $A \in \mathcal{M}$.
+\end{proof}
+
+\mysubsec{Aproximação de Conjuntos Mensuráveis}
+
+Vimos que se $E$ é mensurável, $m^*(E) < +\infty$ e $E \subseteq A$, então $m^*(A) = m^*(A \cap E) + m^*(A \cap E^c) \implies m^*(A \setminus E) = m^*(A) - m^*(E)$.
+
+\begin{theorem*}{}
+Seja $E \in \mathcal{P}(\mathbb{R})$. São equivalentes:
+\begin{itemize}
+    \item[i)] $E$ é mensurável.
+    \item[ii)] $\forall \epsilon > 0$, existe um aberto $\mcal O$, 
+      com $E \subseteq \mcal O$, tal que $m^*(\mcal O \setminus E) < \epsilon$.
+    \item[iii)] Existe um conjunto $G_\delta$, $G$, com $E \subseteq G$, tal que $m^*(G \setminus E) = 0$.
+\end{itemize}
+\end{theorem*}
+
+\begin{proof}[\textbf{Dem:}]. 
+
+\noindent
+$(i) \Rightarrow (ii)$ Seja $E$ um conjunto mensurável. Suponha que $m^*(E) < +\infty$.
+  Dado $\epsilon > 0$, existe uma coleção enumerável de intervalos abertos
+  $\{I_k\}_{k \in \mathbb{N}}$ tais que 
+  $$E \subseteq \bigcup_{k \in \mathbb{N}} I_k \quad 
+  \text{ e }\quad \sum_{k \in \mathbb{N}} l(I_k) < m^*(E) + \epsilon.$$ 
+Defina $\mcal O = \bigcup_{k \in \mathbb{N}} I_k$.
+Assim, $\mcal O$ é um conjunto aberto e 
+  $$m^*(\mcal O) \le \sum_{k \in \mathbb{N}} l(I_k) < m^*(E) + \epsilon.$$
+Como $m^*(E) < +\infty$, temos $m^*(\mcal O \setminus E) = m^*(\mcal O) - m^*(E) < \epsilon$.
+
+Suponha, agora, que $m^*(E) = +\infty$. Neste caso, podemos escrever
+  $E = \bigcup_{k \in \mathbb{N}} E_k$, com $E_k$ mensuráveis, disjuntos e $m^*(E_k) < +\infty$.
+  Do caso anterior, para cada $k \in \mathbb{N}$ existe um aberto $\mcal O_k$ tal que
+  $E_k \subseteq \mcal O_k$ e $m^*(\mcal O_k \setminus E_k) < \frac{\epsilon}{2^k}$.
+Tome $\mcal O = \bigcup_{k \in \mathbb{N}} \mcal O_k$. Assim, $\mcal O$ é aberto,
+  $E \subseteq \mcal O$, e
+  \begin{align*}
+    \mcal O \setminus E = \mcal O \cap E^c &= 
+  \left(\bigcup_k \mcal O_k\right) \cap \left(\bigcup_j E_j\right)^C 
+  = \left(\bigcup_k \mcal O_k\right) \cap \left(\bigcap_j E_j^c\right) \\
+    &\subseteq \bigcup_k (\mcal O_k \cap E_k^c) = \bigcup_k (\mcal O_k \setminus E_k).
+  \end{align*}
+Portanto, 
+  $$m^*(\mcal O \setminus E) \le m^*\left(\bigcup_k (\mcal O_k \setminus E_k)\right)
+  \le \sum_k m^*(\mcal O_k \setminus E_k) < \sum_k \frac{\epsilon}{2^k} = \epsilon.$$
+$(ii) \Rightarrow (iii)$ Para cada $k \in \mathbb{N}$, tome um aberto $\mcal O_k$ tal que
+  $E \subseteq \mcal O_k$ e $m^*(\mcal O_k \setminus E) < \frac{1}{k}$.
+  Defina $G = \bigcap_{k \in \mathbb{N}} \mcal O_k$. Assim, $G$ é um conjunto
+  $G_\delta$ e $E \subseteq G$. Como $G \setminus E \subseteq \mcal O_k \setminus E$, 
+  para todo  $k \in \mathbb{N}$, temos que $m^*(G \setminus E) \le m^*(\mcal O_k \setminus E)
+  < \frac{1}{k}$, para todo $k \in \mathbb{N}$. Portanto $m^*(G \setminus E) = 0$.
+
+\noindent
+$(iii) \Rightarrow (i)$ Temos que todo $G_\delta$ é mensurável. Além disso, como $m^*(G \setminus E) = 0$, temos que $G \setminus E$ é mensurável. Como $E = G \setminus (G \setminus E) = G \cap (G \setminus E)^c$, concluímos que $E$ é mensurável.
+\end{proof}
+
+\noindent
+O próximo teorema segue diretamente das leis de De Morgan e do teorema anterior (Lista 2).
+
+\begin{theorem*}{}
+Seja $E \in \mathcal{P}(\mathbb{R})$. São equivalentes:
+\begin{itemize}
+    \item[i)] $E$ é mensurável.
+    \item[ii)] $\forall \epsilon > 0$, existe um fechado $F$, com $F \subseteq E$, tal que $m^*(E \setminus F) < \epsilon$.
+    \item[iii)] Existe um conjunto $F_\sigma$, $H$, com $H \subseteq E$, tal que $m^*(E \setminus H) = 0$.
+\end{itemize}
+\end{theorem*}
+
+\begin{theorem*}{}
+Seja $E$ um conjunto mensurável com $m(E) < +\infty$. Então, para cada $\epsilon > 0$, existe uma coleção finita de intervalos abertos disjuntos $\{I_k\}_{k=1}^n$ tais que, se
+  $\mcal O = \bigcup_{k=1}^n I_k$, então 
+  $$m^*(E \setminus O) + m^*(O \setminus E) < \epsilon.$$
+\end{theorem*}
+
+\begin{proof}[\textbf{Dem:}]
+Pelos teoremas anteriores, como $E$ é mensurável, existe um aberto $U$ tal que $E \subseteq U$ e $m^*(U \setminus E) < \frac{\epsilon}{2}$.
+Como $m^*(U) = m^*(U \cap E) + m^*(U \cap E^c) = m^*(E) + m^*(U \setminus E)$, temos que $m^*(U) < +\infty$.
+
+  Já que todo aberto de $\mathbb{R}$ pode ser escrito como união enumerável disjunta
+  de intervalos abertos, em particular, $U = \bigcup_{k \in \mathbb{N}} I_k$.
+  Daqui, para todo $n \in \bN$, temos 
+  $$\sum_{k=1}^n l(I_k) = \sum_{k=1}^n m^*(I_k) =
+  m^*\left(\bigcup_{k=1}^n I_k\right) \le m^*(U) < +\infty$$
+Portanto, $\sum_{k=1}^{+\infty} l(I_k) < +\infty$. Escolha $N \in \mathbb{N}$ tal que 
+  $\sum_{k=N+1}^{+\infty} l(I_k) < \frac{\epsilon}{2}$ e defina $\mcal O = \bigcup_{k=1}^N I_k$.
+
+Como $\mcal O \setminus E \subseteq U \setminus E$,
+temos que $m^*(\mcal O \setminus E) \le m^*(U \setminus E) < \frac{\epsilon}{2}$. Por outro lado, como $E \subseteq U$, 
+$$ E \setminus \mcal O \subseteq U \setminus \mcal O = \bigcup_{k=N+1}^{+\infty} I_k, $$
+e portanto, 
+$$ m^*(E \setminus \mcal O) \le m^*\left(\bigcup_{k=N+1}^{+\infty} I_k\right)
+  \le \sum_{k=N+1}^{+\infty} l(I_k) < \frac{\epsilon}{2}. $$
+Concluímos então que $m^*(\mcal O \setminus E) + m^*(E \setminus \mcal O) < \epsilon$.
+\end{proof}
+
+Para $A$ e $B$ conjuntos quaisquer, definimos a diferença simétrica de $A$ e $B$ 
+por $$A \Delta B = (A \setminus B) \cup (B \setminus A).$$ 
+Assim, o teorema anterior pode ser escrito por $m^*(E \Delta O) < \epsilon$.
+
+\mysubsec{Conjuntos não-mensuráveis}
+
+Vejamos agora que existem conjuntos que não são mensuráveis. Primeiramente, vejamos alguns resultados técnicos.
+
+\begin{lemma*}{}
+Seja $E$ um conjunto limitado. Suponha que existe um conjunto enumerável limitado $\Lambda$ para o qual a coleção de translações de $E$, $\{E + \lambda\}_{\lambda \in \Lambda}$ seja disjunta. Então $m^*(E) = 0$.
+\end{lemma*}
+
+\begin{proof}[\textbf{Dem:}]
+Como a translação de um conjunto mensurável é mensurável, temos que
+$$ m\left(\bigcup_{\lambda \in \Lambda} (E + \lambda)\right) = \sum_{\lambda \in \Lambda} m(E + \lambda). $$
+Além disso, como $E$ e $\Lambda$ são limitados, o conjunto $\bigcup_{\lambda \in \Lambda} (E + \lambda)$ é limitado, o que implica o lado esquerdo ser finito.
+Por outro lado, como a medida é invariante por translação, $m(E + \lambda) = m(E)$. Assim, o único modo para o lado direito ser finito é tendo $m(E) = 0$.
+\end{proof}
+
+Seja $E$ um conjunto qualquer em $\mathbb{R}$. Dizemos que $x, y \in E$ são \textbf{racionalmente equivalentes} se $x - y \in \mathbb{Q}$ e escrevemos $x \sim y$. 
+Facilmente verifica-se que, de fato, é uma relação de equivalência e podemos decompor $E$ como união disjunta das classes de equivalência.
+O conjunto de escolha desta relação é um conjunto $C$ que consiste de exatamente um elemento de cada classe de equivalência. A existência de tal conjunto é garantida pelo Axioma da Escolha.
+
+Um conjunto de escolha $C$ possui as seguintes propriedades:
+\begin{itemize}
+    \item[i)] Se $x, y \in C$ e $x \neq y$, então $x - y \notin \mathbb{Q}$.
+    \item[ii)] Para todo $x \in E$, existe $c \in C$ tal que $x = c + q$, com $q \in \mathbb{Q}$.
+\end{itemize}
+Desta forma, para todo $\Lambda \subseteq \mathbb{Q}$, temos que $\{C + \lambda\}_{\lambda \in \Lambda}$ é uma coleção disjunta.
+
+\begin{theorem*}{Vitali}
+Todo conjunto $E$ de números reais com medida exterior positiva possui um subconjunto não mensurável.
+\end{theorem*}
+
+\begin{proof}[\textbf{Dem:}]
+Podemos supor sem perda de generalidade que $0 < m^*(E) < +\infty$. Seja $C_E$ qualquer conjunto de escolha de $E$. Provaremos que não é mensurável.
+
+Suponha que $C_E$ seja mensurável. Como $E$ é limitado, existe $b > 0$ tal que $E \subseteq [-b, b]$.
+Seja $\Lambda_0 = [-2b, 2b] \cap \mathbb{Q}$. Como $\{C_E + \lambda\}_{\lambda \in \Lambda_0}$ são disjuntos, pelo lema anterior concluímos que $m(C_E) = 0$.
+Assim, pela aditividade e invariância por translação da medida, temos que
+$$ m\left(\bigcup_{\lambda \in \Lambda_0} (C_E + \lambda)\right) = \sum_{\lambda \in \Lambda_0} m(C_E + \lambda) = \sum_{\lambda \in \Lambda_0} m(C_E) = 0. $$
+Note agora que $E \subseteq \bigcup_{\lambda \in \Lambda_0} (C_E + \lambda)$. Seja $x \in E$, então existe $c \in C_E$ e $q \in \mathbb{Q}$ tal que $x = c + q$. Assim, 
+$$ |q| = |x - c| \le |x| + |c| \le 2b \implies q \in [-2b, 2b] \implies q \in \Lambda_0 \implies x \in \bigcup_{\lambda \in \Lambda_0} (C_E + \lambda). $$
+Pela monotonicidade de $m^*$, obtemos então que
+$$ m^*(E) \le m^*\left(\bigcup_{\lambda \in \Lambda_0} (C_E + \lambda)\right) = 0, $$
+contradizendo o fato que $m^*(E) > 0$. Portanto $C_E$ não é mensurável!
+\end{proof}
+
+\begin{corollary*}{}
+Existem conjuntos disjuntos $A$ e $B$ tais que $m^*(A \cup B) < m^*(A) + m^*(B)$.
+\end{corollary*}

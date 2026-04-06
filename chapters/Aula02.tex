@@ -1,0 +1,217 @@
+\mysec{A Reta Estendida}
+
+No que se segue, será conveniente a utilização de $+\infty$ e $-\infty$ como valores que possam ser assumidos por funções. 
+
+\begin{definition*}{Reta estendida}
+A coleção % [cite: 3, 5]
+$$ \overline{\mathbb{R}} := \mathbb{R} \cup \{+\infty, -\infty\} $$ % [cite: 8]
+é chamada de sistema numérico real estendido 
+ou simplesmente reta estendida. Como usual,
+convencionamos $-\infty < x < +\infty$, $\forall x \in \mathbb{R}$. % [cite: 6, 7, 10, 11, 12]
+\end{definition*}
+
+\noindent
+Se $A \subseteq \mathbb{R}$ é não-limitado superiormente, convencionamos $\sup A = +\infty$ e, similarmente, temos $\inf A = -\infty$ quando $A$ é não-limitado inferiormente. Além disso, introduzimos as seguintes operações algébricas em $\overline{\mathbb{R}}$: % [cite: 13, 14, 16, 20, 22]
+
+\begin{enumerate}[label=\roman*)]
+    \item $(\pm\infty) + (\pm\infty) = \pm\infty$ % [cite: 17]
+    \item $x + (\pm\infty) = (\pm\infty) + x = \pm\infty$, $\forall x \in \mathbb{R}$ 
+    \item $(\pm\infty) \cdot (\pm\infty) = +\infty$ e $(\pm\infty) \cdot (\mp\infty) = -\infty$
+    \item $x\cdot(+\infty) =
+\begin{cases}
++\infty, & x>0,\\
+0, & x=0,\\
+-\infty, & x<0.
+\end{cases}
+$
+\end{enumerate}
+\bigline
+
+\noindent
+Para $E \in \mcal{B}(\mbb{R})$, considere
+$$E_1 = E \cup \{+\infty\},\quad
+E_2 = E \cup \{-\infty\},\quad E_3 = E \cup \{+\infty, -\infty\}.$$
+Assim, $\mcal{B}(\overline{\mathbb{R}}) = \{E, E_1, E_2, E_3 ; E \in \mcal{B}(\mathbb{R})\}$ é uma $\sigma$-álgebra (ver exercícios)
+e é chamada de álgebra de Borel estendida. % [cite: 31]
+
+\begin{definition*}{}
+Dizemos que $f:(X,\mcal{F}) \rightarrow \overline{\mathbb{R}}$ é mensurável se $\{x \in X; f(x) > \alpha\} \in \mcal{F}$, $\forall \alpha \in \mathbb{R}$. % [cite: 32, 34, 35]
+Denotamos por $\mcal{M}(X,\mcal{F})$ o conjunto das funções
+que assumem valores na reta estendida mensuráveis. % [cite: 33, 36]  
+\end{definition*}
+
+\noindent
+Note que se $f \in \mcal{M}(X,\mcal{F})$, então % [cite: 37]
+
+\begin{align*}
+  \{x \in X; f(x) = +\infty\} &= \bigcap_{n=1}^{+\infty} \{x \in X; f(x) > n\} \in \mcal{F}\\
+  \{x \in X; f(x) = -\infty\} &= \left[ \bigcup_{n=1}^{+\infty} 
+  \{x \in X; f(x) > -n\} \right]^C \in \mcal{F}
+\end{align*}
+
+\begin{lemma*}{}
+Uma função $f: (X,\mcal{F}) \rightarrow \overline{\mathbb{R}}$ é mensurável se, e somente se, os conjuntos $A = \{x \in X; f(x) = +\infty\}$ e $B = \{x \in X; f(x) = -\infty\}$ pertencem à $\mcal{F}$ e a função $f_1: (X,\mcal{F}) \rightarrow \mathbb{R}$ definida por % [cite: 41, 42, 43, 44, 45]
+$$ f_1(x) = \begin{cases} 
+f(x), & x \in (A \cup B)^C \\ 
+0, & x \in A \cup B 
+\end{cases} $$ % [cite: 46, 47]
+é mensurável. % [cite: 48]
+\end{lemma*}
+\begin{proof}[\textbf{Dem:}]. \\
+
+\noindent
+($\Rightarrow$) Pela observação acima, basta verificar se $f_1$ é mensurável. Seja $\alpha \in \mathbb{R}$. % [cite: 49]
+Se $\alpha \ge 0$,
+$$ \{x \in X; f_1(x) > \alpha\} = \{x \in X; f(x) > \alpha\} \cap A^C \in \mcal{F} $$ % [cite: 50]
+Se $\alpha < 0$, 
+$$ \{x \in X; f_1(x) > \alpha\} = \{x \in X; f(x) > \alpha\} \cup B \in \mcal{F} $$ % [cite: 51]
+Portanto $f_1$ é mensurável. % [cite: 52]
+  \vspace{5mm}
+
+\noindent
+($\Leftarrow$) Se $A, B$ pertencem à $\mcal{F}$ e $f_1$ é mensurável, então para $\alpha \ge 0$ temos que % [cite: 53]
+$$ \{x \in X; f(x) > \alpha\} = \{x \in X; f_1(x) > \alpha\} \cup A \in \mcal{F} $$ % [cite: 54]
+E para $\alpha < 0$, % [cite: 55]
+$$ \{x \in X; f(x) > \alpha\} = \{x \in X; f_1(x) > \alpha\} \cap B^C \in \mcal{F} $$ % [cite: 56]
+Portanto $f$ é mensurável. % [cite: 57]
+\end{proof}
+
+\begin{corollary*}{}
+ Se $f \in \mcal{M}(X,\mcal{F})$, então $cf, f^2, |f|, f^+, f^- \in \mcal{M}(X,\mcal{F})$. 
+\end{corollary*}
+\noindent
+Note que se $f, g \in \mcal{M}(X,\mcal{F})$, a função $f + g$ não está bem definida em 
+\begin{align*}
+  E_1 = \set{x \in X \st f(x)=+\infty\text{ e } g(x)=-\infty}\quad \text{ e } 
+  \quad 
+  E_2 = \set{x \in X \st f(x) = -\infty \text{ e } g(x) = + \infty}.
+\end{align*}
+Neste caso, definimos $f+g: (X,\mcal{F}) \rightarrow \overline{\mathbb{R}}$ como % [cite: 63, 64, 68, 69]
+$$ (f+g)(x) = \begin{cases} 
+  f(x) + g(x), & x \in (E_1 \cup E_2)^C \\ 
+0, & x \in E_1 \cup E_2
+\end{cases} $$ % [cite: 70, 71]
+Semelhante ao lema anterior, segue que $f+g \in \mcal{M}(X,\mcal{F})$. % [cite: 73]
+\begin{lemma*}{}
+   Seja $(f_n)_{n \in \mathbb{N}}$ uma 
+   sequência em $\mcal{M}(X,\mcal{F})$ e defina as funções % [cite: 65, 66, 67, 72]
+$$ f_*(x) = \inf_n f_n(x), \quad f^*(x) = \sup_n f_n(x), \quad \liminf f_n(x), \quad \limsup f_n(x) $$ % [cite: 74]
+Então $\inf f_n, \sup f_n, \liminf f_n, \limsup f_n \in \mcal{M}(X,\mcal{F})$. % [cite: 75]
+\end{lemma*}
+\begin{proof}[\textbf{Dem:}]
+Dado $\alpha \in \mathbb{R}$, temos que % [cite: 76]
+$$ \{x \in X; \inf f_n(x) \ge \alpha\} = \bigcap_{n=1}^{+\infty} \{x \in X; f_n(x) \ge \alpha\} \in \mcal{F} $$ % [cite: 77]
+$$ \{x \in X; \sup f_n(x) > \alpha\} = \bigcup_{n=1}^{\infty} \{x \in X; f_n(x) > \alpha\} \in \mcal{F} $$ % [cite: 78]
+Portanto $\inf f_n$ e $\sup f_n$ são mensuráveis. Além disso, podemos escrever % [cite: 79, 80]
+$$ \limsup f_n(x) = \inf_{m \ge 1} \left( \sup_{n \ge m} f_n(x) \right) $$ % [cite: 82, 83]
+ou, analogamente, $\liminf f_n(x) = \sup_{m \ge 1} g_m(x)$, com $g_m(x) = \inf_{n \ge m} f_n(x)$. Pelos mesmos argumentos anteriores, cada $g_m$ é mensurável, % [cite: 84]
+e portanto, $\liminf f_n \in \mcal{M}(X,\mcal{F})$. Similarmente, $\limsup f_n \in \mcal{M}(X,\mcal{F})$. % [cite: 85, 86]  
+\end{proof}
+
+\begin{corollary*}{}
+  Se $(f_n)$ é uma sequência em $\mcal{M}(X,\mcal{F})$ que converge
+  pontualmente para $f:X \rightarrow \overline{\mathbb{R}}$,
+  então $f \in \mcal{M}(X,\mcal{F})$. 
+\end{corollary*}
+\begin{proof}[\textbf{Dem:}]
+ Neste caso, $f(x) = \lim f_n(x) = \liminf f_n(x)$. % [cite: 89, 90] 
+\end{proof}
+
+\bigline
+Com isso, para verificar que $\mcal{M}(X,\mcal{F})$ é fechado para multiplicação, 
+sejam $f \in \mcal{M}(X,\mcal{F})$ e $n \in \mathbb{N}$. Considere o truncamento de $f$, $f_n: X \rightarrow \mathbb{R}$, definido por % [cite: 92]
+$$ f_n(x) = \begin{cases} 
+-n, & f(x) < -n \\ 
+f(x), & -n \le f(x) \le n \\ 
+n, & f(x) > n 
+\end{cases} $$ % [cite: 93]
+Note que $f_n$ é mensurável, $\forall n \in \mathbb{N}$. Definindo de maneira análoga $g_m$, para cada $m \in \mathbb{N}$, % [cite: 94]
+concluímos que $f_n \cdot g_m$ é mensurável, $\forall n, m \in \mathbb{N}$. Além disso, $\lim f_n = f$ e $\lim g_m = g$. % [cite: 95, 96]
+Assim, para cada $m \in \mathbb{N}$ fixado, temos que $f(x)g_m(x) = \lim\limits_{n \rightarrow \infty} f_n(x)g_m(x)$, portanto, $f \cdot g_m \in \mcal{M}(X,\mcal{F})$. % [cite: 97]
+Como $f(x)g(x) = \lim\limits_{m \rightarrow \infty} f(x)g_m(x)$, concluímos que $f \cdot g \in \mcal{M}(X,\mcal{F})$. % [cite: 98, 99]
+
+\begin{theorem*}{}
+Seja $f$ uma função não negativa em $\mcal{M}(X,\mcal{F})$. Existe uma sequência $(\varphi_n)_{n \in \mathbb{N}}$ em $\mcal{M}(X,\mcal{F})$ tal que: % [cite: 101, 102, 103]
+  \begin{enumerate}[label=\roman*)]
+    \item $0 \le \varphi_n(x) \le \varphi_{n+1}(x)$, $\forall x \in X$, $n \in \mathbb{N}$ % [cite: 104, 107]
+    \item $\lim_{n \rightarrow \infty} \varphi_n(x) = f(x)$, $\forall x \in X$ % [cite: 105]
+    \item cada $\varphi_n(x)$ assume apenas um número finito de valores (função simples). % [cite: 106]
+\end{enumerate} 
+\end{theorem*}
+\begin{proof}[\textbf{Dem:}]
+  Fixemos $n \in \mathbb{N}$ e vamos construir $\varphi_n$. Para cada $k \in \{0, 1, \dots, n2^n - 1\}$, considere o conjunto % [cite: 108]
+$$ E_k^{(n)} := \{x \in X; k \cdot 2^{-n} \le f(x) < (k+1) \cdot 2^{-n}\} $$ % [cite: 110]
+e para $k = n2^n$, % [cite: 109]
+$$ E_k^{(n)} := \{x \in X; n \le f(x)\} $$ % [cite: 111]
+Como $f$ é mensurável, cada $E_k^{(n)} \in \mcal{F}$. Além disso, 
+  são disjuntos e $\bigcup_{k=0}^{n2^n} E_k^{(n)} = X$. % [cite: 112, 114, 115, 118] 
+Defina $\varphi_n: X \rightarrow \mathbb{R}$ por $\varphi_n(x) = k \cdot 2^{-n}$ se $x \in E_k^{(n)}$. % [cite: 118]
+Como $\varphi_n = \sum_{k=0}^{n2^n} k \cdot 2^{-n} \chi_{E_k^{(n)}}$, temos que cada $\varphi_n$ é mensurável e o item iii) é satisfeito. % [cite: 119]
+
+  Para efeitos de vizualização dos conjuntos $E_k^{(n)}$, serão calculados as 
+    partições considerando os casos $n=1$ e $n=2$ abaixo:
+
+Para $n=1$: % [cite: 120]
+\begin{align*}
+  E_0^{(1)} &= \{x \in X; 0 \le f(x) < 1/2\}]\st \\
+    E_1^{(1)} &= \{x \in X; 1/2 \le f(x) < 1\}\st \\
+    E_2^{(1)} &= \{x \in X; 1 \le f(x)\}.
+\end{align*} % [cite: 121, 122, 123]
+
+Para $n=2$:
+\begin{align*}
+    E_0^{(2)} &= \{x \in X; 0 \le f(x) < 1/4\}\st &
+    E_4^{(2)} &= \{x \in X; 1 \le f(x) < 5/4\}\st\\
+    E_1^{(2)} &= \{x \in X; 1/4 \le f(x) < 1/2\}\st &
+    E_5^{(2)} &= \{x \in X; 5/4 \le f(x) < 3/2\}\st \\
+    E_2^{(2)} &= \{x \in X; 1/2 \le f(x) < 3/4\}\st &
+    E_6^{(2)} &= \{x \in X; 3/2 \le f(x) < 7/4\}\st \\
+    E_3^{(2)} &= \{x \in X; 3/4 \le f(x) < 1\}\st &
+    E_7^{(2)} &= \{x \in X; 7/4 \le f(x) < 2\}\st \\
+    E_8^{(2)} &= \{x \in X; 2 \le f(x)\}. & &
+\end{align*} % [cite: 121, 122, 124, 125, 126]
+
+\noindent
+  Para verificar (i), note que,  
+  se $x \in E_k^{(n)}$, para algum $k < n2^n$, então 
+$$ k \cdot 2^{-n} \le f(x) < (k+1) \cdot 2^{-n} \implies
+  (2k) \cdot 2^{-(n+1)} \le f(x) < (2k+2) \cdot 2^{-(n+1)} $$ % [cite: 137] 
+  Desse modo, $x \in X$ pode obedecer um dos seguintes casos: 
+  $$x \in E_{2k}^{(n+1)} = 
+  \set{x \in X \st (2k) \cdot 2^{-(n+1)} \le f(x) < (2k+1) \cdot 2^{-(n+1)}}$$
+  ou
+   $$x \in E_{2k+1}^{(n+1)} = 
+  \set{x \in X \st (2k+1) \cdot 2^{-(n+1)} \le f(x) < (2k+2) \cdot 2^{-(n+1)}}.$$
+Para o primeiro caso, segue que 
+  $$\varphi_{n+1}(x) = (2k) \cdot 2^{-(n+1)} = k \cdot 2^{-n} = \varphi_n(x).$$
+Para o segundo caso, segue que 
+  $$\varphi_{n+1}(x) =
+  (2k+1) \cdot 2^{-(n+1)} > k \cdot 2^{-n} = \varphi_n(x).$$
+Agora, se $x \in E_{k}^{(n)}$ para $k = n2^n$,  ou seja, $f(x) \ge n$, então $\varphi_n(x) = n$.
+  Neste caso, $$\varphi_{n+1}(x) \ge n = \varphi_n(x).$$
+Portanto, $0 \le \varphi_n(x) \le \varphi_{n+1}(x), \forall x \in X$. % [cite: 150] 
+
+\noindent
+  Por fim, para verificar (ii), se $f(x) < +\infty$, então existe $M \in \mathbb{N}$ 
+  tal que $f(x) < M$. Note que para $n \ge M$, % [cite: 151, 153]
+$$ k \cdot 2^{-n} \le f(x) < (k+1) \cdot 2^{-n} \implies 0 \le f(x) - \varphi_n(x) < 2^{-n} $$ % [cite: 154]
+Tomando $n \rightarrow +\infty$, obtemos $\lim \varphi_n(x) = f(x)$. % [cite: 155]
+Se $f(x) = +\infty$, então $\varphi_n(x) = n, \forall n \in \mathbb{N}$, logo $\lim \varphi_n(x) = +\infty = f(x)$. % [cite: 156]
+\end{proof}
+
+\mysubsec{Funções a Valores Complexos} % [cite: 157]
+
+Podemos estender de maneira natural o estudo de funções mensuráveis em $(X,\mcal{F})$ para funções do tipo $f: X \rightarrow \mathbb{C}$. % [cite: 158, 159, 160]
+Para isso, basta usar o fato que existem únicas funções $f_1, f_2: X \rightarrow \mathbb{R}$ tais que $f(x) = f_1(x) + i f_2(x)$, onde $f_1(x) = \text{Re } f(x)$, $f_2(x) = \text{Im } f(x)$. % [cite: 161, 162, 163, 164]
+Assim, dizemos que $f$ é mensurável se, e somente se, $f_1$ e $f_2$ são mensuráveis. % [cite: 165, 168]
+Com isso, prova-se que a soma, o produto e limite de funções que assumem valores complexos mensuráveis também são mensuráveis. (Lista 1) % [cite: 169, 170, 172, 173]
+
+\mysubsec{Funções entre espaços mensuráveis} % [cite: 171]
+
+Embora trabalharemos apenas com funções que assumem valores reais (ou complexos), podemos definir o conceito de mensurabilidade de uma função $f: (X,\mcal{F}) \rightarrow (Y,\mcal{G})$ em que $(X,\mcal{F})$ e $(Y,\mcal{G})$ são espaços mensuráveis. % [cite: 174, 175, 176, 177]
+
+Dizemos que $f: (X,\mcal{F}) \rightarrow (Y,\mcal{G})$ é mensurável se $f^{-1}(E) \in \mcal{F}$, para todo $E \in \mcal{G}$. % [cite: 178]
+Prova-se que esta definição está de acordo com a que vimos anteriormente ao tomar $(Y,\mcal{G}) = (\mathbb{R}, \mcal{B}(\mathbb{R}))$. (Lista 1) % [cite: 179, 180, 181]
+
+\newpage
+
