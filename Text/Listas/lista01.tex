@@ -1,4 +1,4 @@
-\mysec{Exercícios - Lista 1}
+\mysec{Lista 1}
 \myexe{1}
 \bigline
 \textbf{Seja $X$ um conjunto não-enumerável. Considere a seguinte coleção:
@@ -97,21 +97,22 @@ $\{E, E_1, E_2, E_3\st  E\in \mathcal B(\mathbb R)\}$
 \in \mathcal B(\mathbb R)\}$,
 visto que $\emptyset\in \mathcal B(\mathbb R)$, segue que $\emptyset \in \mathcal C$.
 De maneira análoga, temos $\overline{\mathbb R} \in \mathcal C$. Agora, seja $A \in C$, 
-\begin{itemize}
-  \item Para  $A \in \mathcal B(\mathbb R)$, 
-    segue que $\mathbb R\setminus A \in \mathcal B(\mathbb R)$, sendo assim,
-    $\left(\mathbb R \setminus A \right)\cup \{-\infty, +\infty\} = A^C \in \mathcal C$.
+  e note que da definição de $\mathcal C$, existem $M \in \borelR$ e 
+  $N \subseteq \mcal P(\{-\infty, +\infty\})$ tal que $A = M \cup N$. Desse modo, 
+  se $M^C = \overline R \setminus M$ e $N^C = \overline R \setminus N$,
+  \begin{align*}
+    A^C &= \xbR \setminus A = \xbR \setminus \parth{M \cup N}
+    = \parth{\bR \cup \{-\infty, +\infty\}} \setminus \parth{M \cup N}\\
+    &= \parth{\bR \cup \{-\infty, +\infty\}} \cap \parth{M^C \cap N^C}\\
+    &= \cparth{\bR \cap \parth{M^C \cap N^C}} \cup 
+    \cparth{\{-\infty, +\infty\} \cap \parth{M^C \cap N^C}}\\
+    &= \parth{\bR \cap M^C} \cup \parth{\set{-\infty, +\infty} \cap N^C}.
+  \end{align*}
+  Visto que $\bR \cap M^C \in \borelR$ e 
+  $\parth{\set{-\infty, +\infty} \cap N^C} \subseteq \mcal P \parth{\set{-\infty, +\infty}}$, 
+  segue que $A^C \in \mcal C$.
 
-  \item Para $A = E \cup \{+ \infty\}$,
-    note que $A^C = X \cup \{- \infty\}$ com 
-    $X \in \mathcal B (\mathbb R)$, sendo assim, $A^C \in \mathcal C$. 
-  \item Para $A = E \cup \{- \infty\}$,
-    segue de maneira análoga ao 
-    caso anterior que $A^C \in \mathcal C$. 
-  \item Para $A = E \cup \{- \infty, + \infty\}$, temos $A^C \in \mathcal B(\mathbb R)$, 
-    portanto, $A^C \in \mathcal C$
-\end{itemize}
-Para verificar que $\mathcal C$ obedesce a terceira propriedade de $\sigma$-álgebra,
+  Para verificar que $\mathcal C$ obedesce a terceira propriedade de $\sigma$-álgebra,
 note que todo $A \in \mathcal C$ 
 temos $A = B \cup D$, onde $B \in \mathcal B (\mathbb R)$ e 
 $D \in \mathbb P (\{-\infty, +\infty\}) $. Portanto, dada qualquer 

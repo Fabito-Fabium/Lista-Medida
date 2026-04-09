@@ -1,0 +1,195 @@
+\begin{corollary*}{}
+Sejam $f, g \in \mathcal{M}^+(X, \mathcal{F})$ e $c \ge 0$. Então $cf + g \in \mathcal{M}^+(X, \mathcal{F})$ e 
+$$ \int (cf + g) \, d\mu = c \int f \, d\mu + \int g \, d\mu. $$
+\end{corollary*}
+
+\begin{proof}[\textbf{Dem:}]
+O caso $c = 0$ é imediato. Suponha $c > 0$ e $f, g \in \mathcal{M}^+(X, \mathcal{F})$. Pelo Teorema da primeira aula, existem sequências $(\varphi_n)$ e $(\psi_n)$ de funções mensuráveis simples, não-decrescentes, que convergem para $f$ e $g$, respectivamente. 
+Com isso, a sequência $(c\varphi_n + \psi_n)$ também é simples, não-decrescente e converge pontualmente para $cf + g$. 
+Desta forma, pela linearidade da integral de funções simples não-negativas e pelo Teorema da Convergência Monótona, obtemos
+  \begin{align*}
+  \int (cf + g) \, d\mu &= \int \lim_{n \to \infty} (c\varphi_n + \psi_n) \, d\mu = 
+  \lim_{n \to \infty} \int (c\varphi_n + \psi_n) \, d\mu\\
+  &=
+  \lim_{n \to \infty} \left( c\int \varphi_n \, d\mu + \int \psi_n \, d\mu \right)
+  = c\int f \, d\mu + \int g \, d\mu.   
+  \end{align*}
+\end{proof}
+\bigline
+
+A hipótese da sequência ser não-decrescente é essencial para o Teorema da Convergência Monótona.
+Considere em $(\mathbb{R}, \mathcal{M}, m)$ a sequência dada por $f_n = \chi_{[n, n+1]}$. Assim, $$\lim f_n(x) = 0, \forall x \in \mathbb{R}.$$ Logo, $\int \lim f_n \, dm = 0$.
+Por outro lado, $\int f_n \, dm = \int \chi_{[n, n+1]} \, dm = 1$. Logo, $\lim \int f_n \, dm = 1$. Portanto,
+$$ \int \lim f_n \, dm \neq \lim \int f_n \, dm. $$
+Na realidade é sempre válida uma desigualdade num contexto mais geral, como veremos a 
+seguir.
+
+\begin{lemma*}{ de Fatou}
+Seja $(f_n)_{n \in \mathbb{N}}$ uma sequência em $\mathcal{M}^+(X, \mathcal{F})$. Então
+$$ \int \liminf f_n \, d\mu \le \liminf \int f_n \, d\mu. $$
+\end{lemma*}
+
+\begin{proof}[\textbf{Dem:}]
+Seja $g_m := \inf_{n \ge m} f_n$. Já vimos que $g_m \in \mathcal{M}^+(X, \mathcal{F})$ e, por construção, $g_m \le g_{m+1}$, $\forall m \in \mathbb{N}$. 
+Além disso, $g_m \le f_n$, $\forall n \ge m$,
+
+  $$\forall n \ge m, \int g_m \, d\mu \le \int f_n \, d\mu 
+  \implies \int g_m \, d\mu \le \inf_{n \ge m} \int f_n \, d\mu.$$
+
+Como $(g_m)$ é não-decrescente e $\lim g_m = \liminf f_n$, obtemos do Teorema da Convergência Monótona que
+$$ \int \liminf f_n \, d\mu = \int \lim g_m \, d\mu = \lim \int g_m \, d\mu \le \liminf \int f_n \, d\mu. $$
+\end{proof}
+
+\begin{corollary*}{}
+Sejam $(X, \mathcal{F}, \mu)$ um espaço de medida e $f \in \mathcal{M}^+(X, \mathcal{F})$. Temos que $f = 0$ $\mu$-q.t.p. se, e somente se, $\int f \, d\mu = 0$.
+\end{corollary*}
+
+\begin{proof}[\textbf{Dem:}]
+($\Rightarrow$) Suponha que $f = 0$ $\mu$-q.t.p. Assim, existe $N \in \mathcal{F}$ tal que $f(x) = 0, \forall x \in N^c$ e $\mu(N) = 0$.
+Desta forma, o conjunto $E = \{x \in X ; f(x) > 0\}$ satisfaz $E \subseteq N$, logo $\mu(E) = 0$.
+Considere a sequência $f_n = n \chi_E$. Como $f(x) \le \liminf f_n(x)$, $\forall x \in X$ (já que em $E$, $f_n \to +\infty$ e em $E^c$, $f=0$), pelo Lema de Fatou concluímos que
+$$ 0 \le \int f \, d\mu \le \int \liminf f_n \, d\mu \le \liminf \int f_n \, d\mu = \liminf (n \mu(E)) = 0. $$
+Portanto $\int f \, d\mu = 0$.
+
+($\Leftarrow$) Suponha que $\int f \, d\mu = 0$. Para cada $n \in \mathbb{N}$, temos pela Desigualdade de Chebyshev que o conjunto $E_{1/n} = \{x \in X ; f(x) \ge 1/n\}$ satisfaz
+$$ 0 \le \mu(E_{1/n}) \le n \int f \, d\mu = 0 \implies \mu(E_{1/n}) = 0, \quad \forall n \in \mathbb{N}. $$
+Como $\{x \in X ; f(x) > 0\} = \bigcup_{n \in \mathbb{N}} E_{1/n}$, segue que $\mu(\{f > 0\}) \le \sum \mu(E_{1/n}) = 0$. Portanto $f = 0$ $\mu$-q.t.p.
+\end{proof}
+
+\begin{corollary*}{}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida e $(f_n)_{n \in \mathbb{N}}$ uma sequência não-decrescente em $\mathcal{M}^+(X, \mathcal{F})$ que converge pontualmente $\mu$-q.t.p. para $f \in \mathcal{M}^+(X, \mathcal{F})$. Então $$\int f \, d\mu = \lim \int f_n \, d\mu.$$
+\end{corollary*}
+
+\begin{proof}[\textbf{Dem:}]
+Seja $N \in \mathcal{F}$ tal que $\mu(N) = 0$ e $\lim f_n(x) = f(x)$, $\forall x \in N^c$. 
+Assim, a sequência $(f_n \chi_{N^c})$ é uma sequência não-decrescente em $\mathcal{M}^+(X, \mathcal{F})$ que converge pontualmente para $f \chi_{N^c}$. 
+Pelo Teorema da Convergência Monótona, temos que
+$$ \int f \chi_{N^c} \, d\mu = \lim \int f_n \chi_{N^c} \, d\mu. $$
+Como $\mu(N) = 0$, as funções $f \chi_N$ e $f_n \chi_N$ são nulas $\mu$-q.t.p. Logo, $\int f \chi_N \, d\mu = 0$ e $\int f_n \chi_N \, d\mu = 0$.
+Desta forma, como $f = f \chi_N + f \chi_{N^c}$, concluímos que
+\begin{align*}
+    \int f \, d\mu &= \int (f \chi_N + f \chi_{N^c}) \, d\mu = \int f \chi_N \, d\mu + \int f \chi_{N^c} \, d\mu \\
+    &= 0 + \lim \int f_n \chi_{N^c} \, d\mu = \lim \left( \int f_n \chi_N \, d\mu + \int f_n \chi_{N^c} \, d\mu \right) = \lim \int f_n \, d\mu.
+\end{align*}
+\end{proof}
+
+\mysec{Funções Integráveis}
+
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida. Vimos que uma função $f: X \to \overline{\mathbb{R}}$ é mensurável se, e somente se, $f^+$ e $f^-$ são mensuráveis, em que $f^+(x) = \max\{f(x), 0\}$ e $f^-(x) = \max\{-f(x), 0\}$.
+Além disso, vimos que $f = f^+ - f^-$ e $|f| = f^+ + f^-$. Assim, $f^+ = \frac{|f| + f}{2}$ e $f^- = \frac{|f| - f}{2}$. Note que $f^+$ e $f^-$ são não-negativas.
+
+\begin{definition*}{}
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida e $f \in \mathcal{M}(X, \mathcal{F})$. Dizemos que $f$ é \textbf{integrável} se tanto $f^+$ quanto $f^-$ possuírem integrais finitas. Neste caso, definimos a integral de $f$ com respeito a $\mu$ por
+$$ \int f \, d\mu := \int f^+ \, d\mu - \int f^- \, d\mu. $$
+Se $E \in \mathcal{F}$, definimos $\int_E f \, d\mu := \int_E f^+ \, d\mu - \int_E f^- \, d\mu$. Denotaremos por $L^1(X, \mathcal{F}, \mu)$ o espaço das funções mensuráveis integráveis.
+\end{definition*}
+
+Na definição acima, escrevemos $f$ como a diferença entre $f^+$ e $f^-$, ambas não-negativas e com integral finita. Vejamos que a integral de $f$ independe da decomposição de $f$.
+Sejam $f_1, f_2$ funções mensuráveis não-negativas tais que suas integrais são finitas e $f = f_1 - f_2$.
+Como $f = f^+ - f^-$, temos que $f^+ - f^- = f_1 - f_2 \implies f^+ + f_2 = f_1 + f^-$. 
+Como cada termo é não-negativo, pelos resultados vistos anteriormente temos que
+$$ \int f^+ \, d\mu + \int f_2 \, d\mu = \int (f^+ + f_2) \, d\mu = \int (f_1 + f^-) \, d\mu = \int f_1 \, d\mu + \int f^- \, d\mu. $$
+Agora, da finitude das integrais acima, obtemos $\int f^+ \, d\mu - \int f^- \, d\mu = \int f_1 \, d\mu - \int f_2 \, d\mu$.
+
+\begin{theorem*}{}
+Sejam $(X, \mathcal{F}, \mu)$ um espaço de medida e $f \in \mathcal{M}(X, \mathcal{F})$. A função $f$ é integrável se, e somente se, $|f|$ é integrável. Neste caso, vale
+$$ \left| \int f \, d\mu \right| \le \int |f| \, d\mu. $$
+\end{theorem*}
+
+\begin{proof}[\textbf{Dem:}]
+($\Rightarrow$) Se $f$ é integrável, então $f^+$ e $f^-$ possuem integral finita. Como $|f| = f^+ + f^-$, temos pela monotonicidade da integral para funções não-negativas que
+$$ \int |f| \, d\mu = \int (f^+ + f^-) \, d\mu = \int f^+ \, d\mu + \int f^- \, d\mu < +\infty. $$
+Logo $|f|$ é integrável.
+
+($\Leftarrow$) Suponha que $|f|$ seja integrável. Como $f^+, f^-$ e $|f|$ são não-negativas, temos que $0 \le f^+ \le |f|$ e $0 \le f^- \le |f|$.
+Assim, novamente pela monotonicidade da integral,
+$$ 0 \le \int f^+ \, d\mu \le \int |f| \, d\mu < +\infty \quad \text{e} \quad 0 \le \int f^- \, d\mu \le \int |f| \, d\mu < +\infty. $$
+Portanto $f$ é integrável.
+
+\noindent
+Por fim, vemos que
+\begin{align*}
+ \left| \int f \, d\mu \right| 
+  &= \left| \int f^+ \, d\mu - \int f^- \, d\mu \right| 
+  \le \left| \int f^+ \, d\mu \right| + \left| \int f^- \, d\mu \right|\\ 
+  &= \int f^+ \, d\mu + \int f^- \, d\mu = \int (f^+ + f^-) \, d\mu = \int |f| \, d\mu. 
+\end{align*}
+\end{proof}
+
+\begin{corollary*}{}
+Sejam $f, g \in \mathcal{M}(X, \mathcal{F})$. Se $g$ é integrável e $|f| \le |g|$, então $f$ é integrável e $\int |f| \, d\mu \le \int |g| \, d\mu$.
+\end{corollary*}
+
+\begin{proof}[\textbf{Dem:}]
+Como $g$ é integrável, então $|g|$ é integrável. Assim, com $|f| \le |g|$, temos que
+$$ \int |f| \, d\mu \le \int |g| \, d\mu < +\infty. $$
+Logo $|f|$ é integrável e, portanto, $f$ é integrável.
+\end{proof}
+
+\noindent
+\textit{Obs:} O resultado mantém-se válido se supormos $|f| \le |g|$ $\mu$-q.t.p. (Lista 3).
+
+\begin{prop*}{}
+Sejam $(X, \mathcal{F}, \mu)$ um espaço de medida, $f, g \in L^1(X, \mathcal{F}, \mu)$ e $c \in \mathbb{R}$. Então $cf$ e $f+g$ são integráveis e vale
+$$ \int cf \, d\mu = c \int f \, d\mu, \quad \int (f+g) \, d\mu = \int f \, d\mu + \int g \, d\mu. $$
+\end{prop*}
+
+\begin{proof}[\textbf{Dem:}]
+Se $c = 0$, então $cf = 0$ e, portanto, $\int cf \, d\mu = 0 = 0 \int f \, d\mu$.
+Se $c > 0$:
+$$ (cf)^+ = \frac{|cf| + cf}{2} = c \left( \frac{|f| + f}{2} \right) = c f^+ \quad \text{e} \quad (cf)^- = \frac{|cf| - cf}{2} = c \left( \frac{|f| - f}{2} \right) = c f^-. $$
+Assim, pelas propriedades de integrais não-negativas, $(cf)^+$ e $(cf)^-$ possuem integral finita e
+\begin{align*}
+  \int cf \, d\mu &= \int (cf)^+ \, d\mu - \int (cf)^- \, d\mu 
+  = \int c f^+ \, d\mu - \int c f^- \, d\mu \\
+  &= c \left( \int f^+ \, d\mu - \int f^- \, d\mu \right) = c \int f \, d\mu. 
+\end{align*}
+
+\noindent
+Se $c < 0$:
+$$ (cf)^+ = \frac{|cf| + cf}{2} = \frac{-c|f| + cf}{2} = -c \left( \frac{|f| - f}{2} \right) = -c f^-$$ 
+
+\noindent
+e
+  $$\quad (cf)^- = \frac{|cf| - cf}{2} = \frac{-c|f| - cf}{2} = -c \left( \frac{|f| + f}{2} \right) = -c f^+. $$
+Logo, $(cf)^+$ e $(cf)^-$ possuem integral finita e
+\begin{align*}
+  \int cf \, d\mu &= \int (cf)^+ \, d\mu - \int (cf)^- \, d\mu 
+  = \int -cf^- \, d\mu - \int -cf^+ \, d\mu\\
+  &= c \left( \int f^+ \, d\mu - \int f^- \, d\mu \right) = c \int f \, d\mu.  
+\end{align*} 
+Partimos agora para a soma. Como $f, g$ são integráveis, então $|f|, |g|$ são integráveis. Como $|f+g| \le |f| + |g|$ e a integral de $|f| + |g|$ é finita, segue do corolário anterior que $f+g$ é integrável.
+
+Por fim, temos que $f+g = (f^+ - f^-) + (g^+ - g^-) = (f^+ + g^+) - (f^- + g^-)$. 
+  Daí obtemos que $(f+g)^+ + f^- + g^- = (f+g)^- + f^+ + g^+$.
+  Como todas as funções são não-negativas, segue que  
+\begin{align*}
+  \int (f+g) \, d\mu &=  \int (f+g)^+ \, d\mu - \int (f+g)^- \, d\mu\\
+    &= \int f^+ \, d\mu  + \int g^+ \, d\mu - \int f^- \, d\mu - \int g^- \, d\mu \\
+     &= \int f \, d\mu + \int g \, d\mu.
+\end{align*}
+\end{proof}
+
+\begin{theorem*}{ da Convergência Dominada}
+Sejam $(X, \mathcal{F}, \mu)$ um espaço de medida e $(f_n)$ uma sequência de funções em $L^1(X, \mathcal{F}, \mu)$ que converge $\mu$-q.t.p. para uma função mensurável $f$. Se existir uma função integrável $g$ tal que $|f_n| \le g$ $\mu$-q.t.p., $\forall n \in \mathbb{N}$, então $f$ é integrável e 
+$$ \int f \, d\mu = \lim_{n \to \infty} \int f_n \, d\mu. $$
+\end{theorem*}
+
+\begin{proof}[\textbf{Dem:}]
+Redefinindo $f_n, g$ e $f$ num conjunto de medida nula, podemos supor sem perda de generalidade que $f_n$ converge pontualmente para $f$ e $|f_n| \le g$, $\forall x \in X$. (Lista 3).
+
+Como $f_n$ converge para $f$ e $|f_n| \le g$, $\forall n \in \mathbb{N}$, então $|f| \le g$. Assim, tanto $f_n$ quanto $f$ são integráveis, $\forall n \in \mathbb{N}$. 
+Para cada $n \in \mathbb{N}$, temos que $g - f_n$ e $g + f_n$ são mensuráveis não-negativas. Pelo Lema de Fatou, temos que
+\begin{align*}
+  \int g \, d\mu - \int f \, d\mu &= \int (g - f) \, d\mu = \int \liminf (g - f_n) \, d\mu\\ 
+  &\le \liminf \int (g - f_n) \, d\mu = \int g \, d\mu - \limsup \int f_n \, d\mu. 
+\end{align*}
+Também,
+  \begin{align*}
+  \int g \, d\mu + \int f \, d\mu &= \int (g + f) \, d\mu = \int \liminf (g + f_n) \, d\mu\\
+  &\le \liminf \int (g + f_n) \, d\mu = \int g \, d\mu + \liminf \int f_n \, d\mu.  
+  \end{align*}
+Como $g$ é integrável, podemos subtrair $\int g \, d\mu$ das desigualdades, obtendo:
+$$ \limsup \int f_n \, d\mu \le \int f \, d\mu \le \liminf \int f_n \, d\mu. $$
+Portanto, existe o limite de $\int f_n \, d\mu$ e $\lim_{n \to \infty} \int f_n \, d\mu = \int f \, d\mu$.
+\end{proof}

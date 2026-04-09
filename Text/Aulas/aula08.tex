@@ -1,0 +1,118 @@
+\mysubsec{Aplicações do Teorema da Convergência Dominada}
+
+\subsubsection*{1) Dependência a um parâmetro}
+
+Sejam $(X, \mathcal{F}, \mu)$ um espaço de medida e $f: X \times [a,b] \rightarrow \mathbb{R}$ uma função tal que, para cada $t \in [a,b]$ fixado, $f(\cdot, t) \in \mathcal{M}(X,\mathcal{F})$.
+
+\begin{prop*}{}
+Suponha que para algum $t_0 \in [a,b]$ vale que $\lim_{t \rightarrow t_0} f(x,t) = f(x,t_0)$. Se existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, $\forall (x,t) \in X \times [a,b]$, então
+$$ \lim_{t \rightarrow t_0} \int f(x,t) \, d\mu = \int f(x,t_0) \, d\mu. $$
+\end{prop*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Seja $(t_n)$ uma sequência em $[a,b]$ tal que $\lim t_n = t_0$ e considere $f_n(x) = f(x,t_n)$. Assim,
+$$ \lim f_n(x) = \lim f(x,t_n) = f(x,t_0) \quad \text{e} \quad |f_n(x)| \le g(x), \forall n \in \mathbb{N}. $$
+Pelo Teorema da Convergência Dominada, temos que
+$$ \int f(x,t_0) \, d\mu = \int \lim f_n \, d\mu = \lim \int f_n \, d\mu = \lim \int f(x,t_n) \, d\mu. $$
+Como o resultado vale para qualquer sequência $(t_n)$ tal que $t_n \rightarrow t_0$, concluímos que
+$$ \lim_{t \rightarrow t_0} \int f(x,t) \, d\mu = \int f(x,t_0) \, d\mu. $$
+\end{proof}
+
+\begin{corollary*}{}
+Se $f(x, \cdot)$ é contínua em $[a,b]$, para todo $x \in X$, e existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, então a função $F: [a,b] \rightarrow \mathbb{R}$ dada por
+$$ F(t) = \int f(x,t) \, d\mu $$
+é contínua.
+\end{corollary*}
+
+\begin{prop*}{}
+Suponha que para algum $t_0 \in [a,b]$, $f(\cdot, t_0) \in L^1(X, \mathcal{F}, \mu)$, que $\frac{\partial f}{\partial t}$ existe em $X \times [a,b]$ e que existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que
+$$ \left| \frac{\partial f}{\partial t}(x,t) \right| \le g(x), \quad \forall (x,t) \in X \times [a,b]. $$
+Então a função $F$ definida anteriormente é derivável em $[a,b]$ e
+$$ \frac{dF}{dt}(t) = \frac{d}{dt} \int f(x,t) \, d\mu = \int \frac{\partial f}{\partial t}(x,t) \, d\mu. $$
+\end{prop*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Procedemos como anteriormente. Seja $p \in [a,b]$ e $(t_n)$ uma sequência em $[a,b]$, com $t_n \neq p$, e $\lim t_n = p$. Assim, para cada $x \in X$, temos que
+$$ \frac{\partial f}{\partial t}(x,p) = \lim \frac{f(x,t_n) - f(x,p)}{t_n - p} = \lim h_n(x), $$
+com $h_n(x) = \frac{f(x,t_n) - f(x,p)}{t_n - p}$. Como $h_n$ é mensurável, concluímos que $\frac{\partial f}{\partial t}$ é mensurável. Para cada $x$ fixado, obtemos do Teorema do Valor Médio:
+$$ f(x,t) - f(x,t_0) = \frac{\partial f}{\partial t}(x,s)(t - t_0), $$
+para algum $s$ entre $t$ e $t_0$. Assim,
+$$ |f(x,t)| \le |f(x,t_0)| + \left| \frac{\partial f}{\partial t}(x,s) \right| |t - t_0| \le |f(x,t_0)| + g(x)(b-a). $$
+Portanto, $f(\cdot, t)$ é integrável para cada $t \in [a,b]$. Em particular, $h_n \in L^1(X, \mathcal{F}, \mu)$. 
+
+Novamente pelo Teorema do Valor Médio, existe $s_n$ entre $t_n$ e $p$ tal que $h_n(x) = \frac{f(x,t_n) - f(x,p)}{t_n - p} = \frac{\partial f}{\partial t}(x,s_n)$. Logo, $\left| h_n(x) \right| = \left| \frac{\partial f}{\partial t}(x,s_n) \right| \le g(x)$. Portanto, pelo Teorema da Convergência Dominada, obtemos
+$$ \int \frac{\partial f}{\partial t}(x,p) \, d\mu = \int \lim h_n \, d\mu = \lim \int h_n \, d\mu = \lim \int \frac{f(x,t_n) - f(x,p)}{t_n - p} \, d\mu = \lim \frac{F(t_n) - F(p)}{t_n - p}. $$
+Portanto, $F$ é derivável em $p$ e $\frac{dF}{dt}(p) = \int \frac{\partial f}{\partial t}(x,p) \, d\mu$.
+\end{proof}
+
+\begin{prop*}{}
+Se $f(x, \cdot)$ é contínua em $[a,b]$, para todo $x \in X$, e existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, então
+$$ \int_a^b F(t) \, dt = \int_a^b \left( \int_X f(x,t) \, d\mu \right) dt = \int_X \left[ \int_a^b f(x,t) \, dt \right] d\mu, $$
+em que as integrais em $t$ são de Riemann.
+\end{prop*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Do Teorema Fundamental do Cálculo, se $\varphi: [a,b] \rightarrow \mathbb{R}$ é contínua, então $\frac{d}{dt} \int_a^t \varphi(s) \, ds = \varphi(t)$. Defina $h: X \times [a,b] \rightarrow \mathbb{R}$ por
+$$ h(x,t) = \int_a^t f(x,s) \, ds. $$
+Então $\frac{\partial h}{\partial t}(x,t) = f(x,t)$, $\forall (x,t) \in X \times [a,b]$. Como $h(x,t)$ é limite de somas de Riemann, temos que $h(\cdot, t)$ é integrável (como veremos adiante). Além disso,
+$$ |h(x,t)| = \left| \int_a^t f(x,s) \, ds \right| \le \int_a^t |f(x,s)| \, ds \le g(x)(b-a). $$
+Portanto, pelo corolário anterior, para cada $t \in [a,b]$, seja $H: [a,b] \rightarrow \mathbb{R}$ dada por $H(t) = \int h(x,t) \, d\mu$. Temos
+$$ \frac{dH}{dt}(t) = \int \frac{\partial h}{\partial t}(x,t) \, d\mu = \int f(x,t) \, d\mu = F(t). $$
+Portanto, $H$ é uma primitiva de $F$ e
+$$ \int_a^b F(t) \, dt = H(b) - H(a) = \int_X h(x,b) \, d\mu - \int_X h(x,a) \, d\mu = \int_X h(x,b) \, d\mu = \int_X \left[ \int_a^b f(x,t) \, dt \right] d\mu. $$
+\end{proof}
+
+\subsubsection*{2) Relações entre Integral de Riemann e Integral de Lebesgue}
+
+Seja $f: [a,b] \rightarrow \mathbb{R}$ uma função limitada. Uma partição de $[a,b]$ é um conjunto finito $P \subset [a,b]$ com $a,b \in P$: $P = \{a = t_0 < t_1 < \dots < t_n = b\}$. Para cada partição $P$, definimos a soma inferior e superior de $f$ com respeito a $P$ como
+$$ s(f,P) = \sum_{i=1}^n m_i \Delta t_i \quad \text{e} \quad S(f,P) = \sum_{j=1}^n M_j \Delta t_j $$
+onde $m_i = \inf \{f(x) ; x \in [t_{i-1}, t_i]\}$, $M_i = \sup \{f(x) ; x \in [t_{i-1}, t_i]\}$ e $\Delta t_i = t_i - t_{i-1}$.
+Definimos
+$$ \underline{\int_a^b} f(x) \, dx = \sup_P s(f,P) \quad \text{e} \quad \overline{\int_a^b} f(x) \, dx = \inf_P S(f,P). $$
+Dizemos que $f$ é Riemann integrável se $\underline{\int_a^b} f(x) \, dx = \overline{\int_a^b} f(x) \, dx$. 
+
+Seja $(\mathbb{R}, \mathcal{M}, m)$ o espaço de medida de Lebesgue.
+
+\begin{theorem*}{}
+Seja $f: [a,b] \rightarrow \mathbb{R}$ uma função limitada. Se $f$ é Riemann integrável, então $f$ é Lebesgue mensurável, integrável e
+$$ \int_a^b f(x) \, dx = \int_{[a,b]} f \, dm. $$
+\end{theorem*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Para cada partição $P$, considere $g_P(x) = \sum m_i \chi_{(t_{i-1}, t_i]}$ e $G_P(x) = \sum M_i \chi_{(t_{i-1}, t_i]}$. Note que
+$$ s(f,P) = \sum m_i (t_i - t_{i-1}) = \sum m_i m((t_{i-1}, t_i]) = \int g_P \, dm \quad \text{e} \quad S(f,P) = \int G_P \, dm. $$
+Como $f$ é limitada, existe $C > 0$ tal que $|f(x)| \le C$, para todo $x \in [a,b]$. Em particular, $g_P \le f \le G_P \le C$ para toda partição $P$ de $[a,b]$.
+
+Podemos construir uma sequência de partições $P_k$ com $P_{k+1} \supset P_k$ e $\lim \max \Delta t_i^{(k)} = 0$, de forma que $(g_{P_k})$ é uma sequência não-decrescente e $(G_{P_k})$ não-crescente. Seja $g = \lim g_{P_k}$ e $G = \lim G_{P_k}$. Temos $g \le f \le G \le C$. 
+Pelo Teorema da Convergência Dominada:
+$$ \int_{[a,b]} g \, dm = \lim \int g_{P_k} \, dm = \lim s(f,P_k) = \int_a^b f(x) \, dx $$
+$$ \int_{[a,b]} G \, dm = \lim \int G_{P_k} \, dm = \lim S(f,P_k) = \int_a^b f(x) \, dx $$
+Em particular, $\int_{[a,b]} (G - g) \, dm = 0$, e portanto $G - g = 0$ m-q.t.p. $\implies G = g$ m-q.t.p. Logo $G = f$ m-q.t.p., e como $G$ é mensurável e $(\mathbb{R}, \mathcal{M}, m)$ é completo, concluímos que $f$ é Lebesgue mensurável e
+$$ \int_{[a,b]} f \, dm = \int_{[a,b]} G \, dm = \int_a^b f(x) \, dx. $$
+\end{proof}
+
+Para integrais impróprias é preciso de mais cuidado.
+
+\begin{prop*}{}
+Seja $f: [a, +\infty) \rightarrow \mathbb{R}$ uma função tal que para cada $b > a$, $f$ é limitada e Riemann integrável em $[a,b]$. Se $f \in L^1([a, +\infty), \mathcal{M}, m)$ (ou seja, $f$ é integrável), então
+$$ \int_a^{+\infty} f(x) \, dx = \lim_{b \rightarrow +\infty} \int_a^b f(x) \, dx = \int_{[a, +\infty)} f \, dm. $$
+\end{prop*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Seja $(b_k)$ uma sequência com $b_k > a$, tal que $\lim b_k = +\infty$. Considere $g_k = f \chi_{[a,b_k]}$. Assim, $\lim g_k = f$, $\int g_k \, dm = \int_{[a,b_k]} f \, dm = \int_a^{b_k} f(x) \, dx$, e $|g_k(x)| \le |f(x)|$.
+
+Assim, pelo Teorema da Convergência Dominada,
+$$ \int_{[a, +\infty)} f \, dm = \lim \int_a^{b_k} f(x) \, dx = \int_a^{+\infty} f(x) \, dx. $$
+\end{proof}
+
+A hipótese de $f$ ser integrável é fundamental. Pode acontecer de existir $\int_a^{+\infty} f(x) \, dx$ finito, mas $f$ não ser Lebesgue integrável. Por exemplo, considere $f(x) = \frac{\sin x}{x}$, para $x > 0$, e $f(0)=1$. Mostra-se que $\int_0^{+\infty} \frac{\sin x}{x} \, dx = \frac{\pi}{2}$.
+
+Vejamos que $f(x) = \frac{\sin x}{x}$ não é Lebesgue integrável. Como $f$ é contínua, $f \in \mathcal{M}$. Se $f$ fosse integrável, então $|f|$ também seria integrável. Como $|\sin x| \ge \frac{1}{2}$ em $\left[ \frac{\pi}{6} + k\pi, \frac{5\pi}{6} + k\pi \right]$, $\forall k \in \mathbb{N}$, temos que para cada $n \in \mathbb{N}$:
+\begin{align*}
+    \int_{[0, n\pi]} |f| \, dm &= \int_0^{n\pi} \left| \frac{\sin x}{x} \right| dx = \sum_{k=0}^{n-1} \int_{k\pi}^{(k+1)\pi} \frac{|\sin x|}{x} \, dx \\
+    &\ge \sum_{k=0}^{n-1} \int_{\frac{\pi}{6}+k\pi}^{\frac{5\pi}{6}+k\pi} \frac{1/2}{x} \, dx \ge \sum_{k=0}^{n-1} \frac{1/2}{(k+1)\pi} \int_{\frac{\pi}{6}+k\pi}^{\frac{5\pi}{6}+k\pi} \, dx \\
+    &= \sum_{k=0}^{n-1} \frac{1}{2(k+1)\pi} \left( \frac{4\pi}{6} \right) = \frac{1}{3} \sum_{k=0}^{n-1} \frac{1}{k+1}
+\end{align*}
+Como $\lim |f| \chi_{[0, n\pi]} = |f|$, concluiríamos do Teorema da Convergência Monótona que
+$$ \int_{[0, +\infty)} |f| \, dm = \lim \int_{[0, n\pi]} |f| \, dm \ge \lim_{n \rightarrow \infty} \frac{1}{3} \sum_{k=0}^{n-1} \frac{1}{k+1} = +\infty $$
+o que é um absurdo, pois esta é a série harmônica. Portanto, $f$ não é integrável em $(\mathbb{R}, \mathcal{M}, m)$.

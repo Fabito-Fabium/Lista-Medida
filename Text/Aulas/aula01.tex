@@ -43,7 +43,7 @@ concluímos que:
   \begin{enumerate}[label=(\roman*)]
     \item  $\mcal C \subseteq \siggmc C$;
     \item Se $\mcal F$ é uma $\sigma$-álgebra tal que $\mcal C \subseteq \mcal F$,
-      então $\siggmc C \subseteq F$.
+      então $\siggmc C \subseteq \mcal F$.
   \end{enumerate}
 \end{prop*}
 \begin{proof}[\textbf{Dem:}] Considere $\Lambda = \set{\mcal F \st \mcal F 
@@ -88,7 +88,7 @@ a álgebra de Borel é simplesmente $\borelR$.
   \end{enumerate}
 \end{prop*}
 \begin{proof}[Demonstração da (i):] Note que $\mcal E_1 \subseteq \tau \subseteq \borelR$,
-  da proposição sobre $sigmaalg$ gerada, temos $\siggmc {E_1} \subseteq \borelR$. Por 
+  da proposição sobre $\sigmaalg$ gerada, temos $\siggmc {E_1} \subseteq \borelR$. Por 
   outro lado, temos que todo aberto pode ser escrito como união enumerável 
   de elementos de $\mcal E_1$. Logo, $\tau \subseteq \siggmc{E_1}$, e 
   novamente da proposição citada anteriormente, temos $\borelR \subseteq \siggmc{E_1}$. 
@@ -161,7 +161,7 @@ todas) das afirmações do lema.
   são mensuráveis.
 \end{prop*}
 
-
+\noindent
 Dada uma função $f: X \rightarrow \bR$, definimos
 \begin{align*}
   \fplus f(x) \coloneq \sup\set{f(x), 0}, \quad\quad \fminus f(x)\coloneq \sup\set{-f(x),0}.

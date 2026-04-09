@@ -34,6 +34,10 @@
 \usepackage{chngcntr}
 \usepackage{tikz}
 \usepackage{titletoc}
+\usepackage{hyperref}
+
+\newif\ifdarkmode
+\darkmodetrue % Mude para \darkmodefalse para a versão "Papel Branco"
 
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
@@ -728,11 +732,11 @@
 {\hfill\small \thecontentspage}
 []
 \titlecontents*{subsection}[3.7pc]
-{\addvspace{-1pt}\small}
+{\addvspace{-1pt}\footnotesize}
 {}
-{}
-{\ --- \small\thecontentspage}
-[ \textbullet\ ][]
+{$\cdot$}
+{ }
+[][]
 
 \makeatletter
 \renewcommand{\tableofcontents}{%

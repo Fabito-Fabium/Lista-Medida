@@ -61,7 +61,11 @@
 \newcommand{\mysubsec}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
 \newcommand{\mysec}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
 
+
 \newcommand{\myexe}[1]{%
   \subsection*{Exercício #1}%
-  \addcontentsline{toc}{subsection}{Ex #1}%
+  \refstepcounter{subsection}%
+  \addcontentsline{toc}{subsection}{Q#1}%
 }
+
+
