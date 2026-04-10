@@ -71,35 +71,31 @@ em que $b_k \in \bR$ e $F_k \in \mcal F$, para todo $k=1, \cdots, m$. Mostre que
   \int \varphi d\mu = \sum_{k=1}^m b_k \mu(F_k).
 \end{align*}}
 \begin{proof}[\textbf{Dem:}]
-  Note que, para cada $x \in X$, temos $\varphi(x) = \sum_{k \st x\in F_k} b_k$.
-  Visto que $$\Im(\varphi)\subseteq \set{\sum_{k \in J} b_k \st J \subseteq \{1, \cdots, m\}},$$
-  segue que existe uma sequência finita de valores distintos 
-  $\{a_j\}_{j=1}^p = \Im(\varphi)$. Daqui, considere 
-  uma sequência $\{E_j\}_{j=1}^p$ em $\mcal F$, tal que, 
-  $E_j = \{x \in X \st \varphi(x) = a_j\}.$
-  Desse modo, $\bigcup E_j = X$ e $\set{E_j}$ é disjunto pela definição de $\{a_j\}$.
-  Sendo assim, como $\set{E_j}$ cobre $X$, cada $F_k$
-  pode ser escrito como $F_k = \bigcup_{j = 1}^p (F_k \cap E_j)$. Visto que $E_j$ é disjunto,
-  fixado $k \in \bN$, temos $\set{F_k \cap E_j}$ disjunto, ou seja, 
-  $$\mu(F_k) = \mu\parth{\bigcup_{j=1}^p (F_k \cap E_j)} = \sum_{j=1}^p \mu(F_k \cap E_j).$$
-  Portanto, 
+  Considere $\varphi = \sum_{j = 1}^p a_j \chi_{E_j}$ uma representação padrão de $\varphi$. Note que 
+  para cada $x \in E_j$, 
+  $$\varphi(x) = a_j = \sum_{k=1}^m b_k \chi_{F_k} (x).$$
+  Desse modo, 
+  $$a_j \chi_{E_j} = \sum_{k=1} b_k \chi_{F_k \cap E_j}.$$
+  Com isso, para cada $j = 1, \cdots, p$, defina $\psi_j = a_j \chi_{E_j}$ e note que da própria 
+  definição de $\psi_j$ temos que cada uma delas são funções simples não-negativas cuja 
+  representação padrão é exibida pela própria definição. Portanto, 
+  $$\int \psi_j d\mu = a_j \mu(E_j).$$
+  Mais ainda, note que para cada $j = 1, \cdots, p$ e $k = 1, \cdots, m$, segue que 
+  $f_{j, k} = b_k \chi_{F_k \cap E_j}$ é uma função integrável. Sendo assim, 
+  como $f_{j, k}^+$ ou $f_{j, k}^-$ são funções simples, não-negativas cuja representação 
+  padrão é exibida pela definição de $f_{j, k}$, segue que,
   \begin{align*}
-    \sum_{k=1}^m b_k \mu(F_k) = \sum_{k=1}^m b_k \sum_{j=1}^p \mu(F_k \cap E_j)
-    =\sum_{j=1}^p \cparth{\sum_{k= 1}^m b_k\mu(F_k \cap E_j)}.
+    \int f_{j, k} d\mu = \int f_{j, k}^+ d\mu - \int f_{j, k}^- d\mu = b_k \mu(F_k \cap E_j).
   \end{align*}
-  Agora, note que pela definição de $\set{a_j}$, para cada $x \in E_j$,
-  segue que 
-    $\varphi(x) = a_j = \sum_{k=1}^m b_k \chi_{F_k}(x)$, 
-    desse modo, 
-    $$a_j\chi_{E_j} = \sum_{k=1}^m b_k \chi_{F_k}\chi_{E_j} 
-    = \sum_{k=1}^m b_k \chi_{E_j \cap F_k}.$$
-  Portanto, $a_j \mu(E_j) = \sum_{k=1}^m b_k\mu(E_j \cap F_k)$, e, já que 
-  $\varphi = \sum_{j=1}^p a_j \chi_{E_j}$ é representação padrão de $\varphi$,
+  Portanto, já que fixado $k = 1, \cdots, m$ temos $E_j \cap F_k$ disjuntos para cada $j = 1, \cdots, p$,
+  concluímos que,
   \begin{align*}
-    \sum_{k=1}^m b_k \mu(F_k) = \sum_{j=1}^p\cparth{\sum_{k=1}^m b_k \mu(F_k \cap E_j)}
-    = \sum_{j=1}^p a_j\mu(E_j) = \int \varphi d\mu,
+    \int \varphi d\mu &= \int \sum_{j=1}^p \psi_j d\mu = \sum_{j=1}^p \int \psi_j d\mu 
+    = \sum_{j=1}^p a_j \mu(E_j) = \sum_{j=1}^p \cparth{\sum_{k=1}^m b_k \mu(E_j \cap F_k)}\\
+    &= \sum_{k=1}^m \cparth{\sum_{j=1}^p b_k \mu(E_j \cap F_k)}
+    = \sum_{k=1}^m b_k \mu\parth{E_j \cap \parth{\bigcup_{k=1}^m F_k}}
+    = \sum_{k=1}^m b_k \mu\parth{E_j}
   \end{align*}
-  como queríamos.
 \end{proof}
 \biglinend
 \newpage
@@ -113,31 +109,115 @@ então $f \in \mcal M^+(\bN, \mcal P(\bN))$ e
   \int f d\mu = \sum_{n=1}^\infty f(n).
 \end{align*}}
 \begin{proof}[\textbf{Dem:}]
-  Seja $f: \bN \rightarrow \xbR$ não negativa. Visto que para todo $E \in \overline \borelR$,
-  temos $\preim f (E) \in \mcal P (\bN)$, segue que $f \in \mcal M^+(\bN, \mcal P (\bN))$.
-  Mais ainda, dado qualquer $\varphi \in \mcal M^+(\bN, \mcal P (\bN))$ simples 
-  satisfazendo $0 \le \varphi \le f$ pontualmente, note que,
-  $\varphi = \sum_{n \in \bN} \varphi(n)\chi_{\set{n}}$
-  com $\varphi(n) \neq 0$ para finitos $n \in \bN$, é uma representação de $\varphi$. 
-  Do exercício anterior,  $\int \varphi d\mu = \sum_{n \in \bN} \varphi(n)\mu(\set{n})$, 
-  e, como $\mu$ é a medida da contagem, $\int \varphi d\mu = \sum_{n \in \bN} \varphi(n)$. 
-  Daqui, como $\varphi \le f$ e ambos são não negativos,
+  Ora, considere $f_N = \sum_{n=1}^N f(n) \chi_{\set{n}}$ e note que $f_N \le f_{N+1}$, visto que $f(n) \ge 0$ para 
+  todo $n \in \bN$. Mais ainda, $\lim f_N = f$, portanto, do Teorema da Convergência Monótona, 
+  e sabendo que $\mu$ é a medida da contagem,
   \begin{align*}
-    \sum_{n \in \bN} \varphi = \int \varphi d\mu \le \sum_{n \in \bN} f,
+    \sum_{n = 1}^\infty f(n) = \lim_{N \rightarrow \infty} \sum_{n=1}^N f(n)\mu(\set{n}) 
+    = \lim_{N\rightarrow \infty} \int f_N d\mu = \int \lim_{N \rightarrow \infty} f_N d\mu 
+    = \int f d\mu.
   \end{align*}
-  já que $\int f d\mu$ é o supremo de $\int \varphi d\mu$, segue que 
-  \begin{align*}
-    \int f d\mu \le \sum_{n \in \bN} f.
-  \end{align*}
-  Por outro lado, note que $f_N = \sum_{n = 1}^N f(n)\chi_{\set{n}}$ são funções simples 
-  não negativas satisfazendo $0 \le f_N \le f$, para todo $N \in \bN$. Desse modo,
-  \begin{align*}
-    \sum_{n=1}^N f(n) = \int f_N d\mu \le \int f d\mu, \forall N \in \bN.
-  \end{align*}
-  Portanto, 
-  \begin{align*}
-    \lim_{N \rightarrow \infty} \sum_{n=1}^N f(n) = \sum_{n\in \bN} f(n) \le \int f d\mu.
-  \end{align*}
-  Com isso, temos o que queríamos.
-
 \end{proof}
+\biglinend
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{Seja $\parth{\bR, \mcal M, m}$ o espaço de medida de Lebesgue e considere a 
+sequência $(f_n)$ dada por $f_n = \parth{\frac{1}{n}}\chi_{(n, +\infty)}$. Mostre que 
+a sequência $(f_n)$ é monótona decrescente e converge para $f=0$, mas 
+\begin{align*}
+  0 = \int f dm \neq \lim \int f_n dm = +\infty.
+\end{align*}
+Conclua que não há um teorema correspondente ao Teorema da Convergência 
+Monótona para uma sequência descescente em $\mcal M^+$.
+}
+\begin{proof}[\textbf{Dem:}]
+Ora, visto que $n+1 > n$ para todo $n \in \bN$, fixado $x \in \bR$, 
+\begin{align*}
+  f_n(x) = \frac{1}{n} \chi_{(n, +\infty)}(x) > \frac{1}{n+1} \chi_{(n, +\infty)}(x) \ge
+  \frac{1}{n+1} \chi_{(n+1, +\infty)}(x) =f_{n+1}(x),
+\end{align*}
+  segue que $(f_n)$ é monótona descrescente. Mais ainda, considere a 
+  sequência de funções constantes $(\varphi_n)$ definida por $\varphi_n = \frac{1}{n}$. Note que, 
+  fixado $x \in \bR$, 
+  para todo $n \in \bN$, 
+  \begin{align*}
+    \varphi_n(x) \ge f_n(x) \ge 0,
+  \end{align*}
+  portanto, 
+  \begin{align*}
+    0 = \lim_{n \rightarrow \infty} \varphi_n(x) \ge \lim_{n \rightarrow \infty} f_n(x) \ge 0,
+  \end{align*}
+  ou seja $f_n$ converge pontualmente a $f=0$, como queríamos. Daqui, já que, 
+  para todo $n \in \bN$ temos
+  \begin{align*}
+    \int f_n d\mu = \frac{1}{n} \mu_{(n, +\infty)} = \frac{1}{n}\cdot(+\infty) = +\infty,
+  \end{align*}
+  então, $\lim_{n \rightarrow \infty} \int f_n d\mu = +\infty$, entretanto, 
+  $\int f d\mu = \int 0 d\mu = 0$, ou seja 
+  \begin{align*}
+   0 = \int f dm \neq \lim \int f_n dm = +\infty.
+  \end{align*}
+  Visto que a única diferença entre as hipóteses do Teorema da Convergência Monótona 
+  com as informações que temos da sequência $(f_n)$ do presente exercício é que 
+  $(f_n)$ é decrescente, segue do presente contra-exemplo que não existe um 
+  teorema correspondente ao TCM para uma sequência decrescente em $\mcal M^+$.
+\end{proof}
+\biglinend
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{
+Seja $(\bR, \mcal M, m)$ o espaço de medida de Lebesgue. 
+\begin{enumerate}[label=\alph*)]
+  \item Sejam $f_n = \frac{1}{n}\chi_{(0, n)}$ e $f = 0$. Mostre que a sequência $(f_n)$
+    converge para $f$, mas 
+    \begin{align*}
+      \int f dm \neq \lim \int f_n dm.
+    \end{align*}
+    Por que isso não contradiz o Teorema da Convergência Monótona? O Lema de Fatou 
+    se aplica?
+    \begin{proof}[\textbf{Dem:}]
+        Note que, por definição, para cada $n \in \bN$, temos $f_n \in \mathcal M^+(\bR, \mcal M)$. 
+        Mais ainda, $(f_n)$ não é monótono, pois, dado $n \in \bN$, se $x \in (0, n)$,
+        $f_n(x) \ge f_{n+1}(x)$, entretanto, para $x \in (n, +\infty)$ temos $f_{n+1}(x) \ge f_n (x)$,
+        ou seja, $(f_n)$ não satisfaz as hipóteses do Teorema da Convergência Monótona. 
+        E, já que para todo $n \in \bN$, temos
+        \begin{align*}
+          \frac{1}{n} \ge f_n = \frac{1}{n}\chi_{(0, n)} \ge 0 = f 
+        \end{align*}
+        então, $\lim 1/n = 0 \ge \lim f_n \ge 0 = f$, i.e., $\lim f_n = f$.
+        Mais ainda,
+        como para todo $n \in \bN$ temos
+        \begin{align*}
+          \int f_n dm = \frac{1}{n}m((0, n)) = \frac{1}{n}\cdot (n-0) = 1,
+        \end{align*}
+        segue que $\lim \int f_n dm = 1$. Entretanto, $\int f dm = \int 0 dm = 0$, sendo assim, 
+        \begin{align*}
+          \int \lim\inf f_n dm &= \int \lim f_n dm = \int f dm = 0 \\
+          &\le 1 = \lim \int f_n dm = \lim \inf \int f_n dm.
+        \end{align*}
+        Ou seja, o Lema de Fatou se aplica.
+    \end{proof}
+  \item Sejam $g_n = n \chi_{(\frac{1}{n}, \frac{2}{n})}$ e $g = 0$. Mostre que a sequência 
+    $(g_n)$ converge para $g$, mas 
+    \begin{align*}
+      \int g dm \neq \lim \int g_n dm.
+    \end{align*}
+    Por que isso não contradiz o Teorema da Convergência Monótona? O Lema de Fatou se aplica?
+    \begin{proof}[\textbf{Dem:}]
+      Sejam $x \in \bR$ e $\epsilon >0$. Já que existe $N \in \bN$ tal que $x \ge \frac{2}{N}$,
+      (tome N como qualquer inteiro maior que 2/x) então, para $n \ge N$, $x \ge \frac{2}{N} 
+      \ge \frac{2}{n}$, ou seja $x \not \in \parth{\frac{1}{n}, \frac{2}{n}}$. Portanto, 
+      \begin{align*}
+        g_n(x) = n \chi_{\parth{\frac{1}{n}, \frac{2}{n}}}(x) = n \cdot 0 = 0.
+      \end{align*}
+      Ou seja, $(g_n)$ converge pontualmente para $g=0$. Note que $g_n$
+      não é menor ou igual a $g_{n+1}$ para todo $x \in \bR$, portanto,
+      $(g_n)$ não satisfazem as hipóteses do Teorema 
+      da Convergência Monótona. 
+    \end{proof}
+\end{enumerate}
+} 
