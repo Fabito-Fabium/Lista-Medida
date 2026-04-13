@@ -9,7 +9,7 @@ Suponha que para algum $t_0 \in [a,b]$ vale que $\lim_{t \rightarrow t_0} f(x,t)
 $$ \lim_{t \rightarrow t_0} \int f(x,t) \, d\mu = \int f(x,t_0) \, d\mu. $$
 \end{prop*}
 
-\begin{proof}[\textbf{Demonstração:}]
+\begin{proof}[\textbf{Dem:}]
 Seja $(t_n)$ uma sequência em $[a,b]$ tal que $\lim t_n = t_0$ e considere $f_n(x) = f(x,t_n)$. Assim,
 $$ \lim f_n(x) = \lim f(x,t_n) = f(x,t_0) \quad \text{e} \quad |f_n(x)| \le g(x), \forall n \in \mathbb{N}. $$
 Pelo Teorema da Convergência Dominada, temos que
@@ -31,7 +31,7 @@ Então a função $F$ definida anteriormente é derivável em $[a,b]$ e
 $$ \frac{dF}{dt}(t) = \frac{d}{dt} \int f(x,t) \, d\mu = \int \frac{\partial f}{\partial t}(x,t) \, d\mu. $$
 \end{prop*}
 
-\begin{proof}[\textbf{Demonstração:}]
+\begin{proof}[\textbf{Dem:}]
 Procedemos como anteriormente. Seja $p \in [a,b]$ e $(t_n)$ uma sequência em $[a,b]$, com $t_n \neq p$, e $\lim t_n = p$. Assim, para cada $x \in X$, temos que
 $$ \frac{\partial f}{\partial t}(x,p) = \lim \frac{f(x,t_n) - f(x,p)}{t_n - p} = \lim h_n(x), $$
 com $h_n(x) = \frac{f(x,t_n) - f(x,p)}{t_n - p}$. Como $h_n$ é mensurável, concluímos que $\frac{\partial f}{\partial t}$ é mensurável. Para cada $x$ fixado, obtemos do Teorema do Valor Médio:
@@ -51,7 +51,7 @@ $$ \int_a^b F(t) \, dt = \int_a^b \left( \int_X f(x,t) \, d\mu \right) dt = \int
 em que as integrais em $t$ são de Riemann.
 \end{prop*}
 
-\begin{proof}[\textbf{Demonstração:}]
+\begin{proof}[\textbf{Dem:}]
 Do Teorema Fundamental do Cálculo, se $\varphi: [a,b] \rightarrow \mathbb{R}$ é contínua, então $\frac{d}{dt} \int_a^t \varphi(s) \, ds = \varphi(t)$. Defina $h: X \times [a,b] \rightarrow \mathbb{R}$ por
 $$ h(x,t) = \int_a^t f(x,s) \, ds. $$
 Então $\frac{\partial h}{\partial t}(x,t) = f(x,t)$, $\forall (x,t) \in X \times [a,b]$. Como $h(x,t)$ é limite de somas de Riemann, temos que $h(\cdot, t)$ é integrável (como veremos adiante). Além disso,
@@ -78,7 +78,7 @@ Seja $f: [a,b] \rightarrow \mathbb{R}$ uma função limitada. Se $f$ é Riemann 
 $$ \int_a^b f(x) \, dx = \int_{[a,b]} f \, dm. $$
 \end{theorem*}
 
-\begin{proof}[\textbf{Demonstração:}]
+\begin{proof}[\textbf{Dem:}]
 Para cada partição $P$, considere $g_P(x) = \sum m_i \chi_{(t_{i-1}, t_i]}$ e $G_P(x) = \sum M_i \chi_{(t_{i-1}, t_i]}$. Note que
 $$ s(f,P) = \sum m_i (t_i - t_{i-1}) = \sum m_i m((t_{i-1}, t_i]) = \int g_P \, dm \quad \text{e} \quad S(f,P) = \int G_P \, dm. $$
 Como $f$ é limitada, existe $C > 0$ tal que $|f(x)| \le C$, para todo $x \in [a,b]$. Em particular, $g_P \le f \le G_P \le C$ para toda partição $P$ de $[a,b]$.
@@ -98,7 +98,7 @@ Seja $f: [a, +\infty) \rightarrow \mathbb{R}$ uma função tal que para cada $b 
 $$ \int_a^{+\infty} f(x) \, dx = \lim_{b \rightarrow +\infty} \int_a^b f(x) \, dx = \int_{[a, +\infty)} f \, dm. $$
 \end{prop*}
 
-\begin{proof}[\textbf{Demonstração:}]
+\begin{proof}[\textbf{Dem:}]
 Seja $(b_k)$ uma sequência com $b_k > a$, tal que $\lim b_k = +\infty$. Considere $g_k = f \chi_{[a,b_k]}$. Assim, $\lim g_k = f$, $\int g_k \, dm = \int_{[a,b_k]} f \, dm = \int_a^{b_k} f(x) \, dx$, e $|g_k(x)| \le |f(x)|$.
 
 Assim, pelo Teorema da Convergência Dominada,

@@ -30,36 +30,6 @@ funções características. Demonstre as seguintes propriedades:
 \newpage
 \stepcounter{tres}
 \myexe{\thetres}
-\bigline
-\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(g_n)$ uma sequência em 
-$\mcal M^+(X, \mcal F)$. Demonstre que: 
-\begin{align*}
-  \int\parth{\sum_{n=1}^\infty g_n}d\mu = \sum_{n=1}^\infty\parth{\int g_n d\mu}
-\end{align*}}
-\begin{proof}[\textbf{Dem:}] Das propriedades de integrais de funções
-  em $\mcal M^+(X, \mcal F)$, segue que para todo $N \in \mbb N$, 
-\begin{align*}
-  \int\parth{\sum_{n=1}^N g_n}d\mu = \sum_{n=1}^N\parth{\int g_n d\mu}.
-\end{align*}
-  Visto que $f_N = \sum_{n=1}^N g_n$ é não-decrescente e 
-  converge para $f = \sum_{n=1}^\infty g_n$, do Teorema da Convergência Monótona, 
-\begin{align*}
-  \int f d\mu = \lim_{N \rightarrow \infty} \int f_N d\mu \implies 
-  \int \parth{\sum_{n=1}^\infty g_n} d\mu = \lim_{N \rightarrow \infty} 
-  \int \parth{\sum_{n=1}^N g_n} d\mu.
-\end{align*}
-Desse modo, 
-\begin{align*}
-  \int \parth{\sum_{n=1}^\infty g_n} d\mu = \lim_{N \rightarrow \infty} 
-  \int\parth{\sum_{n=1}^N g_n}d\mu = \lim_{N \rightarrow \infty }
-  \sum_{n=1}^N\parth{\int g_n d\mu} = \sum_{n=1}^\infty\parth{\int g_n d\mu},
-\end{align*}
-como queríamos.
-\end{proof}
-\biglinend 
-\newpage
-\stepcounter{tres}
-\myexe{\thetres}
 \bigline 
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $\varphi \in \mcal M^+(X, \mcal F)$
 uma função simples com representação (não necessariamente padrão)
@@ -123,6 +93,50 @@ então $f \in \mcal M^+(\bN, \mcal P(\bN))$ e
 \stepcounter{tres}
 \myexe{\thetres}
 \bigline
+\textbf{Seja $(\bR, \mcal M,  m)$ o espaço de medida de Lebesgue. 
+Considere a sequência $(f_n)$ dada por $f_n = \chi_{(0, n)}$. Mostre que 
+a sequência $(f_n)$ é monótona crescente e converge pontualmente para $f = \chi_{(0, +\infty)}$. 
+Verifique então que o Teorema da Convergência Monótona ainda é válida para funções 
+cuja integral é infinita.}
+\begin{proof}[\textbf{Dem:}] Note que, para todo $x \le 0$, $f_n = f = 0$, portanto, 
+  considere $x > 0$ e seja $\epsilon > 0$. Visto que sempre existe $N \in \bN$ tal que 
+  $N > x > 0$ (basta tomar o teto de $x+1$), temos $x \in (0, n)$ sempre quando $n \ge N$, 
+  isto é, 
+  \begin{align*}
+    f_n(x) = \chi_{(0, n)}(x) = 1 = \chi_{(0, \infty)}(x) = f(x).
+  \end{align*}
+  Portanto, $f_n$ converge pontualmente para $f$. Mais ainda, visto que dado $n \in \bN$, 
+  $(0, n) \subset (0, n+1)$, concluímos que $f_n \le f_{n+1}$ para $x \in (0, n)$
+  , e $f_n < f_{n+1}$ para $x \in (n, n+1)$, segue que $(f_n)$ é 
+  monótona crescente. Note que as hipóteses do Teorema da Convergência Monótona 
+  já são satisfeitas, de todo modo, visto que $\int f_n dm = m((0, n)) = n - 0 = n$ 
+  para todo $n \in \bN$, então, 
+  \begin{align*}
+    \lim \int f_n dm = \lim n = +\infty = m((0, +\infty)) = \int f dm = \int \lim f_n dm.
+  \end{align*}
+  Mais ainda, tomando a função $g \in \mathcal M^+$ 
+  satisfazendo $\int g dm=+\infty$, segue da definição que, 
+  \begin{align*}
+    \int g dm = +\infty = \sup \set{\int \varphi dm \st \varphi \text{ é função simples 
+    e } 0 \le \varphi \le g},
+  \end{align*}
+  isto é, dado $M > 0$, existe uma função $\varphi$ em $\mathcal M$
+  satisfazendo $0 \le \varphi \le g$ e $\int \varphi dm > M$. Como existe uma 
+  sequência $(\psi_n)$ simples, não-decrescente que converge pontualmente para 
+  $g$, defina a sequência $(h_n)$ tal que para cada $x \in \bR$, $h_n(x) = 
+  \min\{\psi_n (x), \varphi (x)\}$. Note que $(h_n)$ converge pontualmente para 
+  $\varphi$, portanto, do TCM,
+  \begin{align*}
+    \lim \int \psi_n dm \ge \lim \int h_n dm = \int \varphi dm > M,
+  \end{align*}
+\end{proof}
+ou seja, $\lim \int \psi_n dm = +\infty$
+
+\biglinend
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
 \textbf{Seja $\parth{\bR, \mcal M, m}$ o espaço de medida de Lebesgue e considere a 
 sequência $(f_n)$ dada por $f_n = \parth{\frac{1}{n}}\chi_{(n, +\infty)}$. Mostre que 
 a sequência $(f_n)$ é monótona decrescente e converge para $f=0$, mas 
@@ -180,9 +194,11 @@ Seja $(\bR, \mcal M, m)$ o espaço de medida de Lebesgue.
     Por que isso não contradiz o Teorema da Convergência Monótona? O Lema de Fatou 
     se aplica?
     \begin{proof}[\textbf{Dem:}]
-        Note que, por definição, para cada $n \in \bN$, temos $f_n \in \mathcal M^+(\bR, \mcal M)$. 
+        Note que, por definição, para cada $n \in \bN$, 
+        temos $f_n \in \mathcal M^+(\bR, \mcal M)$. 
         Mais ainda, $(f_n)$ não é monótono, pois, dado $n \in \bN$, se $x \in (0, n)$,
-        $f_n(x) \ge f_{n+1}(x)$, entretanto, para $x \in (n, +\infty)$ temos $f_{n+1}(x) \ge f_n (x)$,
+        $f_n(x) \ge f_{n+1}(x)$, entretanto, 
+        para $x \in (n, +\infty)$ temos $f_{n+1}(x) \ge f_n (x)$,
         ou seja, $(f_n)$ não satisfaz as hipóteses do Teorema da Convergência Monótona. 
         E, já que para todo $n \in \bN$, temos
         \begin{align*}
@@ -207,17 +223,545 @@ Seja $(\bR, \mcal M, m)$ o espaço de medida de Lebesgue.
       \int g dm \neq \lim \int g_n dm.
     \end{align*}
     Por que isso não contradiz o Teorema da Convergência Monótona? O Lema de Fatou se aplica?
-    \begin{proof}[\textbf{Dem:}]
-      Sejam $x \in \bR$ e $\epsilon >0$. Já que existe $N \in \bN$ tal que $x \ge \frac{2}{N}$,
+    \begin{proof}[\textbf{Dem:}]Note que, para todo $x \in \bR$ tal que $x \le 0$, 
+      temos que $g_n = 0$. Desse modo, sejam $x \in \bR^+$ e $\epsilon >0$.
+      Já que existe $N \in \bN$ tal que $x \ge \frac{2}{N}$,
       (tome N como qualquer inteiro maior que 2/x) então, para $n \ge N$, $x \ge \frac{2}{N} 
       \ge \frac{2}{n}$, ou seja $x \not \in \parth{\frac{1}{n}, \frac{2}{n}}$. Portanto, 
       \begin{align*}
         g_n(x) = n \chi_{\parth{\frac{1}{n}, \frac{2}{n}}}(x) = n \cdot 0 = 0.
       \end{align*}
-      Ou seja, $(g_n)$ converge pontualmente para $g=0$. Note que $g_n$
-      não é menor ou igual a $g_{n+1}$ para todo $x \in \bR$, portanto,
+      Ou seja, $(g_n)$ converge pontualmente para $g=0$. Note que existe $n \in \bN$,
+      tal que $g_n$ não é menor ou igual a $g_{n+1}$ para todo $x \in \bR$, portanto,
       $(g_n)$ não satisfazem as hipóteses do Teorema 
-      da Convergência Monótona. 
+      da Convergência Monótona e consequentemente não pode 
+      contradizer o TCM. De todo modo, visto que para todo $n \in \bN$, temos 
+      \begin{align*}
+        \int g_n dm = n \mu\parth{\parth{\frac{1}{n}, \frac{2}{n}}} = n \cdot \parth{\frac{2}{n}
+        - \frac{1}{n}} = n \cdot \frac{1}{n} = 1 \ge 0 = \int g dm,
+      \end{align*}
+      então, $\lim\inf \int g_n dm=\lim \int g_n dm \ge \int g dm =  \int \lim g_n dm = 
+      \int \lim \inf g_n dm$, isto é, como $(g_n)$ é uma 
+      sequência em $\mathcal M (\bR, \mcal M)$, ela satisfaz as hipóteses do Lema de Fatou,
+      e como ela obedece o Lema, ela não o contradiz, com isso, temos o que queríamos.
     \end{proof}
 \end{enumerate}
 } 
+\biglinend 
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{
+  Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in \mathcal M^+(X, \mcal F)$. 
+  Mostre que se 
+  \begin{align*}
+    \int f d\mu < + \infty, 
+  \end{align*}
+  então para qualquer $\epsilon>0$ existe um conjunto $E \subset X$ tal que 
+  $\mu(E)< +\infty$ e 
+  \begin{align*}
+    \int f d\mu \le \int_E f d\mu + \epsilon.
+  \end{align*}
+}
+\begin{proof}[\textbf{Dem:}]
+Por definição, 
+\begin{align*}
+  \int f d\mu = \sup \set{\int \varphi d\mu \st \varphi \text{ é uma função simples 
+  e } 0 \le \varphi \le f}.
+\end{align*}
+  Desse modo, para todo $\epsilon > 0$, existe $\varphi \in \mathcal M^+(X, \mcal F)$
+  função simples satisfazendo,
+\begin{align*}
+  \int f d\mu - \epsilon < \int \varphi d\mu \le \int f d\mu.
+\end{align*}
+  Daqui, considere $\varphi = \sum_{k=1}^m a_k \chi_{E_k}$ uma representação padrão 
+  de $\varphi$ e defina 
+  $$\Lambda = \{k = \{1, \cdots, m\} \st \forall x \in E_k, \varphi(x) = a_k > 0\}.$$
+  Seja $E = \bigcup\limits_{k \in \Lambda} E_k$, e note que, 
+  \begin{align*}
+    +\infty \ge \int f d\mu \ge \int \varphi d\mu = \sum_{k = 1}^m a_k \mu(E_k) 
+    = \sum_{k \in \Lambda} a_k \mu(E_k) \ge
+    (\inf_{k \in \Lambda} a_k) \sum_{k \in \Lambda} \mu(E_k) = (\inf_{k \in \Lambda} a_k) \mu(E).
+  \end{align*}
+  Por definição de $\Lambda$ e sabendo que ${a_k}$ é uma sequência finita, 
+  $\inf_{k \in \Lambda} a_k > 0$. Desse modo, já que 
+  $(\inf_{k \in \Lambda} a_k) \mu(E) < +\infty$, temos $\mu(E) < +\infty$.
+  Da definição de $E$, note que, 
+  \begin{align*}
+    \int_E \varphi d\mu = \int \varphi d\mu \ge \int f d\mu - \epsilon
+  \end{align*}
+  Já que $\int_E f d\mu \ge \int_E \varphi d\mu$, temos 
+  $\int_E f d\mu \ge \int f d\mu - \epsilon$, ou seja, 
+  \begin{align*}
+    \int f d\mu \le \int_E f d\mu + \epsilon,
+  \end{align*}
+  como queríamos.
+\end{proof}
+\biglinend 
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(f_n)$ uma sequência 
+em $\mathcal M^+ (X, \mcal F)$ que converge pontualmente para $f$. Suponha que 
+\begin{align*}
+  \int f d\mu = \lim \int f_n d\mu < +\infty.
+\end{align*}
+Mostre que, para cada $E \subset X$, vale 
+\begin{align*}
+  \int_E f d\mu = \lim \int_E f_n d\mu.
+\end{align*}
+}
+\begin{proof}[\textbf{Dem:}]Dado qualquer $E \subseteq X$, note que $f_n \chi_E$
+  converge pontualmente para $f \chi_E$. Desse modo, do lema de Fatou, 
+\begin{align*}
+  \int_E f d\mu = \int_E \lim\inf f_n d\mu \le \lim\inf \int_E f_n d\mu,
+\end{align*}
+Por outro lado, novamente do Lema de Fatou, 
+\begin{align*}
+  \int_{E^C} f d\mu = \int_{E^C} \lim \inf f_n d\mu \le \lim \inf \int_{E^C} f_n d\mu. 
+\end{align*}
+  Já que $\int_{E^C} f_n d\mu = \int f_n d\mu - \int_{E} f_n d\mu$, 
+\begin{align*}
+  \int_{E^C} fd\mu \le \lim\inf \cparth{\int f_n d\mu - \int_{E} f_n d\mu} =
+  \lim\inf \int f_n d\mu - \lim\sup \int_E f_n d\mu.
+\end{align*}
+Daqui, visto que $\lim\sup \int_E f_n d\mu \le \lim\sup \int f_n d\mu = 
+  \lim \int f_n d\mu < +\infty$ e 
+  $\int_{E^C} f d\mu \le \int f d\mu < +\infty$, 
+\begin{align*}
+  \lim\sup \int_E f_n d\mu \le \lim \int f_n d\mu - \int_{E^C} f d\mu 
+  = \int f d\mu - \int_{E^C} fd\mu = \int_E f d\mu.
+\end{align*}
+Portanto, 
+\begin{align*}
+  \lim\sup \int_E f_n d\mu \le \int_E f d\mu \le \lim \inf \int_E f_n d\mu,
+\end{align*}
+ou seja, 
+\begin{align*}
+  \lim \int_E f_n d\mu = \int_E f d\mu,
+\end{align*}
+como queríamos.
+\end{proof}
+
+\biglinend 
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(g_n)$ uma sequência em 
+$\mcal M^+(X, \mcal F)$. Demonstre que: 
+\begin{align*}
+  \int\parth{\sum_{n=1}^\infty g_n}d\mu = \sum_{n=1}^\infty\parth{\int g_n d\mu}
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Das propriedades de integrais de funções
+  em $\mcal M^+(X, \mcal F)$, segue que para todo $N \in \mbb N$, 
+\begin{align*}
+  \int\parth{\sum_{n=1}^N g_n}d\mu = \sum_{n=1}^N\parth{\int g_n d\mu}.
+\end{align*}
+  Visto que $f_N = \sum_{n=1}^N g_n$ é não-decrescente e 
+  converge para $f = \sum_{n=1}^\infty g_n$, do Teorema da Convergência Monótona, 
+\begin{align*}
+  \int f d\mu = \lim_{N \rightarrow \infty} \int f_N d\mu \implies 
+  \int \parth{\sum_{n=1}^\infty g_n} d\mu = \lim_{N \rightarrow \infty} 
+  \int \parth{\sum_{n=1}^N g_n} d\mu.
+\end{align*}
+Desse modo, 
+\begin{align*}
+  \int \parth{\sum_{n=1}^\infty g_n} d\mu = \lim_{N \rightarrow \infty} 
+  \int\parth{\sum_{n=1}^N g_n}d\mu = \lim_{N \rightarrow \infty }
+  \sum_{n=1}^N\parth{\int g_n d\mu} = \sum_{n=1}^\infty\parth{\int g_n d\mu},
+\end{align*}
+como queríamos.
+\end{proof}
+
+\biglinend 
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida. Prove o 
+Teorema da Convergência Monótona através do Lema de Fatou.}
+\begin{proof}[\textbf{Dem:}] Considere uma sequência $(f_n)$ não-decrescente 
+  de funções em $\mathcal M^+ (X, \mcal F)$ que converge pontualmente para $f$. 
+  Então, do Lema de Fatou, 
+  \begin{align*}
+    \int \lim\inf f_n d\mu \le \lim\inf\int f_n d\mu.  
+  \end{align*}
+Já que $\lim\inf f_n=\lim f_n=f$,
+\begin{align*}
+  \int f d\mu \le \lim\inf\int f_n d\mu.
+\end{align*}
+  Mais ainda, como $(f_n)$ é não-decrescente e converge pontualmente em $f$, 
+  temos para  cada $n \in \bN$ $f_n(x) \le f(x)$ para todo $x \in X$, ou seja, para todo 
+  $n \in \bN$, 
+\begin{align*}
+  \int f_n d\mu \le \int f d\mu \implies \lim\sup \int f_n d\mu \le \int f d\mu.
+\end{align*}
+Com isso, 
+\begin{align*}
+  \lim \sup \int f_n d\mu \le \int f d\mu \le \lim \inf \int f_n d\mu
+\end{align*}
+segue que, $\lim \int f_n d\mu = \int \lim f_n d\mu = \int f d\mu$, 
+como queríamos.
+\end{proof}
+
+\biglinend 
+\newpage
+\stepcounter{tres}
+\myexe{\thetres}
+\bigline
+\textbf{Seja $(X, \mcal P (X), \delta_p)$ o espaço de medida no 
+qual $p \in X$ é fixado e $\delta_p$ é a medida de Dirac concentrada em $p$. 
+Caracterize a integrabilidade de $f \in \mathcal M(X, \mcal P(X))$ 
+e calcule $\int f d\delta_p$.}
+\begin{proof}[\textbf{Dem:}] Dado $g \in \mathcal M^+(X, \mcal P(X))$, temos que 
+  a integral de $g$ com respeito a $\delta_p$ é definido como 
+\begin{align*}
+  \int g d\delta_p \coloneq \sup \set{\int 
+  \varphi d\delta_p \st \varphi \in \mathcal M^+(X, \mcal P(X))
+  \text{ é simples e } 0 \le \varphi(x) \le g(x), \forall x\in X}.
+\end{align*}
+Desse modo, dada uma função simples $\varphi \in \mathcal M^+(X, \mcal P(X))$, 
+  tal que $0 \le \varphi(x) \le g(x)$, para todo $x \in \bR$ 
+  e $\varphi = \sum_{k=1}^m a_k \chi_{E_k}$ uma representação padrão de $\varphi$,
+  se $p \in E_j$ para algum $j = 1, \cdots, m$, temos
+\begin{align*}
+  \int \varphi d\delta_p = \sum_{k=1}^m a_k \delta_p(E_k) 
+  = a_j \delta_p(E_j) = a_j = \varphi(p).
+\end{align*}
+Portanto, 
+\begin{align*}
+  \int g d\delta_p \coloneq \sup \set{\varphi(p) \st \varphi \in \mathcal M^+(X, \mcal P(X))
+  \text{ é simples e } 0 \le \varphi(x) \le g(x), \forall x\in X}, 
+\end{align*}
+  isto é, $\int g d\delta_p = g(p)$. 
+  Agora, seja $f \in \mathcal M(X, \mcal P(X))$, dizemos que $f$ 
+  é integrável quando $f^+$ e $f^-$ possuírem integrais finitas e definimos a integral 
+  da $f$ com respeito a medida $\delta_p$ por 
+  $$\int f d\delta_p = \int f^+d\delta_p - \int f^- d\delta_p = f^+(p) - f^-(p),$$
+  temos que $\int f d\delta_p = f(p)$. Portanto, $f$ é integrável com 
+  respeito a medida $\delta_p$ se, e somente se, $f(p) \in \bR$.
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, $f \in L(X, \mcal F, \mu)$
+e $a > 0$. Mostre que o conjunto $\set{x \in X \st |f(x)| > a}$ tem medida 
+finita e que o conjunto $\set{x \in X \st f(x) \neq 0}$ tem medida $\sigma$-finita.}
+\begin{proof}[\textbf{Dem:}] Já que $f$ é Lebesgue integrável, segue que 
+  $|f|$ também o é. Sendo assim, defina $A = \{x \in X \st |f(x)| > a\}$, e 
+  note que $a \chi_A(x) \le (|f|\chi_A)(x)$ para todo $x \in X$. Portanto, 
+  já que $|f|$ é Lebesgue integrável,
+  \begin{align*}
+    a\mu(A) \le \int |f|\chi_A d\mu = \int_A |f| d\mu \le \int |f| d\mu < +\infty, 
+  \end{align*}
+  visto que $a > 0$, segue que $\mu(A) < +\infty$, portanto, $A$ tem medida finita.
+  
+  Agora, vejamos que $B = \{x \in X \st f(x) \neq 0\}$ tem medida $\sigma$-finita.
+  Definindo $$A_n = \set{x \in X \st |f(x)| > \frac{1}{n}},$$
+  note que $B = \bigcup_{k \in \bN} A_k$, pois, dado $x \in X$, se $f(x) \neq 0$, 
+  então $|f(x)| > 0$, isto é, existe $n \in \bN$ tal que $|f(x)|> \frac{1}{n}$.
+  Dito isso, já que cada $\mu(A_n) < +\infty$,
+  segue que $B$ é $\sigma$-finito.
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, $f \in L(X, \mcal F, \mu)$
+e $g \in \mathcal M (X, \mcal F)$. Mostre que se $f(x) = g(x)$ $\mu$-q.t.p em 
+$X$, então $g \in L(X, \mcal F, \mu)$ e 
+\begin{align*}
+  \int f d\mu = \int g d\mu.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Seja $N \in \mcal F$ satisfazendo $\mu(N) =0$
+  e para todo $x \in N^C$, $f(x) = g(x)$. Note que $|g| = |g|\chi_N + |g|\chi_{N^C}$
+  e $|f| = |f| \chi_N + |f|\chi_{N^C}$, portanto, 
+  \begin{align*}
+    \int |g| d\mu &= \int_N |g| d\mu + \int_{N^C} |g| d\mu = 0 + \int_{N^C} |f| d\mu \\
+    &=\int_N |f| d\mu + \int_{N^C} |f| d\mu = \int |f| d\mu.
+  \end{align*}
+  Como $f \in L(X, \mcal F, \mu)$, segue que $|f| \in L(X, \mcal F, \mu)$ e consequentemente, 
+  $\int |g| d\mu = \int |f| d\mu < +\infty$, portanto, $g \in L(X, \mcal F, \mu)$. 
+  Mais ainda, 
+  visto que $f = f\chi_N + f\chi_{N^C}$, 
+  $g = g\chi_N + g\chi_{N^C}$ e $f\chi_{N^C} = g\chi_{N^C}$, temos,
+  \begin{align*}
+    \int f d\mu &= \int_N f d\mu + \int_{N^C} f d\mu = 0 + \int_{N^C} f d\mu\\
+    &=\int f \chi_{N^C} d\mu = \int g\chi_{N^C} d\mu = \int_{N^C} g d\mu + 0\\
+    &=\int_{N^C} g d\mu + \int_{N} g d\mu = \int g d\mu.
+  \end{align*}
+  Com isso, temos o que queríamos.
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, $f \in L(X, \mcal F, \mu)$ 
+e $\epsilon > 0$. Prove que existe uma função simples mensurável $\varphi$
+tal que 
+\begin{align*}
+  \int |f - \varphi| d\mu < \epsilon.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}]
+  Ora, se $f \in L(X, \mcal F, \mu)$, temos $f^+, f^- \in L(X, \mcal F, \mu)$. Por definição,
+  \begin{align*}
+    \int f^+ d\mu = \sup \set{\int \varphi d\mu \st \varphi \in \mathcal M^+ (X, \mcal F)
+    \text{ é simples 
+    e } 0 \le \varphi(x) \le f^+(x), \forall x \in X},
+  \end{align*}
+  ou seja, para todo $\epsilon>0$ existe uma função simples $\varphi^+$ mensurável satisfazendo 
+  $0\le \varphi^+(x) \le f^+(x)$ para todo $x \in X$ e 
+  \begin{align*}
+    \int f^+ d\mu - \epsilon/2 < \int \varphi^+ d\mu \le \int f^+ d\mu<+\infty \implies 
+    \int f^+ d\mu - \int \varphi^+ d\mu < \epsilon/2.
+  \end{align*}
+  Já que $f^+(x) \ge \varphi^+(x)$, i.e., 
+  $f^+(x) - \varphi^+(x)\ge 0$, então 
+    $$|f^+ (x) - \varphi^+ (x)| = f^+ (x) - \varphi^+(x),$$
+  sendo assim, 
+  \begin{align*}
+    \int | f^+ - \varphi^+| d\mu  
+    = \int f^+ d\mu - \int \varphi^+ d\mu < \epsilon/2.
+  \end{align*}
+  Analogamente, temos 
+  \begin{align*}
+    \int |f^- - \varphi^-| d\mu < \epsilon/2.
+  \end{align*}
+  Definindo $\varphi = \varphi^+ - \varphi^-$, segue que $\varphi \in 
+  \mathcal M(X, \mcal F)$, e, da desigualdade triangular,
+  \begin{align*}
+    \int |f - \varphi| d\mu \le \int |f^+ - \varphi^+| d\mu + \int |f^- - \varphi^-|d\mu 
+    < \epsilon.
+  \end{align*}
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L(X, \mcal F, \mu)$. 
+Mostre que se $g \in \mathcal M(X, \mcal F)$ é limitada, então o produto 
+$fg$ é integrável.}
+\begin{proof}[\textbf{Dem:}]
+  Já que $g \in \mathcal M(X, \mcal F)$ é limitada, existe $M \in (0, +\infty)$ tal que 
+  $|g(x)| \le M$ para todo $x \in X$. Daqui, já que $f \in L(X, \mcal F, \mu)$, 
+  segue que $|f| \in L(X, \mcal F, \mu)$. Mais ainda, como $|fg|(x) \le M|f|(x)$ e 
+  $|fg| \in \mathcal M (X, \mcal F)$,
+  para todo $x \in X$, temos,
+  \begin{align*}
+    \int |fg| d\mu \le \int M|f| d\mu = M \int |f| d\mu < +\infty. 
+  \end{align*}
+  Portanto, $|fg| \in L(X, \mcal F, \mu)$, ou seja, $fg \in L(X, \mcal F, \mu)$,
+  como queríamos.
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L(X, \mcal F, \mu)$. 
+Definimos sua integral indefinida como a aplicação $\lambda: \mcal F \rightarrow \bR$
+dada por 
+\begin{align*}
+  \lambda(E) = \int_E f d\mu, \quad E\in \mcal F.
+\end{align*}
+Mostre que 
+\begin{enumerate}[label=\alph*)]
+  \item $\lambda(E) \ge 0$ para todo $E \in \mcal F$ se e somente se 
+    $f(x) \ge 0$ para quase todo $x \in X$.
+    \begin{proof}[\textbf{Dem:}].\\ 
+      $(\impliedby)$ Suponhamos que $f(x) \ge 0$ para quase todo $x \in X$. Portanto, 
+      existe $N \in \mcal F$ tal que $\mu(N) = 0$ e $f(x) \ge 0$ para todo $x \in N^C$, 
+      isto é, $(f\chi_{N^C})(x) \ge 0$ para todo $x \in X$.
+      Desse modo, dado qualquer $E \in \mcal F$, 
+      \begin{align*}
+        \lambda(E) &= \int_E f d\mu = \int f\chi_E d\mu = \int_N f\chi_E d\mu + 
+        \int_{N^C} f\chi_E d\mu\\ &= \int_{N^C} f\chi_E d\mu = 
+        \int_E f \chi_{N^C} d\mu \ge \int_E 0 d\mu = 0.
+      \end{align*}
+      $(\implies)$ Suponhamos que $\lambda(E) \ge 0$ para todo $E \in \mcal F$.
+      Definindo $A = \{x \in X \st f(x) < 0\}$, da mensurabilidade de $f$, 
+      segue que $A \in \mcal F$. Por hipótese, temos $\lambda(A) = \int_A f d\mu \ge 0$. 
+      Entretanto, já que $f(x) < 0$ para todo $x \in A$  
+      \begin{align*}
+        \int_A f d\mu \le \int 0 d\mu = 0,
+      \end{align*}
+      ou seja, $\int_A f d\mu = 0$.  
+      Definindo 
+      $B_n = \{x \in X \st -(f\chi_A)(x) > \frac{1}{n}\},$
+      segue da desigualdade de Chebyshev que, para cada $n \in \bN$, 
+      \begin{align*}
+        \mu(B_n)\le n\int (-f\chi_A) d\mu = -n \int_A f d\mu =0 ,
+      \end{align*}
+      ou seja, $\mu(A) = \mu\parth{\bigcup_{k\in \bN} B_k} \le \sum_{k \in \bN} \mu(B_k) =0$,
+      isto é, 
+      $\mu(A) = 0$ e com isso, segue que $f(x) \ge 0$ $\mu$-q.t.p., como queríamos.
+    \end{proof}
+  \item $\lambda(E) = 0$ se, e somente se, $f(x) = 0$ para quase todo $x \in X$. 
+    \begin{proof}[\textbf{Dem:}]. \\
+      $(\impliedby)$ Suponhamos que $f(x) = 0$ para quase todo $x \in X$. Então, 
+      dado $E \in \mcal F$, $(f\chi_E)(x) = 0$ para quase todo $x \in X$. Do exercício
+      13, definindo $g(x) = 0$ para todo $x \in X$, segue que $(f\chi_E) = g$ $\mu$-q.t.p., 
+      portanto, 
+      \begin{align*}
+        \lambda(E) = \int_E fd\mu = \int f\chi_E d\mu = \int g d\mu = \int 0 d\mu = 0.
+      \end{align*} 
+      $(\implies)$ Suponhamos que $\lambda(E) = \int_E f d\mu = \int_E (-f) d\mu = 0$
+      para todo $E \in \mcal F$, então, do item (a), temos 
+      $f(x) \ge 0$ e $-f(x) \ge 0$ para quase todo $x \in X$. Portanto, $f(x) =0$ 
+      para quase todo $x \in X$.
+    \end{proof}
+  \item Se $f(x) \ge 0$ para quase todo $x \in X$, então $\lambda$ é uma medida.
+    \begin{proof}[\textbf{Dem:}]
+      Suponhamos que $f(x) \ge 0$ para quase todo $x \in X$. Do item (a), segue 
+      que para todo $E \in \mcal F$, $\lambda(E) \ge 0$. Mais ainda, 
+      $\lambda(\emptyset) = \int_\emptyset f d\mu = 0$. Com isso, vejamos a 
+      $\sigma$-aditividade. Ora, já que existe $N$ satisfazendo $\mu(N) = 0$
+      e $f(x)\ge 0$ para $x \in N^C$, dado qualquer $E \in \mcal F$,
+      \begin{align*}
+        \int_E f d\mu = \int_E (f\chi_N + f\chi_{N^C}) d\mu = \int_E f\chi_{N^C} d\mu =
+        \int_E f^+ d\mu.
+      \end{align*}
+      Desse modo,
+      para uma sequência $\{E_k\}$ em $\mcal F$ 
+      disjunta dois a dois,
+      \begin{align*}
+        \lambda\parth{\bigcup_{k \in \bN} E_k} = \int_{\bigcup E_k} f d\mu = 
+        \int_{\bigcup E_k} f^+ d\mu.
+      \end{align*}
+      Daqui, considere a sequência $(\psi_m)$
+      definida por $\psi_m = \sum_{k=1}^m f^+\chi_{E_k}$. Visto que $\psi_m$ é uma  
+      sequência em $\mathcal M^+(X, \mcal F)$ (como $f \in L(X,\mcal F, \mu)$, 
+      $f^+$ é mensurável. Já que produto entre mensuráveis 
+      é mensurável, segue a afirmação)
+      não-decrescentes
+      e convergem para $f^+ \chi_{\bigcup E_k}$. 
+      Com isso, do TCM,
+      \begin{align*}
+        \int f^+ \chi_{\bigcup E_k} d\mu &= \lim_{m \rightarrow \infty} \int \psi_m d\mu
+        = \lim_{m \rightarrow \infty} \int \sum_{k =1 }^m f^+ \chi_{E_k} d\mu \\
+        &= \lim_{m \rightarrow \infty} \sum_{k=1}^m \int f^+ \chi_{E_k} d\mu 
+        = \sum_{k \in \bN} \int_{E_k} f^+ d\mu.
+      \end{align*} 
+      Com isso, 
+      \begin{align*}
+        \lambda\parth{\bigcup_{k \in \bN} E_k} = {\sum_{k \in \bN} \int_{E_k} f^+ d\mu}
+        = \sum_{k \in \bN} \int_{E_k} f d\mu 
+        = \sum_{k \in \bN} \lambda(E_k).
+      \end{align*}
+    \end{proof}
+  \item Se $g \in \mathcal M^+ (X, \mcal F)$, então 
+    \begin{align*}
+      \int g d\lambda = \int fgd\mu.
+    \end{align*}
+    \begin{proof}[\textbf{Dem:}] Visto que $g \in \mathcal M^+ (X, \mcal F)$, existe 
+      uma sequência $\varphi_n \in \mathcal M^+(X, \mcal F)$ de funções simples, 
+      não-decrescentes e que convergem pontualmente para $g$. Desse modo, 
+      do Teorema da Convergência Monótona, se para cada $n \in \bN$, 
+      $\varphi_n = \sum_{k=1}^{m_n} a_{n, k} \chi_{E_{n, k}}$ 
+      é representação padrão de $\varphi_n$,
+      \begin{align*}
+        \int g d\lambda &= \lim_{n \rightarrow \infty} \int \varphi_n d\lambda = 
+        \lim_{n \rightarrow \infty} \sum_{k=1}^{m_n} a_{n, k}\lambda(E_{n, k})
+        =\lim_{n \rightarrow \infty} \sum_{k=1}^{m_n} a_{n, k}\int_{E_{n, k}} f d\mu\\
+        &= \lim_{n \rightarrow \infty} 
+        \int \cparth{\sum_{k=1}^{m_n} a_{n, k}\chi_{E_{n, k}}}f d\mu
+        = \lim_{n \rightarrow \infty} \int \varphi_n f d\mu 
+        = \lim_{n \rightarrow \infty} \cparth{\int f^+ \varphi_n d\mu 
+        - \int f^- \varphi_n d\mu}.
+      \end{align*}
+      Já que para cada $x \in X$ e $n \in \bN$, $\varphi_n(x) \le \varphi_{n+1}(x)$, 
+      segue que $(f^+\varphi_n)(x)\le (f^+\varphi_{n+1})(x)$ e 
+      $(f^-\varphi_n)(x) \le (f^- \varphi_{n+1})(x)$. Visto que $f \in L(X, \mcal F, \mu)$,
+      $(f^+\varphi_n), (f^-\varphi_n) \in \mathcal M^+(X, \mcal F)$, segue novamente do TCM 
+      que
+      \begin{align*}
+        \lim_{n \rightarrow \infty} \int f^+\varphi_n d\mu 
+        = \int \lim_{n \rightarrow \infty} f^+\varphi_n d\mu = \int f^+g d\mu.
+      \end{align*}
+      Analogamente, segue que $\lim \int f^- \varphi_n d\mu = \int f^- g d\mu$, 
+      portanto, 
+      \begin{align*}
+        \int g d\lambda &= \cparth{\lim_{n \rightarrow \infty} \int f^+\varphi_n d\mu}
+        - \cparth{\lim_{n \rightarrow \infty} \int f^- \varphi_n d\mu}\\ 
+        &= \int f^+gd\mu - \int f^-gd\mu = \int fgd\mu
+      \end{align*}
+    \end{proof}
+\end{enumerate}}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f: X \rightarrow \mbb C$. 
+Se $\Re f$ e $\Im f$ pertencem a $L(X, \mcal F, \mu)$, dizemos que $f$ é \textit{integrável}
+e definimos 
+\begin{align*}
+  \int f d\mu = \int \Re f d\mu +i\int \Im f d\mu.
+\end{align*}
+Seja $f$ uma função complexa mensurável. Mostre que $f$ é integrável se 
+e somente se $|f|$ é integrável, e neste caso, 
+\begin{align*}
+  \left| \int f d\mu \right| \le \int |f| d\mu.
+\end{align*}
+\textit{Dica:} Se $\int f d\mu = re^{i\theta}$ com $r \ge 0$, $\theta \in \bR$,
+considere $g(x) = e^{-i\theta}f(x)$.
+}
+\begin{proof}[\textbf{Dem:}] Sejam $u = \Re f$ e $v = \Im f$. 
+
+  \noindent
+  $(\implies)$ Suponhamos que $f$ é integrável, isto é, $u, v \in L(X, \mcal F, \mu)$.
+  Por hipótese, segue que $|u|$ e $|v|$ são integráveis, ou seja 
+  \begin{align*}
+    \int |f| d\mu = \int \sqrt{u^2 + v^2} d\mu \le \int |u| d\mu + \int |v| d\mu < +\infty, 
+  \end{align*}
+  isto é, $|f| \in L(X, \mcal F, \mu)$.
+
+  \noindent 
+  $(\impliedby)$ Suponhamos que $|f|$ é integrável, então, $|f| = \sqrt{u^2 +v^2} \ge |u|$
+  e $|f| \ge |v|$. Sendo assim, $|u|, |v| \in L(X, \mcal F, \mu)$ e 
+  $u, v \in L(X, \mcal F, \mu)$, portanto, $f$ é integrável por definição.
+
+  Daqui, vejamos que $\mparth{\int f d\mu} \le \int |f| d\mu$. Definindo 
+  $\int f d\mu = r e^{i\theta}$ e $g(x) = e^{-i\theta} f(x)$,
+  segue que $r = e^{-i\theta}\int f d\mu = \int e^{-i\theta} fd\mu = \int g d\mu$. 
+  Com isso, 
+  \begin{align*}
+    \mparth{\int f d\mu} = r = \Re \int g d\mu = \int \Re g d\mu \le 
+    \int |g| d\mu = \int |f| d\mu.
+  \end{align*}
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(f_n)$ uma sequência 
+de funções complexas mensuráveis que converge para $f$. 
+Se existe uma função $g \in L(X, \mcal F, \mu)$, tal que $|f_n| \le g$, mostre que 
+\begin{align*}
+  \int f d\mu = \lim \int f_n d\mu.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Definindo $u_n = \Re f_n$ e $v_n = \Im f_n$,
+  da hipótese segue que $u_n$ e $v_n$ convergem pontualmente para $u = \Re f$ e 
+  $v = \Im f$, respectivamente. Visto que 
+  \begin{align*}
+    |u_n| \le \sqrt{u_n^2 + v_n^2} \le |f_n| \le g \quad \text{ e } \quad 
+    |v_n| \le \sqrt{u_n^2 + v_n^2} \le |f_n| \le g,
+  \end{align*}
+  segue do Teorema da Convergência Dominada que 
+  \begin{align*}
+    \int u d\mu = \lim_{n \rightarrow \infty} \int u_n d\mu 
+    \quad \text{ e } \quad 
+    \int v d\mu = \lim_{n \rightarrow \infty} \int v_n d\mu.
+  \end{align*}
+  Daqui, 
+  \begin{align*}
+    \int f d\mu &= \Re \int f d\mu + i \Im\int fd\mu = \int u d\mu + i\int v d\mu \\
+    &= \lim_{n \rightarrow \infty} \int u_n d\mu 
+    + i \lim_{n \rightarrow \infty} \int v_n d\mu\\
+    &= \lim_{n \rightarrow \infty} \int (u_n + iv_n) d\mu = \lim \int f_n d\mu.
+  \end{align*}
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(\bR, \mathcal M, m)$ o espaço de medida de Lebesgue 
+e $f: \bR \rightarrow \bC$ uma função integrável. Para cada $\zeta \in \bR$, 
+defina $g_{\xi}(x) = e^{ix\xi}$. Definimos a \textit{Transformada de Fourier de $f$} 
+como a função $\widehat f: \bR \rightarrow \bC$ dada por 
+\begin{align*}
+  \widehat f(\xi) \coloneq \int g_\xi f dm
+\end{align*}
+\begin{enumerate}[label=\alph*)]
+  \item Mostre que a função $\widhat f$ está bem-definida e é limitada.
+  \item Mostre que $\widehat f$ é uma função sequencialmente contínua, isto é, 
+    se $(\xi_n)$ converge para $\xi$, então $(\widehat f (\xi_n))$ converge 
+    para $\widehat f(\xi)$.
+\end{enumerate}
+}

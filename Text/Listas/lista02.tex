@@ -491,15 +491,16 @@ $f: X \rightarrow \xbR$, então $f$ é mensurável.}
   \end{align*}
   temos novamente da completude do espaço que $\{x \in A \st f(x)>\alpha\} \in \mcal F$. Dito isso, 
   \begin{align*}
-    \{x \in X \st f(x)> \alpha \} &= \{x \in A \st f(x)>\alpha\}\cup \{x \in A^C \st f(x) > \alpha\}\\
-    &= \{x \in A \st f(x)>\alpha\}\cup \left(\bigcup\limits_{m \in \mbb N} \left[
-      \bigcap\limits_{n = m}^{\infty}\{x \in A^C \st f_n(x) > \alpha\} \right]\right)\\
-    &= \{x \in A \st f(x)>\alpha\}\cup \left(\bigcup\limits_{m \in \mbb N} \left[
-      \bigcap\limits_{n = m}^{\infty}A^C\cap\{x \in X \st f_n(x) > \alpha\} \right]\right)\\
-    &= \{x \in A \st f(x)>\alpha\}\cup \left(A^C \cap \bigcup\limits_{m \in \mbb N} \left[
-      \bigcap\limits_{n = m}^{\infty}\{x \in X \st f_n(x) > \alpha\} \right]\right). 
+    \{x \in X \st f(x)> \alpha \} &=
+    \{x \in A \st f(x)>\alpha\}\cup \{x \in A^C \st f(x) > \alpha\}\\
+    &= \{x \in A \st f(x)>\alpha\}\cup \{x \in A^C \st \lim \inf f_n(x) > \alpha\}\\
+    &= \{x \in A \st f(x)>\alpha\}\cup \cparth{A^C \cap \{x \in X \st 
+    \lim \inf f_n(x) > \alpha\}}. 
   \end{align*}
-  Visto que $A \in \mcal F$, temos $A^C \in \mcal F$. Mais ainda, $\lim \inf \{x \in X; f_n(x)> \alpha\} \in \mcal F$, 
+  Visto que $A \in \mcal F$, temos $A^C \in \mcal F$. Mais ainda, já que $(f_n)$ é 
+  uma sequência de funções mensuráveis, segue que $\lim \inf f_n$ também é mensurável,
+  portanto,
+  $\{x \in X; \lim \inf f_n(x)> \alpha\} \in \mcal F$, 
   ou seja, $f$ é mensurável.
 \end{proof}
 \biglinend

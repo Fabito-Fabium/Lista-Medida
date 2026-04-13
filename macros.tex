@@ -35,10 +35,11 @@
 \newcommand{\bR}{\mathbb R}
 \newcommand{\xbR}{\overline {\mathbb R}}
 \newcommand{\bN}{\mathbb N}
-\newcommand{\bC}{\mathbb c}
-\newcommand{\st}{\text{;}}
+\newcommand{\bC}{\mathbb C}
+\newcommand{\st}{\text{ ; }}
 \newcommand{\parth}[1]{\left(#1\right)}
 \newcommand{\cparth}[1]{\left[#1\right]}
+\newcommand{\mparth}[1]{\left|#1\right|}
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\seqn}[3]{\set{#1_#2}_{#2 \in #3}}
 \newcommand{\mycap}[2]{\bigcap\limits_{#1 \in #2}}
@@ -68,4 +69,10 @@
   \addcontentsline{toc}{subsection}{Q#1}%
 }
 
-
+\newcommand{\nextexe}[1]{%
+    \biglinend
+    \newpage
+    \stepcounter{#1}%
+    \myexe{\csname the#1\endcsname}%
+    \bigline
+}
