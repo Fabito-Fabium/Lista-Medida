@@ -41,7 +41,8 @@
 \newcommand{\cparth}[1]{\left[#1\right]}
 \newcommand{\mparth}[1]{\left|#1\right|}
 \newcommand{\set}[1]{\left\{#1\right\}}
-\newcommand{\seqn}[3]{\set{#1_#2}_{#2 \in #3}}
+\newcommand{\setfam}[3]{\set{#1_#2}_{#2 \in #3}}
+\newcommand{\seqn}[3]{\parth{#1_#2}_{#2 \in #3}}
 \newcommand{\mycap}[2]{\bigcap\limits_{#1 \in #2}}
 \newcommand{\mycup}[2]{\bigcup\limits_{#1 \in #2}}
 \newcommand{\sigg}[1]{\sigma\parth{#1}}
@@ -54,6 +55,7 @@
 \newcommand{\fplus}[1]{#1^+}
 \newcommand{\fminus}[1]{#1^-}
 \newcommand{\extmu}[1]{m^*\parth{#1}}
+\newcommand{\lebesgueM}{(\bR, \mathcal M, m)}
 
 \newcommand{\sol}{\setlength{\parindent}{0cm}\textbf{\textit{Solution:}}\setlength{\parindent}{1cm} }
 \newcommand{\solve}[1]{\setlength{\parindent}{0cm}\textbf{\textit{Solution: }}\setlength{\parindent}{1cm}#1 \Qed}

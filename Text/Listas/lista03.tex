@@ -802,6 +802,227 @@ como a função $\widehat f: \bR \rightarrow \bC$ dada por
 Mostre que $f$ pertence a $L(\bN, \mcal P(\bN), \mu)$ se, e somente se, a série $\sum f(n)$ é 
 absolutamente convergente, neste caso, 
 $$\int f d\mu = \sum_{n=1}^\infty f(n).$$}
-\begin{proof}[\textbf{Dem:}]
-  
+\begin{proof}[\textbf{Dem:}].\\ 
+  $(\implies)$ Como $f \in L(\bN, \mcal P(\bN), \mu)$, segue que $f^+$ e 
+  $f^-$ possuem integrais finitas. Desse modo, do Exercício 3, 
+  \begin{align*}
+    \sum_{n \in \bN} |f| =\int |f| d\mu = \int f^+ d\mu + \int f^- d\mu< +\infty, 
+  \end{align*}
+  ou seja, $\sum f(n)$ é absolutamente convergente.\\
+  $(\impliedby)$ Suponhamos que $\sum f(n)$ é absolutamente convergente. Então,
+  novamente do Exercício 3,
+  \begin{align*}
+    +\infty > \sum_{n \in \bN} |f(n)| = \cparth{\sum_{n \in \bN} f^+(n)} + 
+    \cparth{\sum_{n \in \bN} f^-(n)} = \int f^+ d\mu + \int f^- d\mu 
+    = \int |f| d\mu.
+  \end{align*}
+  Portanto, $|f|$ é integrável e consequentemente $f \in L(\bN, \mcal P(\bN), \mu)$. 
+
+  Mais ainda, como $f \in L(\bN, \mcal P(\bN), \mu)$, 
+  \begin{align*}
+    +\infty > \int f d\mu &= \int f^+ d\mu - \int f^- d\mu = 
+    \cparth{\sum f^+(n)} - \cparth{\sum f^-(n)}\\ 
+    &= \sum (f^+(n) - f^-(n)) = \sum_{n \in \bN} f(n)
+  \end{align*}
 \end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(\bR, \mathcal M, m)$ o espaço de medida de Lebesgue e $(f_n)$
+a sequência dada por $f_n =  n \chi_{[0, 1/n]}$. Mostre que a condição 
+$|f_n| \le g$ não pode ser removida no Teorema da Convergência Dominada de Lebesgue.}
+\begin{proof}[\textbf{Dem:}] Já que $f_n = n \chi_{[0, \frac{1}{n}]}$, para cada $n$ 
+  segue que $f_n$ é mensurável, simples e não-negativa. Desse modo,
+  \begin{align*}
+    \int f_n dm = n m\parth{\cparth{0, 1/n}} = n \cdot \frac{1}{n} =1,
+  \end{align*}
+  ou seja $\lim \int f_n dm = 1$. Entretanto, fixado $x \in \bR$ e dado $\epsilon > 0$,
+  se $x \le 0$ segue que $f_n(x) < \epsilon$ para todo $n \in \bN$. Suponhamos que 
+  $x > 0$, então, tomando $N \in \bN$ de modo que $N$ seja o menor inteiro maior ou 
+  igual a $2/x$, temos para todo $n \ge N$ que $x \ge 2/N > 1/N \ge 1/n$, portanto, 
+  $x \not \in \chi_{[0, 1/n]}$ e consequentemente,
+  \begin{align*}
+      (n \chi_{[0, 1/n]})(x) = n\cdot 0 = 0 < \epsilon, 
+  \end{align*}
+  ou seja $\lim f_n = 0 = f$ e $\int \lim f_n dm = 0$. Note que o Teorema da Convergência 
+  Dominada não é obedecido,
+  visto que 
+  \begin{align*}
+    \lim \int f_n dm = 1 > 0 = \int \lim f_n dm = \int f dm.
+  \end{align*}
+  Note que, se existisse $g \in L(\bR, \mathcal M, \mu)$, satisfazendo 
+  $g \ge |f_n|$ $\mu$-q.t.p., teríamos do TCD que 
+  $\lim \int f_n dm = \int f dm$, uma contradição. Portanto, não existe
+  $g$ integrável que domine a sequência apresentada.
+\end{proof}
+
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(f_n)$ uma sequência em 
+$L(X, \mcal F, \mu)$ tal que 
+\begin{align*}
+  \sum_{n \in \bN} \int |f_n| d\mu < +\infty.
+\end{align*}
+Mostre que a série $\sum f_n(x)$ converge em quase todo ponto para uma função $f$ 
+em $L(X, \mcal F, \mu)$. Além disso, mostre que 
+\begin{align*}
+  \int f d\mu = \sum_{n \in \bN} \int f_n d\mu.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Considere a sequência $\seqn g n \bN$ definida por 
+  $g_n = \sum_{k=1}^n |f_k|$. Visto que $(f_n)$ é uma sequência em $L(X,\mcal F, \mu)$,
+  segue que $(|f_n|)$ também é uma sequência em $L(X, \mcal F, \mu)$. Desse modo, 
+  temos para cada $n \in \bN$ que $g_n \in L(X, \mcal F, \mu)$. Mais ainda, $(g_n)$ 
+  é não-decrescente e não-negativa, portanto, do Teorema da Convergência Monótona,
+  \begin{align*}
+    \int \sum_{k\in \bN} |f_k| d\mu&= \int \lim_{N \rightarrow \infty} g_N d\mu 
+    = \lim_{N \rightarrow \infty} \int g_N d\mu 
+    = \lim_{N \rightarrow \infty} \int \sum_{k=1}^N |f_k| d\mu \\
+    &= \lim_{N \rightarrow \infty} \sum_{k=1}^N \int |f_k| d\mu
+    = \sum_{k\in \bN} \int |f_k| d\mu < +\infty 
+  \end{align*}
+  portanto, $g = \sum_{k \in \bN} |f_k| \in L(X, \mcal F, \mu)$ e 
+  visto que $g$ é não-negativa, segue que $g$ é finita $\mu$-q.t.p.. Daqui,
+  seja $A = {x \in X; g(x)< + \infty}$ e defina para cada $x \in X$ a função  
+  \begin{align*}
+    f(x) = \begin{cases}
+      \sum\limits_{n \in \bN} f_n (x), &x \in A;\\ 
+      0, & x\in A^C.
+    \end{cases}
+  \end{align*}
+  Note que dado $(h_n)$ definido por $h_n = \sum_{k=1}^n f_k$, segue 
+  por hipótese que para todo $n \in \bN$, temos $h_n \in L(X, \mcal F, \mu)$, mais ainda,
+  como $|h_n| \le \sum_{k \in \bN} |f_k| \in L(X, \mcal F, \mu)$, 
+  e $(h_n)$ converge $\mu$-q.t.p. para $f$. Visto que
+  $|h_n| \le g$ $\mu$-q.t.p. para todo $n \in \bN$, tomando o limite em ambos os lados
+  temos $|f|\le g$ $\mu$-q.t.p., 
+  sendo assim, $f \in L(X, \mcal F, \mu)$.
+  Com isso, do Teorema da Convergência dominada que 
+  \begin{align*}
+    \int f d\mu &= \lim_{N \rightarrow \infty} \int h_N d\mu 
+    = \lim_{N \rightarrow \infty} \int \cparth{\sum_{k=1}^N f_k} d\mu\\
+    &= \lim_{N \rightarrow \infty} \sum_{k=1}^N \int f_k d\mu 
+    = \sum_{k \in \bN} \int f_k d\mu.
+  \end{align*}
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(f_n)$ uma sequência em 
+$L(X, \mcal F, \mu)$ que converge para uma função $f$. Mostre que se 
+\begin{align*}
+  \lim \int |f_n - f| d\mu = 0, \quad\text{ então }\quad \int |f| d\mu = \lim \int |f_n|d\mu.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Visto que $\lim \int |f_n - f| d\mu = 0$, 
+  para todo $\epsilon>0$, existe $N \in \bN$ tal que para todo $n \ge N$,
+  segue que, 
+  \begin{align*}
+    \int \mparth{|f_n| - |f|} d\mu\le \int |f_n - f| d\mu < \epsilon.
+  \end{align*}
+  Mais ainda, fixado $n = N$, da Desigualdade Triangular,
+  \begin{align*}
+    \int |f| d\mu \le \int |f - f_N| + |f_N| d\mu = \int |f_N - f| d\mu + \int |f_N| d\mu
+    < \epsilon + \int |f_N| d\mu < +\infty.
+  \end{align*}
+  Portanto, $f \in L(X, \mcal F, \mu)$. Desse modo, $|f|$ é integrável e consequentemente
+  $|f_n| - |f|$ também. Com isso, do Teorema (primeiro depois de Fatou), segue que
+  \begin{align*}
+    \mparth{\int |f_n| d\mu - \int |f| d\mu} = 
+    \mparth{\int |f_n| - |f| d\mu} \le \int \mparth{|f_n| - |f|} d\mu < \epsilon, 
+  \end{align*}
+  segue que $\lim \int |f_n| d\mu = \int |f| d\mu$.
+\end{proof}
+
+\nextexe{tres}
+\textbf{
+  Sejam $\lebesgueM$ o espaço de medida de Lebesgue e $\seqn f n \bN$ dada por 
+  $f_n = \parth{-\frac{1}{n}} \chi_{[0, n]}$. Mostre que a sequência 
+  $(f_n)$ converge uniformemente para $f = 0$ em $[0, \infty)$. No entanto, 
+  $\int f_n dm = -1$ enquanto $\int f dm =0$ então, 
+  \begin{align*}
+    \lim \inf \int f_n dm = -1 < 0 = \int f dm.
+  \end{align*}
+  Conclua que o Lema de Fatou pode não valer a menos que $f_n \ge 0$, mesmo na presença 
+  de convergência uniforme.
+}
+
+\nextexe{tres}
+\textbf{
+  Seja $(X, \mcal F, \mu)$ um espaço de medida. O Lema de Fatou tem uma extensão 
+  para um caso em que as $f_n$ assumem valores negativos. Seja 
+  $h \in \mathcal M^+(X, \mcal F)$, e suponha que $\int h d\mu < + \infty$. Prove que 
+  se $(f_n)$ é uma sequência em $\mathcal M(X, \mcal F)$ e se $-h \le f_n$, então 
+  \begin{align*}
+    \int (\lim \inf f_n) d\mu \le \lim \inf \int f_n d\mu.
+  \end{align*}
+}
+\begin{proof}[\textbf{Dem:}]
+Por hipótese, note que $f_n + h \ge 0$ e como $M(X, \mcal F)$
+  é fechado por soma, segue que $f_n+h$ é uma sequência em $M^+(X, \mcal F)$. Desse modo, 
+  do Lema de Fatou (original), segue que, 
+  \begin{align*}
+    \int \lim \inf (f_n + h) d\mu \le \lim \inf \int (f_n + h) d\mu.
+  \end{align*}
+  Daqui, note que,
+  \begin{align*}
+    \int \lim \inf (f_n +h) d\mu = \int (\lim \inf f_n) + h d\mu = \int \lim \inf f_n d\mu 
+    + \int h d\mu,
+  \end{align*}
+  e 
+  \begin{align*}
+    \lim \inf \int (f_n + h) d\mu = \lim \inf \int f_n d\mu + \int h d\mu 
+    = \cparth{\lim \inf \int f_n d\mu} + \int h d\mu.
+  \end{align*}
+  Sendo assim, já que $\int h d\mu < + \infty$, subtraíndo o em ambos os lados da 
+  desigualdade, segue que
+  \begin{align*}
+    \int (\lim \inf f_n) d\mu \le \lim \inf \int f_n d\mu.
+  \end{align*}
+\end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f, g \in \mathcal M(X, \mcal F)$. 
+Mostre que se $g$ é integrável e $|f| \le |g|$ $\mu$-q.t.p., então $f$ é integrável 
+e $\int |f| d\mu \le \int |g| d\mu$.}
+\begin{proof}[\textbf{Dem:}] Seja $N \in \mcal F$ um conjunto de medida nula tal que 
+  $|f|(x) \le |g|(x)$ para todo $x \in N^C$, portanto $|f\chi_{N^C}| \le |g\chi_{N^C}|$.
+  Como $g$ é integrável por hipótese, temos $|g| \in L(X, \mcal F, \mu)$. Sendo assim, 
+  \begin{align*}
+    \int |f| d\mu &= \int_{N^C} |f| d\mu + \int_{N} |f| d\mu = \int_{N^C} |f| d\mu\\
+    &=\int |f|\chi_{N^C} d\mu = \int |f\chi_{N^C}| d\mu\\ 
+    &\le \int |g\chi_{N^C}| d\mu \le \int |g| d\mu < +\infty.
+  \end{align*}
+  ou seja, $|f|$ é integrável e consequentemente $f \in L(X, \mcal F, \mu)$. 
+\end{proof}
+
+\nextexe{tres}
+\textbf{Complete a demonstração do Teorema da Convergência Dominada, utilizando o que 
+foi demonstrado em aula para provar o caso em que 
+$(f_n)$ converge para $f$ $\mu$-q.t.p. e $|f_n| \le g$ $\mu$-q.t.p., para todo 
+$n \in \bN$.} 
+\begin{proof}[\textbf{Dem:}] Sejam $N_1, N_2 \in \mcal F$ conjuntos de medida nula 
+  tal que para cada $x \in N_1^C$ a sequência $(f_n(x))$ converge para $f(x)$ e 
+  $|f_n|(x_0) \le g(x_0)$ para $x_0 \in N_2^C$. Note que, da $\sigma$-subaditividade 
+  de $\mu$,
+  \begin{align*}
+    \mu\parth{N_1 \cup N_2} \le \mu(N_1) + \mu(N_2) = 0,
+  \end{align*}
+  ou seja, $N = N_1 \cup N_2$ é um conjunto de medida nula tal que, para todo 
+  $x \in N^C$, temos que $(f_n(x))$ converge para $f(x)$ e $|f_n|(x) \le g(x)$. 
+  Sendo assim, note que a sequência $(f_n\chi_{N^C}) \in \mathcal M(X, \mcal F)$
+  converge para $f\chi_{N^C}$
+  e $|f_n\chi_{N^C}| \le g\chi_{N^C}$. Por hipótese, temos $g$ integrável, ou seja,
+  $g\chi_{N^C} \in L(X, \mcal F, \mu)$, desse modo, do Teorema da Convergência Dominada
+  \begin{align*}
+    \int f d\mu &= \int_{N^C} f d\mu + \int_N f d\mu = \int f\chi_{N^C} d\mu\\
+    &= \lim \int f_n\chi_{N^C} d\mu = \lim \cparth{\int_{N^C} f_n d\mu + 0}\\ 
+    &= \lim \cparth{\int_{N^C} f_n d\mu + \int_N f_n d\mu} 
+    = \lim \int f_n d\mu. 
+  \end{align*}
+\end{proof}
+
+\nextexe{tres}
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida. Suponha que $(f_n)$ 
+e $(g_n)$ são sequências de funções integráveis que convergem em quase-$\mu$ todo ponto 
+para funções integráveis $f$ e $g$, respectivamente. Mostre que se $|f_n| \le g_n$, para 
+todo $n \in \bN$, e se $\int g_n d\mu$ converge para $\int g d\mu$, então 
+\begin{align*}
+  \lim \int f_n d\mu = \int f d\mu.
+\end{align*}}
