@@ -1066,10 +1066,10 @@ todo $n \in \bN$, e se $\int g_n d\mu$ converge para $\int g d\mu$, então
 
 \nextexe{tres}
 \textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida. Seja 
-$f: X \times [a, b] \rightarrow \bR$ e suponha que a função $x \rightarrow f(t,x)$
+$f: X \times [a, b] \rightarrow \bR$ e suponha que a função $x \rightarrow f(x, t)$
 é mensurável para cada $t \in [a, b]$. Suponha ainda que para alguns $t_0$ 
 e $t_1$ em $[a, b]$ a função $x \rightarrow f(x, t_0)$ é integrável em $X$, 
-que $\partial_t f(x, t_0)$ e que existe uma função integrável $g$ em 
+que $\partial_t f(x, t_1)$ existe, e que existe uma função integrável $g$ em 
 $L(X, \mcal F, \mu)$ tal que 
 \begin{align*}
   \mparth{\frac{f(x, t) - f(x, t_1)}{t - t_1}} \le g(x),
@@ -1078,8 +1078,75 @@ para todo $x \in X$ e $t \in [a, b]$, $t \neq t_1$. Mostre que
 \begin{align*}
   \cparth{\partial_t \int f(x, t) d\mu}_{t = t_1} = \int \partial_t f(x, t_1) d\mu.
 \end{align*}}
-\begin{proof}[\textbf{Dem:}]Considere as sequências $(t_n)$ em $[a, b]\setminus{t_1}$
-  e $h_n(x) = \frac{f(x,t_n) - f(x, t_1)}{t_n-t_1}$ com $x \in X$ tal que 
-  $t_n \rightarrow t_1$. Como $f$ é mensurável para cada $t \in [a,b]$, segue que 
-  $h_n(x) \in \mathcal M(X, \mal F)$
+\begin{proof}[\textbf{Dem:}]Considere as sequências $(p_n)_{n \in \bN}$ em $[a, b]\setminus\set{t_1}$
+  e $(h_n)_{n \in \bN}$ definida por $h_n(x) = \frac{f(x,p_n) - f(x, t_1)}{p_n-t_1}$ com $x \in X$ tal que 
+  $p_n \rightarrow t_1$. Como $f$ é mensurável para cada $t \in [a,b]$, segue que para cada 
+  $n \in \bN$ temos $h_n(x) \in \mathcal M(X, \mcal F)$. Fixado $x \in X$, note que 
+  $h_n(x) \rightarrow \partial_t f(x, t_1)$, e como $(h_n)$ é uma sequência de funções mensuráveis,
+  temos $\partial_t f(\cdot, t_1)$ mensurável. Já que $|h_n(x)| \le g(x)$ e $g \in L(X, \mcal F, \mu)$,
+  do Teorema da Convergência Dominada, 
+  \begin{align*}
+    \int \partial_t f(x, t_1) d\mu = \lim_{n \rightarrow \infty} \int h_n d\mu
+  \end{align*}
+  Daqui, vejamos que $f(x, p_n)$ é integrável para todo $n \in \bN$. Note que, por hipótese, 
+  existem pontos $p \in [a, b]$ tais que $f(\cdot, p)$ é integrável em $X$. Seja $t_0 \neq t_1$
+  um desses pontos, ou seja,
+  $f(\cdot, t_0) \in L(X, \mcal F, \mu)$, mais ainda, $|f(\cdot, t_0)|\in L(X,\mcal F, \mu)$.
+  Visto que $t_0 \in [a, b]$, para todo $x \in X$, 
+  \begin{align*}
+    \mparth{\frac{f(x, t_0) - f(x, t_1)}{t_0 - t_1}} \le g(x) \implies |f(x, t_0) - f(x, t_1)| \le |t_0 - t_1|g(x).
+  \end{align*}
+  Da Desigualdade Triangular, segue que, para todo $x \in X$,
+  \begin{align*}
+    |f(x, t_1)| &\le |f(x, t_0) - f(x, t_1)| + |f(x, t_0)|\\
+    &\le |t_0 - t_1|g(x) + |f(x, t_0)|\\
+    &\le (b-a)g(x) + |f(x, t_0)|.
+  \end{align*}
+  Já que $g, f(\cdot, t_0) \in L(X, \mcal F, \mu)$, segue que $\int |f(x, t_1)|d\mu \le (b-a)\int g d\mu + \int |f(x, t_0)| d\mu$,
+  portanto $f(\cdot, t_1) \in L(X,\mcal F, \mu)$. Analogamente segue que $f(\cdot, p_n) \in L(X, \mcal F, \mu)$ para todo 
+  $n \in \bN$. Com isso, definindo $F(t) = \int f(x, t) d\mu$
+  \begin{align*}
+    \lim_{n \rightarrow \infty} \int h_n d\mu &= \lim_{n \rightarrow \infty} 
+    \int \frac{f(x, p_n) - f(x, t_1)}{p_n - t_1} d\mu 
+    = \lim_{n \rightarrow \infty} \frac{1}{p_n - t_1} 
+    \int f(x, p_n) - f(x, t_1) d\mu\\
+    &= \lim_{n \rightarrow \infty} \frac{1}{p_n -t_1}\cparth{\int f(x, p_n)d\mu - \int f(x, t_1)d\mu}\\
+    &= \lim_{n \rightarrow \infty} \frac{F(p_n) - F(t_1)}{p_n - t_1} = \cparth{\partial_t \int f(x, t) d\mu}_{t = t_1}
+  \end{align*}
 \end{proof}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f: X \times \bR \rightarrow \bR$ uma função, 
+tal que a função $x \rightarrow f(x, t)$ é mensurável para cada $t \in \bR$, e que a função 
+$t \rightarrow f(x, t)$ é contínua em $\bR$ para cada $x \in X$. Além disso, suponha que existem funções 
+integráveis $g, h \in L(X, \mcal F, \mu)$ tais que $|f(x, t)| \le g(x)$, para todo $(x, t) \in X\times \bR$
+e que a integral imprópria de Riemann satisfaça, para todo $x \in X$,
+\begin{align*}
+  \int_{-\infty}^{+\infty} |f(x, t)|dt \le h(x).
+\end{align*}
+Mostre que 
+\begin{align*}
+  \int_{-\infty}^{+\infty}\cparth{\int f(x, t)d\mu}dt = \int \cparth{\int_{-\infty}^{+\infty}f(x, t)dt}d\mu,
+\end{align*}
+em que as integrais em relação a $t$ são integrais impróprias de Riemann.}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f: X \rightarrow \bR$ uma função mensurável. 
+Para $n \in \bN$, seja $(f_n)$ a sequência de truncamentos de $f$. Mostre que se $f$ é integrável, então 
+\begin{align*}
+  \int f dmu = \lim \int f_n d\mu.
+\end{align*}
+Além disso, mostre que se 
+\begin{align*}
+  \sup \int |f_n| d\mu < +\infty,
+\end{align*}
+então f é integrável.}
+
+\nextexe{tres}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, $f, g \in \mathcal M(X, \mcal F)$ e $\lambda \in \bR$. 
+\begin{enumerate}[label=\alph*)]
+  \item Mostre que a relação $f \sim g \iff f = g$ $\mu$-q.t.p. é uma relação de equivalência. 
+  \item Mostre que as operações em $M(X, \mcal F)/\sim$ dadas por $\cparth{f} + \cparth{g} \coloneq \cparth{f+g}$
+    e $\lambda \cdot \cparth{f} \coloneq \cparth{\lambda f}$ estão bem definidas.
+\end{enumerate}
+}
