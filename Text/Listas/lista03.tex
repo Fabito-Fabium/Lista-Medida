@@ -1129,18 +1129,80 @@ Mostre que
   \int_{-\infty}^{+\infty}\cparth{\int f(x, t)d\mu}dt = \int \cparth{\int_{-\infty}^{+\infty}f(x, t)dt}d\mu,
 \end{align*}
 em que as integrais em relação a $t$ são integrais impróprias de Riemann.}
+\begin{proof}[\textbf{Dem:}] Seja  $|f(x, \cdot)|$ contínua em $\bR$ para cada $x \in X$
+  e $|f(x, t)| \le g(x) \in L(X, \mcal F, \mu)$ para todo
+  $(x, t) \in X\times \bR$, então, dado qualquer intervalo
+  $[a, b] \subset \bR$, $\int_a^b f(x, t) d\mu$ é mensurável e
+  \begin{align*}
+    \int_{a}^b \cparth{\int_X f(x,t)d\mu}dt = \int_X \cparth{\int_a^b f(x,t)dt}d\mu.
+    \label{L3.30.1}\tag{L3.30.1}
+  \end{align*}
+  Daqui, defina as sequências $(a_n)$ e $(b_n)$ em $\bR$ tal que 
+  $a_n \rightarrow -\infty$ e $b_n \rightarrow +\infty$, mais ainda, seja 
+  $(F_n)$ definida como $F_n(x) = \int_{a_n}^{b_n} f(x, t) dt$ para cada $n \in \bN$
+  e $x \in X$.
+  Da Desigualdade Triangular, como $[a_n , b_n] \subset \bR$, para cada $n \in \bR$
+  e $x \in X$, visto que $g \in L(X, \mcal F, \mu)$, e,
+  \begin{align*}
+    |F_n(x)| = \mparth{\int_{a_n}^{b_n} f(x, t) dt} \le 
+     \int_{a_n}^{b_n} |f(x, t)| dt \le \int_{-\infty}^{+\infty}\mparth{f(x,t)}dt 
+    \le h(x).
+  \end{align*}
+  segue que $F_n \in L(X, \mcal F, \mu)$ para todo $n \in \bN$. Daqui, note que 
+  $h \in L(X, \mcal F, \mu)$ implica em $h$ finita $\mu$-q.t.p., desse modo, 
+  $\int_{-\infty}^{+\infty} |f(x, t)|dt$ é finita $\mu$-q.t.p. e consequentemente 
+  $F(x) = \int_{-\infty}^{+\infty} f(x,t)dt$ converge em quase-$\mu$ todo ponto. Já que 
+  $F_n \rightarrow F$ $\mu$-q.t.p., segue que $F$ é mensurável. Com isso, do Teorema 
+  da Convergência Dominada, 
+  \begin{align*}
+    \lim_{n \rightarrow \infty} \int \cparth{\int_{a_n}^{b_n} f(x, t) dt}d\mu 
+    = \int \cparth{\lim_{n \rightarrow} \int_{a_n}^{b_n} f(x, t) dt}d\mu = 
+    \int \cparth{\int_{-\infty}^{+\infty} f(x,t) dt}d\mu.
+  \end{align*}
+  De \eqref{L3.30.1}, e sabendo que $f(x,t) \in \mathcal M(X, \mcal F)$, temos, 
+  \begin{align*}
+    \int \cparth{\int_{-\infty}^{+\infty} f(x,t)dt}d\mu 
+    &= \lim_{n \rightarrow \infty} \int \cparth{\int_{a_n}^{b_n} f(x, t)dt }d\mu 
+    = \lim_{n \rightarrow \infty} \int_{a_n}^{b_n} \cparth{\int f(x, t)d\mu}dt\\
+    &= \int_{-\infty}^{+\infty}\cparth{\int f(x,t)d\mu}dt.
+  \end{align*}
+\end{proof}
 
 \nextexe{tres}
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f: X \rightarrow \bR$ uma função mensurável. 
 Para $n \in \bN$, seja $(f_n)$ a sequência de truncamentos de $f$. Mostre que se $f$ é integrável, então 
 \begin{align*}
-  \int f dmu = \lim \int f_n d\mu.
+  \int f d\mu = \lim \int f_n d\mu.
 \end{align*}
 Além disso, mostre que se 
 \begin{align*}
   \sup \int |f_n| d\mu < +\infty,
 \end{align*}
-então f é integrável.}
+então $f$ é integrável.}
+\begin{proof}[\textbf{Dem:}] Vejamos a primeira parte da proposição. 
+  Note que $(f_n)$ é mensurável e converge pontualmente 
+  para $f$. Mais ainda, para todo $n \in \bN$ segue que 
+  $|f_n(x)| = |f(x)|$ em $A = \{x \in X \st |f(x)|\le n\}$ enquanto em $A^C$,
+  temos $|f(x)|\ge n = |f_n(x)|$, sendo assim, $|f(x)| \ge |f_n(x)|$ para 
+  todo $x \in X$. Por hipótese, como $f$ é integrável, segue que 
+  $|f| \in L(X, \mcal M, \mu)$, desse modo, do Teorema da Convergência Dominada,
+  \begin{align*}
+    \int f d\mu = \lim \int f_n d\mu, 
+  \end{align*}
+  como queríamos. 
+
+  Agora, vejamos a segunda parte da proposição. Note que $|f_n|$ é uma sequência não-negativa, 
+  mensurável e monótona não-decrescente que converge para $|f|$. Do Teorema da  
+  Convergência Monótona, 
+  \begin{align*}
+    \int \lim |f_n| d\mu = \int |f| d\mu = \lim \int |f_n| d\mu. 
+  \end{align*}
+  Como $|f_n|$ é uma sequência monótona não-decrescente, 
+  \begin{align*}
+    \int |f| d\mu = \lim_{n \rightarrow \infty} \int |f_n| d\mu 
+    = \sup_{n \in \bN} \int |f_n| d\mu < +\infty.
+  \end{align*}
+\end{proof}
 
 \nextexe{tres}
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, $f, g \in \mathcal M(X, \mcal F)$ e $\lambda \in \bR$. 
