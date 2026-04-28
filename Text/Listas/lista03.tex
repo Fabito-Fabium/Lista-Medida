@@ -942,6 +942,24 @@ $L(X, \mcal F, \mu)$ que converge para uma função $f$. Mostre que se
   Conclua que o Lema de Fatou pode não valer a menos que $f_n \ge 0$, mesmo na presença 
   de convergência uniforme.
 }
+\begin{proof}[\textbf{Dem:}]
+  Ora, visto que, para cada $n \in \bN$
+  \begin{align*}
+    \mparth{f_n - 0 } \le \mparth{\frac{-1}{n}-0} = \frac{1}{n},
+  \end{align*}
+  então, para todo $\epsilon > 0$ existe $N \in \bN$ tal que para todo $n \ge N$, 
+  \begin{align*}
+    \mparth{f_n(x) - 0} \le \frac{1}{n} \le \frac{1}{N} < \epsilon,
+  \end{align*}
+  para todo $x \in [0, \infty)$. Ou seja, $(f_n)$ converge uniformemente para $f=0$ 
+  em $[0, \infty)$. Note que $(f_n)$ não é não-negativa, portanto ela não obedece 
+  todas as hipóteses do Lema de Fatou. Mais ainda, para todo $n \in \bN$
+  \begin{align*}
+    \int \parth{\frac{-1}{n}}\chi_{[0, n]} dm= - \int \parth{\frac{1}{n}}\chi_{[0, n]} dm = - \frac{1}{n}m([0, n])= -1,
+  \end{align*}
+  ou seja, $\lim \inf \int f_n dm = -1$. Enquanto, $\int \lim\inf f_n dm = \int f dm = 0$.
+  
+\end{proof}
 
 \nextexe{tres}
 \textbf{
@@ -1208,7 +1226,27 @@ então $f$ é integrável.}
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, $f, g \in \mathcal M(X, \mcal F)$ e $\lambda \in \bR$. 
 \begin{enumerate}[label=\alph*)]
   \item Mostre que a relação $f \sim g \iff f = g$ $\mu$-q.t.p. é uma relação de equivalência. 
+    \begin{proof}[\textbf{Dem:}].\\
+      (Reflexiva:) Note que como $=$ é uma relação de equivalência, $f = f$ para todo $X$. Desse modo, 
+      em particular $f = f$ $\mu$-q.t.p. ou mais, $f \sim f$;\\
+      (Simétrica:) Suponhamos $f\sim g$. Como $f= g$ $\mu$-q.t.p, temos $g = f$ $\mu$-q.t.p. Ou seja $g \sim f$;
+      (Transitiva:) Suponhamos $f \sim g$ e $g \sim h$. Como $f \sim g$, existem conjuntos $N_1, N_2 \in \mcal F$ 
+      de medida nula, satisfazendo $f(x_1) = g(x_1)$ para $x_1 \in N_1^C$ e $g(x_2) = h(x_2)$ para $x_2 \in N_2^C$. 
+      Visto que $N_1^C \cap N_2^C \neq \emptyset$, definindo $N = N_1 \cup N_2$, note que $\mu(N) = 0$ e, 
+      para todo $x \in N^C$, temos $f(x) = g(x)$ e $g(x) = h(x)$. Sendo assim, da transitividade de $=$ restrita 
+      a $N^C$, segue que $f \sim h$.
+    \end{proof}
   \item Mostre que as operações em $M(X, \mcal F)/\sim$ dadas por $\cparth{f} + \cparth{g} \coloneq \cparth{f+g}$
     e $\lambda \cdot \cparth{f} \coloneq \cparth{\lambda f}$ estão bem definidas.
+    \begin{proof}[\textbf{Dem:}] Sejam $f_0, f_1 \in \cparth{f}$ e $g_0, g_1 \in \cparth{g}$. Note que existe 
+      $N \in \mcal F$ tal que para $x \in N^C$, $f_0(x) = f_1(x)$ e $g_0(x) = g_1(x)$. Desse modo, para
+      todo $x \in N^C$,
+      \begin{align*}
+        f_0(x) + g_0(x) = f_1(x) + g_1(x).
+      \end{align*}
+      Portanto, $f_0 + g_0 \sim f_1 + g_1$, comprovando a boa-definição de $[f] + [g] = [f+g]$. Agora, 
+      considere $\lambda \in \bR$. Visto que $f_0 \sim f_1$, então $f_0 = f_1$ $\mu$-q.t.p., isto é, 
+      $\lambda f_0 = \lambda f_1$ $\mu$-q.t.p., ou seja, se $f_0 \sim f_1$ então $\lambda f_0 \sim \lambda f_1$.
+    \end{proof}
 \end{enumerate}
 }
