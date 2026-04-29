@@ -1,0 +1,44 @@
+\mysec{Lista 4}
+\newcounter{quatro}
+\stepcounter{quatro}
+
+%ex 1
+\myexe{\thequatro}
+\bigline
+\textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida e $f \in L^p(X, \mu)$, 
+com $1 \le p < +\infty$. Prove a Desigualdade de Chebyshev:
+\begin{align*}
+  \mu\parth{\set{x \in X \st |f(x)| > \alpha}} \le \cparth{\frac{\pnorm p f}{\alpha}}^p, \quad \forall \alpha>0.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Como $f \in L^p (X, \mu)$, temos $|f|^p \in L^1(X, \mu)$, ou seja, 
+  \begin{align*}
+    \int |f|^p d\mu < + \infty.
+  \end{align*}
+  Mais ainda, como $|f|^p \ge 0$, temos que em particular que todos os representantes da classe 
+  $[|f|^p]$ são mensuráveis não-negativos. Portanto, 
+  da desigualdade de Chebyshev para funções em $\fplus M (X, \mcal F)$, dados $\beta = \alpha^p > 0$ e
+  $E_\beta = \set{x \in X \st |f(x)|^p > \beta}$,
+  \begin{align*}
+    \mu(\set{x \in X \st |f(x)| > \alpha}) = \mu(E_\beta) \le \frac{1}{\beta} \int |f|^p d\mu 
+    = \frac{1}{\alpha^p} \pnorm p f.
+  \end{align*}
+\end{proof}
+
+%ex 2 
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L^p (X, \mu)$, com $1 \le p \le +\infty$. 
+Mostre que o conjunto $E = \set{x \in X \st |f(x)| \neq 0}$ é $\sigma$-finito.}
+\begin{proof}[\textbf{Dem:}] Note que $|f(x)|^p \ge 0$ para cada $x \in X$ e $1 \le p \le +\infty$. Considere  
+  $E_n = \set{x \in X \st |f(x)| > \frac{1}{n}}$. Ou seja, 
+  $E = \bigcup E_n$ 
+  \begin{align*}
+    y 
+&= \underbrace{%
+     \left[ x^2 + r^2 \left(a^2+\frac{a^{0.3}}{b}\right) \right] 
+    }_{\text{growth rate}}
+    \times  
+    \underbrace{%
+     \vphantom{ \left(\frac{a^{0.3}}{b}\right) } 
+     C_0}_\text{initial}\\
+  \end{align*}
+\end{proof}
