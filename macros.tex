@@ -74,6 +74,13 @@
   \addcontentsline{toc}{subsection}{Q#1}%
 }
 
+\newcommand{\newexe}[1]{%
+    \biglinend
+    \stepcounter{#1}%
+    \myexe{\csname the#1\endcsname}%
+    \bigline
+}
+
 \newcommand{\nextexe}[1]{%
     \biglinend
     \newpage

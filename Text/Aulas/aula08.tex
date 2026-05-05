@@ -5,7 +5,7 @@
 Sejam $(X, \mathcal{F}, \mu)$ um espaço de medida e $f: X \times [a,b] \rightarrow \mathbb{R}$ uma função tal que, para cada $t \in [a,b]$ fixado, $f(\cdot, t) \in \mathcal{M}(X,\mathcal{F})$.
 
 \begin{prop*}{}
-Suponha que para algum $t_0 \in [a,b]$ vale que $\lim_{t \rightarrow t_0} f(x,t) = f(x,t_0)$. Se existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, $\forall (x,t) \in X \times [a,b]$, então
+Suponha que para algum $t_0 \in [a,b]$ vale que $\lim_{t \rightarrow t_0} f(x,t) = f(x,t_0)$. Se existe $g \in L(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, $\forall (x,t) \in X \times [a,b]$, então
 $$ \lim_{t \rightarrow t_0} \int f(x,t) \, d\mu = \int f(x,t_0) \, d\mu. $$
 \end{prop*}
 
@@ -19,13 +19,13 @@ $$ \lim_{t \rightarrow t_0} \int f(x,t) \, d\mu = \int f(x,t_0) \, d\mu. $$
 \end{proof}
 
 \begin{corollary*}{}
-Se $f(x, \cdot)$ é contínua em $[a,b]$, para todo $x \in X$, e existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, então a função $F: [a,b] \rightarrow \mathbb{R}$ dada por
+Se $f(x, \cdot)$ é contínua em $[a,b]$, para todo $x \in X$, e existe $g \in L(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, então a função $F: [a,b] \rightarrow \mathbb{R}$ dada por
 $$ F(t) = \int f(x,t) \, d\mu $$
 é contínua.
 \end{corollary*}
 
 \begin{prop*}{}
-Suponha que para algum $t_0 \in [a,b]$, $f(\cdot, t_0) \in L^1(X, \mathcal{F}, \mu)$, que $\frac{\partial f}{\partial t}$ existe em $X \times [a,b]$ e que existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que
+Suponha que para algum $t_0 \in [a,b]$, $f(\cdot, t_0) \in L(X, \mathcal{F}, \mu)$, que $\frac{\partial f}{\partial t}$ existe em $X \times [a,b]$ e que existe $g \in L(X, \mathcal{F}, \mu)$ tal que
 $$ \left| \frac{\partial f}{\partial t}(x,t) \right| \le g(x), \quad \forall (x,t) \in X \times [a,b]. $$
 Então a função $F$ definida anteriormente é derivável em $[a,b]$ e
 $$ \frac{dF}{dt}(t) = \frac{d}{dt} \int f(x,t) \, d\mu = \int \frac{\partial f}{\partial t}(x,t) \, d\mu. $$
@@ -38,7 +38,7 @@ com $h_n(x) = \frac{f(x,t_n) - f(x,p)}{t_n - p}$. Como $h_n$ é mensurável, con
 $$ f(x,t) - f(x,t_0) = \frac{\partial f}{\partial t}(x,s)(t - t_0), $$
 para algum $s$ entre $t$ e $t_0$. Assim,
 $$ |f(x,t)| \le |f(x,t_0)| + \left| \frac{\partial f}{\partial t}(x,s) \right| |t - t_0| \le |f(x,t_0)| + g(x)(b-a). $$
-Portanto, $f(\cdot, t)$ é integrável para cada $t \in [a,b]$. Em particular, $h_n \in L^1(X, \mathcal{F}, \mu)$. 
+Portanto, $f(\cdot, t)$ é integrável para cada $t \in [a,b]$. Em particular, $h_n \in L(X, \mathcal{F}, \mu)$. 
 
 Novamente pelo Teorema do Valor Médio, existe $s_n$ entre $t_n$ e $p$ tal que $h_n(x) = \frac{f(x,t_n) - f(x,p)}{t_n - p} = \frac{\partial f}{\partial t}(x,s_n)$. Logo, $\left| h_n(x) \right| = \left| \frac{\partial f}{\partial t}(x,s_n) \right| \le g(x)$. Portanto, pelo Teorema da Convergência Dominada, obtemos
 $$ \int \frac{\partial f}{\partial t}(x,p) \, d\mu = \int \lim h_n \, d\mu = \lim \int h_n \, d\mu = \lim \int \frac{f(x,t_n) - f(x,p)}{t_n - p} \, d\mu = \lim \frac{F(t_n) - F(p)}{t_n - p}. $$
@@ -46,7 +46,7 @@ Portanto, $F$ é derivável em $p$ e $\frac{dF}{dt}(p) = \int \frac{\partial f}{
 \end{proof}
 
 \begin{prop*}{}
-Se $f(x, \cdot)$ é contínua em $[a,b]$, para todo $x \in X$, e existe $g \in L^1(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, então
+Se $f(x, \cdot)$ é contínua em $[a,b]$, para todo $x \in X$, e existe $g \in L(X, \mathcal{F}, \mu)$ tal que $|f(x,t)| \le g(x)$, então
 $$ \int_a^b F(t) \, dt = \int_a^b \left( \int_X f(x,t) \, d\mu \right) dt = \int_X \left[ \int_a^b f(x,t) \, dt \right] d\mu, $$
 em que as integrais em $t$ são de Riemann.
 \end{prop*}
@@ -94,7 +94,7 @@ $$ \int_{[a,b]} f \, dm = \int_{[a,b]} G \, dm = \int_a^b f(x) \, dx. $$
 Para integrais impróprias é preciso de mais cuidado.
 
 \begin{prop*}{}
-Seja $f: [a, +\infty) \rightarrow \mathbb{R}$ uma função tal que para cada $b > a$, $f$ é limitada e Riemann integrável em $[a,b]$. Se $f \in L^1([a, +\infty), \mathcal{M}, m)$ (ou seja, $f$ é integrável), então
+Seja $f: [a, +\infty) \rightarrow \mathbb{R}$ uma função tal que para cada $b > a$, $f$ é limitada e Riemann integrável em $[a,b]$. Se $f \in L([a, +\infty), \mathcal{M}, m)$ (ou seja, $f$ é integrável), então
 $$ \int_a^{+\infty} f(x) \, dx = \lim_{b \rightarrow +\infty} \int_a^b f(x) \, dx = \int_{[a, +\infty)} f \, dm. $$
 \end{prop*}
 

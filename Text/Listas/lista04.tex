@@ -20,25 +20,86 @@ com $1 \le p < +\infty$. Prove a Desigualdade de Chebyshev:
   $E_\beta = \set{x \in X \st |f(x)|^p > \beta}$,
   \begin{align*}
     \mu(\set{x \in X \st |f(x)| > \alpha}) = \mu(E_\beta) \le \frac{1}{\beta} \int |f|^p d\mu 
-    = \frac{1}{\alpha^p} \pnorm p f.
+    = \frac{1}{\alpha^p} \pnorm p f^p.
   \end{align*}
 \end{proof}
+\bigline
 
 %ex 2 
-\nextexe{quatro}
-\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L^p (X, \mu)$, com $1 \le p \le +\infty$. 
+\stepcounter{quatro}
+\myexe{\thequatro}
+
+\noindent 
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L^p (X, \mu)$, com $1 \le p < +\infty$. 
 Mostre que o conjunto $E = \set{x \in X \st |f(x)| \neq 0}$ é $\sigma$-finito.}
-\begin{proof}[\textbf{Dem:}] Note que $|f(x)|^p \ge 0$ para cada $x \in X$ e $1 \le p \le +\infty$. Considere  
-  $E_n = \set{x \in X \st |f(x)| > \frac{1}{n}}$. Ou seja, 
-  $E = \bigcup E_n$ 
+\begin{proof}[\textbf{Dem:}] Note que $|f(x)|^p \ge 0$ para cada 
+  $x \in X$ e $1 \le p \le +\infty$. Para $p \neq +\infty$, considere  
+  $E_n = \set{x \in X \st |f(x)| > \frac{1}{n}}$. 
+  Note que $E = \bigcup_{n \in \bN} E_n$, desse modo, vejamos que 
+  $E_n$ é finito. Note que da desigualde de Chebyshev, para 
+  cada $n \in \bN$,
   \begin{align*}
-    y 
-&= \underbrace{%
-     \left[ x^2 + r^2 \left(a^2+\frac{a^{0.3}}{b}\right) \right] 
-    }_{\text{growth rate}}
-    \times  
-    \underbrace{%
-     \vphantom{ \left(\frac{a^{0.3}}{b}\right) } 
-     C_0}_\text{initial}\\
+    \mu(E_n) \le \cparth{\frac{||f||_p}{n}}^p < +\infty.
   \end{align*}
+  Com isso, segue que $E$ é $\sigma$-finito.
 \end{proof}
+
+%ex 3
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L^p(X, \mu)$, 
+com $1 \le p \le +\infty$. Definindo $E_n = \set{x \in X \st |f(x)| \ge n}$, 
+mostre que $\lim \mu(E_n) = 0$.}
+\begin{proof}[\textbf{Dem:}] Note que, para cada $n \in \bN$ temos 
+$E_n \supseteq E_{n+1}$. Mais ainda, se $p \neq +\infty$, para cada $n \in \bN$, 
+  da desigualdade de Chebyshev para espaços $L^p(X, \mu)$, dado $f \in L^p(X, \mu)$, 
+\begin{align*}
+  \mu(E_n) \le \cparth{\frac{||f||_p}{n}}^p \implies 
+  \lim_{n \rightarrow \infty} \mu(E_n) \le 
+  \lim_{n \rightarrow \infty} \cparth{\frac{||f||_p}{n}}^p = 0. 
+\end{align*}
+Se $p = +\infty$, por definição, dado $f \in L^\infty(X, \mu)$, 
+\begin{align*}
+  ||f||_\infty = \inf \set{a \ge 0 \st \mu(\set{x \in X \st |f(x)| > a}) = 0},
+\end{align*}
+  isto é, $\mu(\set{x \in X \st |f(x)| > ||f||_\infty}) = 0$.  
+  Visto que $f \in L^\infty(X, \mu)$, existe $M \in \bN$ tal que 
+$||f||_\infty < M$. Desse modo, para todo $n \ge M$,
+\begin{align*}
+  \mu(\set{x \in X \st |f(x)| \ge n}) \le 
+  \mu\parth{\set{x \in X \st |f(x)| > ||f||_\infty}} = 0,
+\end{align*}
+  portanto, $\lim \mu(E_n) = 0$.
+\end{proof}
+
+%ex 4
+\newexe{quatro}
+\textbf{Sejam $X = \bN$ e $\mu$ a medida da contagem em $\bN$. 
+Considere $f: \bN \rightarrow \bR$ definida por $f(n)=1/n$. Mostre que 
+$f$ não pertence a $L^1(\bN, \mu)$, mas pertence a $L^p(\bN, \mu)$ 
+para todo $1 < p \le \infty$.}
+\begin{proof}[\textbf{Dem:}] Ora, como visto em exercícios anteriores, 
+\begin{align*}
+  \int |f| d\mu = \sum_{k \in \bN} |f(k)| = \sum_{k \in \bN} \mparth {\frac{1}{k}} 
+  = \sum_{k \in \bN} \frac{1}{k},
+\end{align*}
+com isso, segue que $\int |f| d\mu$ é igual a série harmônica, i.e., $\int |f| d\mu = +\infty$,
+  ou seja, $f \not \in L^1(X, \mu)$. 
+  Entretanto, 
+\begin{align*}
+  \int |f|^p d\mu = \sum_{k \in \bN} |f(k)|^p = \sum_{k \in \bN} \mparth{\frac{1}{k}}^p 
+  = \sum_{k \in \bN} \frac{1}{k}^p,
+\end{align*}
+ou seja, da convergência das $p$-séries, segue que $\int |f|^p d\mu < +\infty$, 
+  isto é, $f \in L^p(X, \mu)$ para 
+  $1 < p < +\infty$. Agora, para $p = +\infty$, note que, para cada $n \in \bN$, 
+\begin{align*}
+  f(n) \le \max f(k) = 1 \implies ||f||_\infty \le \max f(k) = 1 < +\infty. 
+\end{align*}
+  Portanto $f \in L^\infty(X, \mu)$.
+\end{proof}
+
+%ex 5
+\nextexe{quatro}
+\textbf{Sejam $X = \bN$ e $\mu$ a medida da contagem em $\bN$. 
+Prove que $f \in L^p(\bN, \mu)$ para todo $1 \le p \le q < \infty$, 
+e $||f||_q \le ||f||_p$.}
