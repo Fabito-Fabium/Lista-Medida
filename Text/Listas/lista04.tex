@@ -124,3 +124,29 @@ e $||f||_q \le ||f||_p$.}
 
 \end{proof}
 
+\nextexe{quatro}
+\textbf{Seja $X = \bN$ e defina $\lambda: \mcal P(\mbb N) \rightarrow \bN$ por 
+\begin{align*}
+  \lambda(E) = \sum_{n \in E}\frac{1}{n^2}
+\end{align*}
+Considere $f: \bN \rightarrow \bR$ dada por $f(n)= \sqrt{n}$.
+\begin{enumerate}[label=\alph*)]
+  \item Mostre que $\lambda$ é uma medida em $\bN$ e que $\lambda(\bN) < +\infty$.
+    \begin{proof}[\textbf{Dem:}]
+      Por definição segue que $\lambda(E) \ge 0$ para todo $E \in \mcal P(\bN)$ não 
+      vazio. Para $E = \emptyset$,defina $\lambda(E) = 0$. Daqui, vejamos que vale 
+      a $\sigma$-aditividade. Dado $\set{E_j}$ uma sequência em $\mcal F$ dois a 
+      dois disjunto, note que, 
+      \begin{align*}
+        \lambda \parth{\bigcup_{j \in \bN} E_j} = \sum_{n \in \bigcup E_j} \frac{1}{n^2}
+        = \sum_{j \in \bN} \cparth{\sum_{n \in E_j} \frac{1}{n^2}} 
+        = \sum_{j \in \bN} \lambda(E_j), 
+      \end{align*}
+      ou seja, $\lambda$ é uma medida em $\bN$. Como $\lambda(\bN)$ é a $p$-série 
+      com $p=2$, segue que $\lambda(\bN) < +\infty$.
+    \end{proof}
+  \item Mostre que $f \in L^p(\bN, \lambda)$ se, e somente se, $1\le p < 2$.
+  \begin{proof}[\textbf{Dem:}]. \\ 
+      ($\implies$) teste
+  \end{proof}
+\end{enumerate}}

@@ -1,0 +1,154 @@
+Seja $(X, \mathcal{F}, \mu)$ um espaço de medida. Defina $N: L(X, \mathcal{F}, \mu) \rightarrow \mathbb{R}$ por
+$$ N(f) := \int |f| \, d\mu. $$
+Note que $N$ está bem definido, pois como $f$ é integrável, então $|f| \in L(X, \mcal F)$, 
+isto é, $\int |f| \, d\mu \in \mathbb{R}$.
+
+Já provamos que $L(X, \mathcal{F}, \mu)$ é um espaço vetorial, já que se $f, g \in L(X, \mathcal{F}, \mu)$, então $f+g \in L(X, \mathcal{F}, \mu)$ e $\lambda f \in L(X, \mathcal{F}, \mu)$, para todo $\lambda \in \mathbb{R}$.
+
+\bigline
+\noindent
+Vejamos que $N$ é uma seminorma:
+\begin{itemize}
+    \item[i)] $N(f) \ge 0$. Como $|f| \ge 0$, pela monotonicidade da integral, $\int 0 \, d\mu \le \int |f| \, d\mu \implies 0 \le N(f)$.
+    \item[ii)] $N(f+g) \le N(f) + N(g)$. Como $|f+g| \le |f| + |g|$, $\int |f+g| \, d\mu \le \int (|f| + |g|) \, d\mu = \int |f| \, d\mu + \int |g| \, d\mu$.
+\end{itemize}
+\bigline
+
+Para que $N$ fosse uma norma, ela deveria satisfazer $N(f) = 0 \implies f = 0$. Porém, temos que se $N(f) = 0$, então $\int |f| \, d\mu = 0$. Dos resultados já vistos, concluímos que $f = 0$ $\mu$-q.t.p. e, portanto, $f = 0$ $\mu$-q.t.p. Dessa forma, $N$ não é uma norma em $L(X, \mathcal{F}, \mu)$.
+
+Daqui, será apresentado a construção de um espaço semelhante a $L(X, \mcal F, \mu)$ 
+mas que $N$ satisfaz as condições de norma.
+
+Para tal, definimos em $L(X, \mathcal{F}, \mu)$ a relação $\sim$ que satisfaz a seguinte
+propriedade: $f \sim g$ quando $f = g$ $\mu$-q.t.p.
+Note que $\sim$ é relação de equivalência, já que:
+\begin{itemize}
+    \item $f \sim f$, $\forall f \in L(X, \mathcal{F}, \mu)$
+    \item $f \sim g \implies g \sim f$, $\forall f, g \in L(X, \mathcal{F}, \mu)$
+    \item $f \sim g$ e $g \sim h \implies f \sim h$, $\forall f, g, h \in L(X, \mathcal{F}, \mu)$
+\end{itemize}
+
+Denotaremos o espaço quociente $L(X, \mathcal{F}, \mu) / \sim$ por $L^1(X, \mathcal{F}, \mu) = L^1(X, \mu)$. Definimos as operações de maneira usual:
+$$ \lambda \cdot [f] = [\lambda f] \quad \text{e} \quad [f] + [g] = [f+g]. \quad \text{(Lista 3 - Boa Definição)} $$
+
+Definimos $\|\cdot\|_1: L^1(X, \mu) \rightarrow \mathbb{R}$ por $\|[f]\|_1 = N(f) = \int |f| \, d\mu$.
+
+Vejamos que está bem definida, isto é, se $[f_1] = [f_2]$, então $\|[f_1]\|_1 = \|[f_2]\|_1$.
+De fato, se $f_1 \sim f_2$, então $f_1 = f_2$ $\mu$-q.t.p., portanto, $|f_1| = |f_2|$ $\mu$-q.t.p. Assim, $\int |f_1| \, d\mu = \int |f_2| \, d\mu \implies \|[f_1]\|_1 = \|[f_2]\|_1$.
+
+\begin{theorem*}{}
+O espaço $(L^1(X, \mu), \|\cdot\|_1)$ é um espaço vetorial normado.
+\end{theorem*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Da discussão anterior, resta apenas mostrar a propriedade $\|[f]\|_1 = 0 \implies [f] = [0]$. 
+Se $\|[f]\|_1 = 0$, então $\int |f| \, d\mu = 0$, o que implica que $f=0$ $\mu$-q.t.p., ou seja, $f \sim 0$. Logo $[f] = [0]$.
+\end{proof}
+
+Para facilitar a notação, embora o espaço $L^1(X, \mu)$ seja formado por classes de equivalência, nos referiremos a seus elementos como funções $f \in L^1(X, \mu)$ e escreveremos $\|f\|_1$ para indicar a norma de $[f]$.
+
+\subsection*{Espaços $L^p(X, \mu)$, $1 \le p < +\infty$}
+
+\begin{definition*}{}
+Seja $1 \le p < +\infty$. Definimos o espaço $L^p(X, \mu)$ como o conjunto das classes de equivalência de funções mensuráveis $f$ tais que $|f|^p \in L^1(X, \mu)$.
+\end{definition*}
+
+Vejamos inicialmente que $L^p(X, \mu)$ é um espaço vetorial. Dados $f, g \in L^p(X, \mu)$ e $\lambda \in \mathbb{R}$, temos que
+$$ \int |\lambda f|^p \, d\mu = \int |\lambda|^p |f|^p \, d\mu = |\lambda|^p \int |f|^p \, d\mu < +\infty \implies \lambda f \in L^p(X, \mu). $$
+Além disso, $|f+g| \le |f| + |g| \le 2 \max\{|f|, |g|\} \implies |f+g|^p \le 2^p \max\{|f|^p, |g|^p\}$.
+Logo,
+$$ \int |f+g|^p \, d\mu \le \int 2^p(|f|^p + |g|^p) \, d\mu \le 2^p \int |f|^p \, d\mu + 2^p \int |g|^p \, d\mu < +\infty \implies f+g \in L^p(X, \mu). $$
+
+Definimos agora $\|\cdot\|_p: L^p(X, \mu) \rightarrow \mathbb{R}$ por
+$$ \|f\|_p = \left( \int |f|^p \, d\mu \right)^{\frac{1}{p}}. $$
+Note que para $p=1$, obtemos a norma $\|\cdot\|_1$ definida anteriormente. Nosso objetivo agora será provar que $\|\cdot\|_p$ é uma norma em $L^p(X, \mu)$.
+
+Primeiramente, temos que
+$$ \|f\|_p = \left( \int |f|^p \, d\mu \right)^{\frac{1}{p}} \ge 0, $$
+pois $|f|^p \ge 0$. Além disso, se $\|f\|_p = 0$, então $\left(\int |f|^p \, d\mu\right)^{1/p} = 0 \implies \int |f|^p \, d\mu = 0$, e portanto $|f|^p = 0$ $\mu$-q.t.p. $\implies f = 0$ $\mu$-q.t.p. $\implies [f] = [0]$.
+
+Temos também que
+$$ \|\lambda f\|_p = \left( \int |\lambda f|^p \, d\mu \right)^{\frac{1}{p}} = \left( |\lambda|^p \int |f|^p \, d\mu \right)^{\frac{1}{p}} = |\lambda| \|f\|_p. $$
+Assim, resta apenas mostrar a desigualdade triangular $\|f+g\|_p \le \|f\|_p + \|g\|_p$.
+
+\begin{definition*}{}
+Seja $1 < p < +\infty$. Definimos o conjugado de $p$ como sendo $q$, isto é, o número $q \in (1, +\infty)$ que satisfaz
+$$ \frac{1}{p} + \frac{1}{q} = 1. $$
+Definimos o conjugado de $1$ como $+\infty$ e o de $+\infty$ como $1$.
+\end{definition*}
+
+\begin{lemma*}[Desigualdade de Young]
+Sejam $a, b \ge 0$ e $1 < p < +\infty$. Então
+$$ ab \le \frac{a^p}{p} + \frac{b^q}{q}, $$
+em que $q$ é o conjugado de $p$.
+\end{lemma*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Se $a = 0$ ou $b = 0$, a desigualdade é imediata. Suponhamos então $a > 0$ e $b > 0$.
+Como a função $\exp(x) = e^x$ é convexa, temos que $\exp((1-t)x + ty) \le (1-t)\exp(x) + t\exp(y)$, $\forall x, y \in \mathbb{R}$, $t \in [0,1]$.
+Assim, para $x = \log a^p$, $y = \log b^q$ e $t = \frac{1}{q}$ (com $1-t = \frac{1}{p}$ já que $\frac{1}{p} + \frac{1}{q} = 1$), obtemos:
+$$ ab = \exp(\log(ab)) = \exp(\log a + \log b) = \exp\left(\frac{1}{p}\log a^p + \frac{1}{q}\log b^q\right) \le \frac{1}{p}\exp(\log a^p) + \frac{1}{q}\exp(\log b^q). $$
+Portanto, $ab \le \frac{a^p}{p} + \frac{b^q}{q}$.
+\end{proof}
+
+\begin{theorem*}[Desigualdade de Hölder]
+Sejam $1 < p < +\infty$ e $q$ tais que $\frac{1}{p} + \frac{1}{q} = 1$. Se $f \in L^p(X, \mu)$ e $g \in L^q(X, \mu)$, então $f \cdot g \in L^1(X, \mu)$ e
+$$ \|f \cdot g\|_1 \le \|f\|_p \cdot \|g\|_q. $$
+\end{theorem*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Se $\|f\|_p = 0$ ou $\|g\|_q = 0$, o resultado é imediato. Suponhamos então $\|f\|_p > 0$ e $\|g\|_q > 0$.
+Aplicando a desigualdade de Young para $a = \frac{|f(x)|}{\|f\|_p}$ e $b = \frac{|g(x)|}{\|g\|_q}$ para cada $x \in X$, obtemos:
+$$ \frac{|f(x)g(x)|}{\|f\|_p \|g\|_q} \le \frac{|f(x)|^p}{p \|f\|_p^p} + \frac{|g(x)|^q}{q \|g\|_q^q}, \quad \forall x \in X. $$
+Portanto $fg \in L^1(X, \mu)$ e, pela monotonicidade e linearidade da integral, obtemos
+$$ \frac{1}{\|f\|_p \|g\|_q} \int |fg| \, d\mu \le \frac{1}{p \|f\|_p^p} \int |f|^p \, d\mu + \frac{1}{q \|g\|_q^q} \int |g|^q \, d\mu = \frac{1}{p} \frac{\|f\|_p^p}{\|f\|_p^p} + \frac{1}{q} \frac{\|g\|_q^q}{\|g\|_q^q} = \frac{1}{p} + \frac{1}{q} = 1. $$
+Logo, $\int |fg| \, d\mu \le \|f\|_p \|g\|_q$.
+\end{proof}
+
+Note que quando $p=2$, então $q=2$. Dessa forma, obtemos a \textbf{Desigualdade de Cauchy-Schwarz}: Se $f, g \in L^2(X, \mu)$, então
+$$ \left| \int fg \, d\mu \right| \le \int |fg| \, d\mu \le \|f\|_2 \cdot \|g\|_2 = \left( \int |f|^2 \, d\mu \right)^{\frac{1}{2}} \left( \int |g|^2 \, d\mu \right)^{\frac{1}{2}}. $$
+
+\begin{definition*}{}
+Seja $f \in L^p(X, \mu)$ não-nula, com $1 < p < +\infty$. Definimos a função conjugada de $f$ como
+$$ f^* := \|f\|_p^{1-p} \text{sgn}(f) |f|^{p-1}, $$
+onde
+$$ \text{sgn}(f)(x) = \begin{cases} \frac{f(x)}{|f(x)|}, & \text{se } f(x) \neq 0 \\ 0, & \text{se } f(x) = 0 \end{cases} $$
+\end{definition*}
+
+\begin{lemma*}{}
+Se $f \in L^p(X, \mu)$ é uma função não-nula, $1 < p < +\infty$, então $f^* \in L^q(X, \mu)$, em que $q$ é o conjugado de $p$, $\|f^*\|_q = 1$, e $\int f \cdot f^* \, d\mu = \|f\|_p$.
+\end{lemma*}
+
+\begin{proof}[\textbf{Demonstração:}]
+Vejamos inicialmente que $f^* \in L^q(X, \mu)$:
+$$ \int |f^*|^q \, d\mu = \int \left| \|f\|_p^{1-p} \text{sgn}(f) |f|^{p-1} \right|^q d\mu = \|f\|_p^{(1-p)q} \int |f|^{(p-1)q} \, d\mu. $$
+Como $\frac{1}{p} + \frac{1}{q} = 1$, temos $q = \frac{p}{p-1} \implies q(p-1) = p$. Assim,
+$$ \int |f^*|^q \, d\mu = \|f\|_p^{-p} \int |f|^p \, d\mu = \|f\|_p^{-p} \|f\|_p^p = 1. $$
+Portanto $f^* \in L^q(X, \mu)$ e $\|f^*\|_q = 1$.
+
+Agora, como $f \cdot \text{sgn}(f) = |f|$, temos que
+$$ \int f \cdot f^* \, d\mu = \int f \|f\|_p^{1-p} \text{sgn}(f) |f|^{p-1} \, d\mu = \|f\|_p^{1-p} \int |f|^p \, d\mu = \|f\|_p^{1-p} \|f\|_p^p = \|f\|_p$. $$
+\end{proof}
+
+\begin{theorem*}[Desigualdade de Minkowski]
+Sejam $1 \le p < +\infty$ e $f, g \in L^p(X, \mu)$. Então $f+g \in L^p(X, \mu)$ e
+$$ \|f+g\|_p \le \|f\|_p + \|g\|_p. $$
+\end{theorem*}
+
+\begin{proof}[\textbf{Demonstração:}]
+O caso $p=1$ já foi feito. Suponhamos então $1 < p < +\infty$. Se $f+g = 0$ $\mu$-q.t.p., a desigualdade é satisfeita. Suponhamos então $\|f+g\|_p > 0$.
+
+Já vimos que $f+g \in L^p(X, \mu)$. Pelo Lema anterior e pela Desigualdade de Hölder, temos que:
+\begin{align*}
+    \|f+g\|_p &= \int (f+g)(f+g)^* \, d\mu = \int f(f+g)^* \, d\mu + \int g(f+g)^* \, d\mu \\
+    &\le \int |f(f+g)^*| \, d\mu + \int |g(f+g)^*| \, d\mu \\
+    &\le \|f\|_p \cdot \|(f+g)^*\|_q + \|g\|_p \cdot \|(f+g)^*\|_q = \|f\|_p + \|g\|_p,
+\end{align*}
+pois $\|(f+g)^*\|_q = 1$.
+\end{proof}
+
+\begin{theorem*}{}
+O espaço $L^p(X, \mu)$ é um espaço normado.
+\end{theorem*}
+
+\end{document}
