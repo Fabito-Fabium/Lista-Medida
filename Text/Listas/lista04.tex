@@ -124,6 +124,7 @@ e $||f||_q \le ||f||_p$.}
 
 \end{proof}
 
+%ex 6
 \nextexe{quatro}
 \textbf{Seja $X = \bN$ e defina $\lambda: \mcal P(\mbb N) \rightarrow \bN$ por 
 \begin{align*}
@@ -165,6 +166,7 @@ Considere $f: \bN \rightarrow \bR$ dada por $f(n)= \sqrt{n}$.
   \end{proof}
 \end{enumerate}}
 
+%ex 7
 \nextexe{quatro}
 \textbf{Seja $(X, \mcal F, \mu)$ um espaço de medida finita. Se $f$ é mensurável em $X$, 
 defina $E_n = \set{x \in X \st (n - 1) \le |f(x)| < n}$. Mostre que $f \in L^1(X, \mu)$ 
@@ -205,6 +207,7 @@ Pela definição de $E_n$, temos,
   $(\impliedby)$
 \end{proof}
 
+%ex 8
 \nextexe{quatro}
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida finita e $f \in L^p(X, \mcal F, \mu)$, $1 \le p < \infty$, 
 e $\epsilon > 0$. Mostre que existe um conjunto $E_\epsilon \in \mcal F$ com $\mu(E_\epsilon) < +\infty$ 
@@ -231,6 +234,7 @@ Ou seja,
 \end{align*}
 \end{proof}
 
+%ex 9
 \nextexe{quatro}
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f \in L^\infty(X, \mu)$. 
 Mostre que se $A < \pnorm \infty f$, então existe um conjunto 
@@ -248,8 +252,27 @@ $E \in \mcal F$ com $\mu(E) > 0$ tal que $|f(x)| > A$ para todo $x \in E$.}
   mais ainda, o conjunto satisfaz $\mu(E) > 0$, como queríamos.
 \end{proof}
 
+%ex 10
 \nextexe{quatro}
 \textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida. Mostre que se $f \in L^P(X, \mu)$, $1 \le p \le \infty$, 
 e $g \in L^\infty(X, \mu)$, então $fg \in L^p(X, \mu)$ e $\pnorm p {fg} \le \pnorm p f \pnorm \infty g$.}
-\begin{proof}[\textbf{Dem:}] Para $p = \infty$ 
+\begin{proof}[\textbf{Dem:}] Para $p = \infty$, segue diretamente que, 
+  \begin{align*}
+    \pnorm \infty {fg} = \inf \set{\alpha \ge 0 \st \mu(\set{x \in X \st |f(x)g(x)| > \alpha}) = 0}.
+  \end{align*}
+  Entretanto, como 
+  \begin{align*}
+    \mu(\set{x \in X \st |f(x)| > \pnorm \infty f}) = 0, \quad \mu(\set{x \in X \st |g(x)| > \pnorm \infty g}) = 0, 
+  \end{align*}
+  então, 
+  \begin{align*}
+    \mu(\set{x \in X \st |f(x)| |g(x)| > \pnorm \infty f \pnorm \infty g}) 
+    \le \mu(\set{x \in X \st |f(x)| > \pnorm \infty f}) = 0.
+  \end{align*}
+  Ou seja, da definição de infimo, segue que, 
+  \begin{align*}
+    \pnorm \infty {fg} \le \pnorm \infty f \pnorm \infty g.
+  \end{align*}
+  Já que $f, g \in L^\infty(X, \mu)$, temos da desigualdade acima que $fg \in L^\infty(X, \mu)$. \\ 
+  Suponhamos agora que $ 1 \le p < \infty$,
 \end{proof}
