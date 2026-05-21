@@ -1,4 +1,6 @@
 \mysec{Lista 4}
+\etocsetnexttocdepth{subsection}
+\localtableofcontents
 \newcounter{quatro}
 \stepcounter{quatro}
 
@@ -197,14 +199,16 @@ Ou seja,
 \end{align*}
 Pela definição de $E_n$, temos,
 \begin{align*}
-  +\infty > \int |f| d\mu \ge \sum_{n \in \bN} \int (n-1) \chi_{E_n} d\mu = \sum_{n \in \bN} (n-1) \chi_{E_n}.
+  +\infty > \int |f| d\mu \ge \sum_{n \in \bN} \int (n-1) \chi_{E_n} d\mu
+  = \sum_{n \in \bN} (n-1) \mu\parth{E_n}.
 \end{align*}
   Como $N^C \subset X$ e $\mu(X) < +\infty$,
   \begin{align*}
-    +\infty > \cparth{\sum_{n \in \bN} (n - 1) \chi_{E_n}} + \cparth{\sum_{n \in \bN} \chi_{E_n}} 
-    = \sum_{n \in \bN} n\chi_{E_n}.
+    +\infty > \cparth{\sum_{n \in \bN} (n - 1) \mu\parth{E_n}} + 
+    \cparth{\sum_{n \in \bN} \mu\parth{E_n}} 
+    = \sum_{n \in \bN} n\mu\parth{E_n}.
   \end{align*}
-  $(\impliedby)$
+  $(\impliedby)$ 
 \end{proof}
 
 %ex 8
@@ -274,5 +278,71 @@ e $g \in L^\infty(X, \mu)$, então $fg \in L^p(X, \mu)$ e $\pnorm p {fg} \le \pn
     \pnorm \infty {fg} \le \pnorm \infty f \pnorm \infty g.
   \end{align*}
   Já que $f, g \in L^\infty(X, \mu)$, temos da desigualdade acima que $fg \in L^\infty(X, \mu)$. \\ 
-  Suponhamos agora que $ 1 \le p < \infty$,
+  Suponhamos agora que $ 1 \le p < \infty$, Note que, como os representantes 
+  de $|f|^p \in L^p(X, \mu)$ são mensuráveis, segue que para todo $\alpha \in \bR$
+  temos que $\alpha |f|^p$ é também mensurável.
+  Portanto, como $g \in L^\infty(X, \mu)$, sabemos que $g$ é mensurável e 
+  por conseguinte, que $|g|$ também é. Já que $\phi: \bR \rightarrow \bR$ definida 
+  por $\phi(x) = x^p$ é, em particular para $1 \le p < \infty$, contínua, 
+  segue que $|g|^p$ é mensurável, (ver exercício 10 Lista 1). Portanto, 
+  $|fg|^p$ é mensurável, desse modo, já que $|fg|^p \le |f|^p\pnorm \infty g ^p$ $\mu$-q.t.p.,
+  \begin{align*}
+    \int |fg|^P d\mu &= \int |f|^p |g|^p d\mu \le \int |f|^p \pnorm \infty g^p d\mu \\ 
+    &= \pnorm \infty g^p \int |f|^p d\mu,
+  \end{align*}
+  já que $|f|^p \in L^1(X, \mu)$, segue que $\int |fg|^p d\mu \le \pnorm \infty g^p 
+  \pnorm p f^p < +\infty$, isto é, $|fg| \in L^p(X, \mu)$. Mais ainda, 
+  como $\pnorm p {fg}^p = \int |fg|^p d\mu \le \cparth{\pnorm p f \pnorm \infty g}^p$,
+  temos 
+  $$\pnorm p {fg} \le \pnorm p f \pnorm \infty g.$$ 
+  Como queríamos.
+\end{proof}
+
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $1 \le p < r \le +\infty$. 
+Defina em $L^p(X, \mu) \cap L^r(X, \mu)$ a função $\pnorm {} {\,\cdot\,}:
+L^p(X, \mu) \cap L^r(X, \mu) \rightarrow \bR$ dada por 
+$\pnorm {} f \coloneq \pnorm p f + \pnorm r f$. Mostre que 
+$\pnorm {} {\, \cdot \,}$ é uma norma e que $L^p(X,\mu)\cap L^r(X, \mu)$ é 
+um Espaço de Banach com esta norma.}
+\begin{proof}[\textbf{Dem:}]
+Vejamos primeiro que $\pnorm {} {\, \cdot \,}$ é uma norma em $L^p(X, \mu) \cap L^r(X, \mu)$.
+\begin{itemize}
+  \item $\snorm f \ge 0$ e $\snorm{f} = 0 \iff f = 0$:\\
+    Dado $f \in L^p(X, \mu) \cap L^r(X,\mu)$, como $\pnorm p {\, \cdot \,}$ e 
+    $\pnorm r {\, \cdot \,}$ em $L^p(X, \mu) \cap L^r(X, \mu)$, segue que 
+    $\snorm f = \pnorm p f + \pnorm r f \ge 0$. Agora, suponhamos que $\snorm f = 0$. Então, 
+    \begin{align*}
+      \snorm f = \pnorm p f + \pnorm r f = 0 \implies \pnorm p f = - \pnorm r f \implies 
+      \pnorm p f = 0 \implies f = 0.
+    \end{align*}
+    Por outro lado, suponhamos que $f = 0$, desse modo, 
+    \begin{align*}
+      f = 0 \implies \pnorm p f = \pnorm r f = 0 \implies 
+      \snorm f = \pnorm p f + \pnorm r f =0.
+    \end{align*}
+  \item Dados $\lambda \in \bR$ e $f \in L^p(X, \mu)\cap L^r(X, \mu)$,
+    $\snorm{\lambda f} = \mparth{\lambda} \snorm f$:
+
+    Ora, como $\pnorm p {\, \cdot \,}$ e 
+    $\pnorm r {\, \cdot \,}$ são normas em $L^p(X, \mu) \cap L^r(X, \mu)$, 
+    \begin{align*}
+      \mparth{\mparth{\lambda f}} = \pnorm p {\lambda f} + \pnorm r {\lambda f}
+      = \mparth \lambda \pnorm p f + \mparth \lambda \pnorm r f = \mparth \lambda \snorm f.
+    \end{align*}
+  \item Dados $f, g \in L^p(X,\mu)\cap L^r(X, \mu)$, $\snorm {f + g} \le \snorm f + \snorm g$:
+    
+    Novamente, como $\pnorm p {\, \cdot \,}$ e 
+    $\pnorm r {\, \cdot \,}$ são normas em $L^p(X, \mu) \cap L^r(X, \mu)$, 
+    \begin{align*}
+      \snorm {f+g} &= \pnorm p {f + g} + \pnorm r {f + g} \le 
+      \pnorm p f + \pnorm p g + \pnorm r f + \pnorm r g \\ 
+      &= \parth{\pnorm p f + \pnorm r f} + \parth{\pnorm p g + \pnorm r g}
+      = \snorm f + \snorm g. 
+    \end{align*}
+\end{itemize}
+  Com isso, segue que $\snorm {\, \cdot \,}$ é norma em $L^p(X, \mu) \cap L^r(X, \mu)$.
+  Daqui, vejamos que é também um Espaço de Banach quando munido com a norma $\snorm {\, 
+  \cdot \,}$. Para tal, vejamos que é completo, isto é, toda sequência 
+  de Cauchy em $\parth{L^p(X, \mu) \cap L^r(X, \mu), }$
 \end{proof}

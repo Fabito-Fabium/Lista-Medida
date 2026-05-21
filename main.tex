@@ -5,6 +5,7 @@
 \input{letterfonts}
 \input{ptbr_mod}
 \usepackage{physics}
+\usepackage{etoc}
 
 \title{\Huge{Notas e Exercícios}\\Medida e Integração}
 \author{\large{ }}
@@ -16,6 +17,7 @@
 \newpage% or \cleardoublepage
 % \pdfbookmark[<level>]{<title>}{<dest>}
 \pdfbookmark[section]{\contentsname}{toc}
+\etocsetnexttocdepth{1}
 \tableofcontents
 \pagebreak
 
@@ -47,7 +49,6 @@
 \addcontentsline{toc}{chapter}{Exercícios Resolvidos}
 
 \input{Text/Listas/lista01.tex}
-
 \newpage
 \input{Text/Listas/lista02.tex}
 

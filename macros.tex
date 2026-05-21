@@ -41,6 +41,7 @@
 \newcommand{\parth}[1]{\left(#1\right)}
 \newcommand{\cparth}[1]{\left[#1\right]}
 \newcommand{\mparth}[1]{\left|#1\right|}
+\newcommand{\snorm}[1]{\mparth{\mparth{#1}}}
 \newcommand{\pnorm}[2]{\mparth{\mparth{#2}}_{#1}}
 
 \newcommand{\set}[1]{\left\{#1\right\}}
@@ -71,7 +72,7 @@
 \newcommand{\myexe}[1]{%
   \subsection*{Exercício #1}%
   \refstepcounter{subsection}%
-  \addcontentsline{toc}{subsection}{Q#1}%
+  \addcontentsline{toc}{subsection}{\, Ex#1 \,}%
 }
 
 \newcommand{\newexe}[1]{%
