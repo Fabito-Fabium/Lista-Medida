@@ -392,11 +392,201 @@ Vejamos primeiro que $\pnorm {} {\, \cdot \,}$ é uma norma em $L^p(X, \mu) \cap
 Defina em $L^p(X, \mu) + L^r(X, \mu)$ a função 
 $\snorm {\, \cdot \,}: L^p(X, \mu) + L^r(X, \mu) \rightarrow \bR$ dada por 
 \begin{align*}
-  \snorm f \coloneq \inf \set{\pnorm p g + \pnorm r g \st 
+  \snorm f \coloneq \inf \set{\pnorm p g + \pnorm r h \st 
   g \in L^p(X, \mu), h \in L^r (X, \mu), \text{ e } f = g+ h}
 \end{align*}
 Mostre que $\snorm {\, \cdot \,}$ é uma norma e 
 que $L^p(X, \mu) + L^r(X, \mu)$ é um Espaço de Banach com esta norma.}
-\begin{proof}[\textbf{Dem:}]
-  
+\begin{proof}[\textbf{Dem:}] Considere 
+\begin{align*}
+  A_f = \set{\pnorm p g + \pnorm r h \st g \in L^p(X, \mu), h \in L^r(X, \mu) 
+  \text{ e } f = g + h}.
+\end{align*}
+  Vejamos que $\snorm{\, \cdot \,}$ 
+  é norma em $L^p(X, \mu) + L^r(X, \mu)$. 
+\begin{itemize}
+  \item $\snorm f \ge 0$ e, $\snorm f = 0$ se, e somente se $f = 0$.\\ 
+    Ora, note que para todo $g \in L^p(X,\mu)$ e $h \in L^r(X,\mu)$,
+    $\pnorm p g \ge 0$ e $\pnorm r h \ge 0$, desse modo, 
+    $\pnorm p g + \pnorm r h \ge 0$, em particular, para $F \in A_f$, segue que 
+    $F \ge 0$, portanto $\snorm f = \inf A_f\ge 0$. Daqui, suponhamos $\snorm f = 0$
+    e vejamos que $f = 0$. Para tal, note que, da definição de infimo, temos que
+    dado $\epsilon > 0$,
+    existem $g_\epsilon \in L^p(X, \mu)$ e $h_\epsilon \in L^r(X, \mu)$ tais que 
+    $\pnorm p {g_\epsilon} + \pnorm r {h_\epsilon} \in A_f$ e satisfazem 
+    \begin{align*}
+      \pnorm p {g_\epsilon} + \pnorm r {h_\epsilon} < \snorm f + \epsilon.
+    \end{align*}
+    Como $\snorm f = 0$, segue que $\pnorm p {g_\epsilon} < \epsilon$ e 
+    $\pnorm r {h_\epsilon} < \epsilon$, ou seja, existem sequências 
+    $(g_n)$ e $(h_n)$ com $f = g_n + h_n$ 
+    para todo $n \in \bN$, tais que, para todo $\epsilon>0$ existe $N \in \bN$
+    de modo que $\pnorm p {g_n}< \epsilon$ e $\pnorm r {h_n}<\epsilon$ 
+    sempre que $n \ge N$. Desse modo, segue diretamente que $g_n$ e $h_n$
+    convergem para $0$ nos seus respectivos espaços, e, já que $f = g_n + h_n$
+    para todo $n \in \bN$, temos das propriedades de convergência em medida 
+    que $f = 0$ $\mu$-q.t.p., portanto $[f] = [0]$.
+\end{itemize}
+\end{proof}
+
+%ex 13 
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ e $f \in L^p(X, \mu) \cap L^\infty(X, \mu)$, 
+para algum $1 \le p < +\infty$. Prove que 
+\begin{align*}
+  \pnorm \infty f = \lim_{q \rightarrow \infty} \pnorm q f.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}] Fixado $p \in \bR$, 
+  considere $q \in \bR$ tal que $1\le p < q < +\infty$.
+  note que, $f \in L^p(X, \mu) \cap L^\infty(X, \mu) \subseteq L^q(X, \mu)$, e,
+  já que $\mu(\set{x \in X \st |f(x)| > \pnorm \infty f}) = 0$, temos 
+  $|f(x)| \le \pnorm \infty f$ $\mu$-q.t.p., desse modo,
+  \begin{align*}
+    \pnorm q f &= \cparth{\int |f|^q d\mu}^{1/q} = 
+    \cparth{\int |f|^p|f|^{q-p}d\mu}^{1/q}
+    \le \cparth{\int |f|^p \pnorm \infty f^{q-p} d\mu}^{1/q}\\
+    &= \cparth{\pnorm \infty f^{q- p} \int |f|^p d\mu}^{1/q} 
+    = \pnorm \infty f^{\frac{q-p}{q}} \pnorm p f^{p/q} 
+    = \pnorm \infty f^{1 - p/q}\pnorm p f^{p/q}.
+  \end{align*}
+  Note que, para todo $k \in \bR$, $\lim\limits_{n \rightarrow \infty} k^{1/n} = 1$,
+  de maneira análoga, segue que 
+  \begin{align*}
+    \lim\sup_{q}\pnorm q f 
+    \le \lim\sup_{q} \pnorm \infty f^{1 - p/q} \pnorm p f^{p/q}
+    =\lim_{q \rightarrow \infty} \pnorm \infty f^{1 - p/q} \pnorm p f^{p/q}
+    = \pnorm \infty f. 
+  \end{align*}
+  Daqui, para cada $\delta > 0$ considere o conjunto 
+  $E_{\delta} = \set{x \in X \st |f(x)| > \pnorm \infty f - \delta}$. 
+  Da definição de $\pnorm \infty f$, temos que $\mu(E_{\delta})>0$. Com isso,
+  dado $\delta > 0$,
+  \begin{align*}
+    \pnorm q f &= \cparth{\int \mparth f^q d\mu}^{1/q} \ge 
+    \cparth{\int |f|^q \chi_{E_\delta}d\mu}^{1/q}
+    \ge \cparth{\int_{E_\delta} \parth{\pnorm \infty f - \delta}^qd\mu}^{1/q}\\
+    &= \cparth{\parth{\pnorm \infty f - \delta}^q \int_{E_\delta} d\mu}^{1/q}
+    =\parth{\pnorm \infty f - \delta}\mu(E_\delta)^{1/q},
+  \end{align*}
+  já que $\lim_{q \rightarrow \infty} \mu(E_\delta)^{1/q} = 1$, temos 
+  \begin{align*}
+    \lim\inf_{q} \pnorm q f 
+    &\ge \lim\inf_{q} \parth{\pnorm \infty f - \delta} \mu(E_\delta)^{1/q}
+    = \parth{\pnorm \infty f - \delta}\lim_{q \rightarrow \infty} \mu(E_\delta)^{1/q}
+    = \parth{\pnorm \infty f - \delta}.
+  \end{align*}
+  Como a desigualdade acima vale para todo $\delta > 0$, segue que 
+  \begin{align*}
+    \lim \sup_{q} \pnorm q f \le \pnorm \infty f \le \lim \inf_q \pnorm q f,
+  \end{align*}
+  ou seja,  $\lim \inf \pnorm q f = \lim \sup \pnorm q f 
+  = \lim_{q\rightarrow \infty} \pnorm q f = \pnorm \infty f$.
+\end{proof}
+
+%ex 14 
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ e $ p \in (0, 1)$. Defina $L^p(X, \mu)$
+de maneira semelhante ao caso $p \ge 1$ 
+e mostre que a aplicação $d: L^p(X,\mu) \times L^p(X, \mu) \rightarrow \bR$
+dada por 
+\begin{align*}
+  d(f, g) = \int \mparth{f - g}^p d\mu
+\end{align*}
+define uma métrica em $L^p(X, \mu)$ que é completa.}
+\begin{proof}[\textbf{Dem:}] Primeiro, vejamos que 
+  $d: L^p(X, \mu)\times L^p(X, \mu) \rightarrow \bR$ de fato 
+  define uma métrica em $L^p(X, \mu)$. Dados 
+  $f, g, h \in L^p(X, \mu)$,
+\begin{itemize}
+  \item $d(f, g) \ge 0$ e $d(f, g) = 0 \iff f = g.$\\
+    Já que $|f-g|\ge 0$, segue diretamente que $\int \mparth{f - g}^p d\mu \ge 0$. 
+    Agora , suponhamos $d(f, g) = 0$. Já que, 
+    \begin{align*}
+      d(f, g) = \int \mparth{f - g}^p d\mu = 0,
+    \end{align*}
+    e, $\mparth{f - g}^p$ é mensurável não-negativa, temos $\mparth{f-g}^p = 0$ 
+    $\mu$-q.t.p. mais ainda, $f = g$ $\mu$-q.t.p, como queríamos. Suponhamos 
+    agora que $f = g$. Então, 
+    \begin{align*}
+      d(f, g) = \int \mparth{f - g}^p d\mu = \int \mparth{f - f}^p d\mu = \int 0^p d\mu = 0.
+    \end{align*}
+  \item $d(f, g) = d(g, f)$. 
+    Ora, 
+    \begin{align*}
+      d(f,g ) = \int \mparth{f - g}^p d\mu = \int \mparth{g - f}^p d\mu = d(g , f).
+    \end{align*}
+  \item $d(f, h) \le d(f, g) + d(g, h)$.\\
+    Ora, se $f = h$, segue trivialmente a desigualdade. Suponhamos então 
+    que $f \neq h$.
+    Note que, para $p \in (0, 1)$ e $t \in (0, 1)$,
+    \begin{align*}
+      t^{1-p} \le 1^{1-p} = 1 \implies t \le t^p.
+    \end{align*}
+    Desse modo, 
+    \begin{align*}
+      t^p + (1-t)^p \ge t + 1 - t = 1.
+    \end{align*}
+    Com isso, vejamos que para $a, b \in \bR$ e $p \in (0, 1)$, 
+    $|a + b|^p \le |a|^p + |b|^p$. Se $a = 0$ ou $b = 0$ ou $a + b = 0$, a desigualdade 
+    segue de maneira trivial. Suponhamos que $a \neq 0$ e $b \neq 0$ e $a + b \neq 0$, 
+    definindo $t = \frac{|a|}{|a| + |b|}$, temos $1 - t = \frac{|b|}{|a| + |b|}$. 
+    Da desigualdade mostrada a pouco, 
+    \begin{align*}
+      &1 \le t^p + (1-t)^p = \parth{\frac{|a|}{|a|+|b|}}^p + \parth{\frac{|b|}{|a|+|b|}}^p
+      \implies |a+b|^p\le ||a|+|b||^p \le |a|^p + |b|^p
+    \end{align*}
+    Desse modo, 
+    \begin{align*}
+      d(f, h) &= \int \mparth{f - h}^p d\mu = \int \mparth {f - g + (g - h)}^p d\mu  
+      \le \int \mparth{f - g}^p + \mparth{g - h}^p d\mu\\ &= \int \mparth{f - g}^p d\mu 
+      + \int \mparth{g - h}^p d\mu 
+      = d(f, g) + d(g, h).
+    \end{align*}
+\end{itemize}
+  Daqui, vejamos que o espaço $L^p(X, \mu)$ munido da métrica $d(\cdot, \cdot)$ 
+  é um espaço completo. Dada uma sequência de Cauchy $(f_n)$, vejamos que 
+  ela converge para algum elemento do espaço. Ora, para todo $\epsilon>0$, 
+  existe $N \in \bN$ tal que, 
+  \begin{align*}
+    n, m \ge N \implies d(f_n, f_m) < \epsilon.
+  \end{align*}
+  Como visto em aula para o caso $p \ge 1$, para cada $k \in \bN$, 
+  é possível criar subsequências $(g_k)$ de $(f_k)$ satisfazendo 
+  \begin{align*}
+    d(g_{k + 1}, g_k) < 2^{-k}, \forall k \in \bN
+  \end{align*}
+  Definindo $g: X \rightarrow \xbR$ de modo que 
+  para todo $x \in X$, $g(x) = \mparth{g_1(x)} + \sum_{k \in \bN}\mparth{g_{k+1}(x)-g_k(x)}$,
+  segue da construção que $g \in \mcal M^+(X, \mcal F)$. Pelo Lema de Fatou,
+  \begin{align*}
+    \int \mparth{g}^p d\mu &= \int \mparth{\lim_{l \rightarrow \infty} \mparth{g_1(x)} 
+    + \sum_{k = 1}^{l}\mparth{g_{k+1}(x)-g_k(x)}}^pd\mu\\
+    &\le \lim\inf_{l} \int \cparth{\mparth{g_1(x)}
+    +\sum_{k=1}^l\mparth{g_{k+1}(x) - g_k(x)}}^pd\mu\\
+    &\le \lim\inf_{l} \int \mparth{g_1(x)}^p d\mu + \sum_{k = 1}^l d(g_{k+1}, g_k)\\
+    &\le \pnorm p {g_1}^p + \lim\inf_{l} \sum_{k=1}^l 2^{-k} = \pnorm p {g_1}^p + 1 \le \infty,
+  \end{align*}
+  ou seja, $g \in L^p(X, \mu)$, como queríamos.
+\end{proof}
+
+\nextexe{quatro}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida, 
+$(f_n)$ uma sequência em $L^p(X, \mu)$ que converge em quase todo ponto 
+para uma função $f \in L^p(X, \mu)$, com $1\le p < +\infty$. Mostre que 
+\begin{align*}
+  \lim \pnorm p {f_n - f} = 0 \text{ se, e somente se, } \lim \pnorm p {f_n} = \pnorm p f.
+\end{align*}}
+\begin{proof}[\textbf{Dem:}].\\
+  $(\implies)$ Suponhamos que $\lim \pnorm p {f_n - f} = 0$, então, 
+  dado $\epsilon > 0$ existe $N \in \bN$ tal que para todo $n \ge N$, 
+  \begin{align*}
+    \pnorm p {f_n - f} < \epsilon.
+  \end{align*}
+  Da Desigualdade de Minkowski, temos $\pnorm p {f_n} \le \pnorm p {f_n - f} + \pnorm p f$
+  e $\pnorm p f \le \pnorm p {f_n - f} + \pnorm p {f_n}$, desse modo, 
+  \begin{align*}
+    \mparth{\pnorm p {f_n} - \pnorm p f}\le \pnorm p {f_n - f} < \epsilon,
+  \end{align*}
+  isto é, $\lim \pnorm p {f_n} = \pnorm p f$.\\
+  $(\impliedby)$ Suponhamos que $\lim \pnorm p {f_n} = \pnorm p f$
 \end{proof}
