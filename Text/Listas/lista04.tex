@@ -588,5 +588,32 @@ para uma função $f \in L^p(X, \mu)$, com $1\le p < +\infty$. Mostre que
     \mparth{\pnorm p {f_n} - \pnorm p f}\le \pnorm p {f_n - f} < \epsilon,
   \end{align*}
   isto é, $\lim \pnorm p {f_n} = \pnorm p f$.\\
-  $(\impliedby)$ Suponhamos que $\lim \pnorm p {f_n} = \pnorm p f$
+  $(\impliedby)$ Suponhamos que $\lim \pnorm p {f_n} = \pnorm p f$, isto é,
+  \begin{align*}
+    \lim \int \mparth{f_n}^p = \int \mparth{f}^p d\mu.
+  \end{align*}  
+  Note que, $\mparth{f_n - f} \le \mparth{f_n} + \mparth{f} \le 2\max\set{\mparth{f_n}, \mparth{f}}$
+  desse modo, 
+  \begin{align*}
+    \mparth{f_n - f}^p &\le \mparth{|f_n| + |f|}^p  
+    \le 2^p \max\set{\mparth{f_n}, \mparth{f}}^p 
+    \le 2^p (\mparth{f_n}^p + \mparth{f}^p).
+  \end{align*}
+  Defina para todo $n \in \bN$ a sequência $(g_n)$ satisfazendo 
+  $g_n = 2^p(\mparth{f_n}^p + \mparth{f}^p) - \mparth{f_n - f}^p$, com isso, segue 
+  por construção que $(g_n)$ é uma sequência em $\mcal M^+(X, \mcal F)$. Por hipótese, 
+  sabemos que $(f_n)$ converge em quase todo ponto para $f \in L^p(X, \mu)$, sendo assim,
+  $(g_n)$ converge para $2^{p+1}\mparth{f}^p$. Portanto, do Lema de Fatou, 
+  \begin{align*}
+    2^{p+1} \pnorm p f^p&= \int 2^{p+1}\mparth{f}^p d\mu =\int \lim \inf g_n d\mu \le \lim \inf \int g_n d\mu \\ 
+    &= \lim \inf \int 2^p(\mparth{f_n}^p + \mparth{f}^p) - \mparth{f_n - f}^p d\mu\\
+    &= \lim \inf 2^p \cparth{\int \mparth{f_n}^p d\mu + \int \mparth{f} d\mu} - \int \mparth{f_n - f}^p d\mu\\
+    &= 2^{p + 1} \pnorm p f^p - \lim\inf \pnorm p {f_n - f}^p. 
+  \end{align*}
+  Como $f \in L^p(X, \mu)$, 
+  \begin{align*}
+    2^{p+1}\pnorm p f^p \le 2^{p+1}\pnorm p f^p - \lim \inf \pnorm p {f_n - f}^p \implies
+    \lim \inf \pnorm p {f_n - f}^p \le 0.
+  \end{align*}
+  Como $\pnorm p {f_n - f}^p \ge 0$ para todo $n \in \bN$, segue que $\lim \inf \pnorm p {f_n - f}^p = 0$.
 \end{proof}
