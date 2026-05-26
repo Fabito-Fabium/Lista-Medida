@@ -1,0 +1,80 @@
+\mysec{Lista 6}
+\etocsetnexttocdepth{subsection}
+\localtableofcontents
+\newcounter{seis}
+\stepcounter{seis}
+
+\myexe{1}
+\bigline
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável e $\nu$ uma medida com sinal. Dada 
+a decomposição de Jordan $\nu = \nu^+ - \nu^-$, mostre que se $\nu = \mu -\lambda$, em que 
+$\mu$ e $\lambda$ são medidas positivas, com ao menos uma delas finita, então $\mu(E) \ge \nu^+(E)$
+e $\lambda(E) \ge \nu^-(E)$, para todo $E \in \mcal F$.}
+\begin{proof}[\textbf{Dem:}] Considere $P, N \in \mcal F$ como na decomposição de Jordan.
+Suponha, sem perda de generalidade, que $\lambda(E) < +\infty$ 
+para todo $E \in \mcal F$. Então, dado $E \in \mcal F$,
+\begin{align*}
+  \mu(E) = \nu(E) + \lambda(E) \ge \nu(E) \ge \nu(E\cap P) = \nu^+(E),
+\end{align*}
+Com isso, segue a primeira desigualdade. Mais ainda, note que, como $\lambda(E) < +\infty$, 
+$\nu(E)$ não assume o valor $-\infty$ para nenhum $E \in \mcal F$. Desse modo, 
+já que $\nu^+$ é uma medida positiva, temos $\nu^-(E) < +\infty$ para todo $E \in \mcal F$.
+Desse modo, $\nu^+(E) = \nu(E) + \nu^-(E)$ para todo $E \in \mcal F$. Da desigualdade já 
+obtida, 
+\begin{align*}
+    \mu(E) \ge \nu^+(E) \implies \nu(E)+\lambda(E) \ge \nu(E) +\nu^-(E).
+\end{align*}
+Daqui, se $\nu(E)< +\infty$, segue diretamente que $\lambda(E) \ge \nu^-(E)$. Por outro lado, 
+se $\nu(E) = +\infty$,
+\end{proof}
+
+%ex 2 
+\nextexe{seis}
+\textbf{}
+
+%ex 3 
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável e $v$ uma medida com sinal. 
+Dada a decomposição de Jordan $\nu = \nu^+ - \nu^-$, mostre que 
+\begin{enumerate}[label=(\alph*)]
+  \item $\nu^+(E) = \sup\set{\nu(F) \st F \subseteq E, F \in \mcal F}$. 
+    \begin{proof}[\textbf{Dem:}] Para cada $E \in \mcal F$, considere
+      $A_E = \set{\nu(F) \st F\subseteq E, F \in \mcal F}$. Note que, 
+      dada para $P, N \in \mcal F$ como nas hipóteses da decomposição 
+      de Jordan,
+      \begin{align*}
+        \nu^+(E) = \nu(E\cap P) \in A_E \implies \nu^+(E) \le \sup A_E.
+      \end{align*}
+      Por outro lado, para todo $\nu(F) \in A_E$,
+      \begin{align*}
+        \nu(F) = \nu^+(F) - \nu^-(F) \le \nu^+(F) \le \nu^+(E),
+      \end{align*}
+      desse modo, $\sup A_E \le \nu^+ (E)$, ou seja, $\sup A_E = \nu^+(E)$.
+    \end{proof}
+  \item $\nu^-(E) = -\inf \set{\nu(F) \st F \subseteq E, F \in \mcal F}$.
+    \begin{proof}[\textbf{Dem:}] Semelhante ao item anterior,
+      \begin{align*}
+        -\nu^-(E) = \nu(E\cap N) \in A_E \implies -\nu^-(E) \ge \inf A_E.
+      \end{align*}
+      Por outro lado, dado $\nu(F) \in A_E$,
+      \begin{align*}
+        \nu(F) = \nu^+(F) - \nu^-(F) \ge -\nu^-(F) \ge -\nu^-(E).
+      \end{align*}
+    Desse modo, $\inf A_E \ge - \nu^-(E)$, ou seja $\nu^-(E) = -\inf A_E$, 
+    como queríamos.
+    \end{proof}
+  \item $\mparth \nu (E) = \sup \set{\sum\limits_{j=1}^n \mparth{\nu(E_j)}, 
+    \text{ em que $\set{E_j}_{j=1}^n$ é uma coleção finita disjunta com } X= \bigcup\limits_{j = 1}^n E_j}$. 
+    \begin{proof}[\textbf{Dem:}]a 
+    \end{proof}
+\end{enumerate}}
+
+%ex 4
+\nextexe{seis}
+\textbf{Sejam $\mu_1, \mu_2$ e $\mu_3$ medidas positivas num espaço mensurável $(X, \mcal F)$. 
+Mostre que $\mu_1 \ll \mu_2$ e que $\mu_1 \ll \mu_2$ e $\mu_2 \ll \mu_3$
+implicam $\mu_1 \ll \mu_3$. Dê um exemplo para mostrar que $\mu_1 \ll \mu_2$ 
+não implica $\mu_2 \ll \mu_1$.}
+\begin{proof}[\textbf{Dem:}]
+  
+\end{proof}
