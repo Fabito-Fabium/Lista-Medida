@@ -10,22 +10,24 @@
 a decomposição de Jordan $\nu = \nu^+ - \nu^-$, mostre que se $\nu = \mu -\lambda$, em que 
 $\mu$ e $\lambda$ são medidas positivas, com ao menos uma delas finita, então $\mu(E) \ge \nu^+(E)$
 e $\lambda(E) \ge \nu^-(E)$, para todo $E \in \mcal F$.}
-\begin{proof}[\textbf{Dem:}] Considere $P, N \in \mcal F$ como na decomposição de Jordan.
+\begin{proof}[\textbf{Dem:}] Considere $P, N \in \mcal F$ como na decomposição de Jordan
+  para $\nu$.
 Suponha, sem perda de generalidade, que $\lambda(E) < +\infty$ 
 para todo $E \in \mcal F$. Então, dado $E \in \mcal F$,
 \begin{align*}
   \mu(E) = \nu(E) + \lambda(E) \ge \nu(E) \ge \nu(E\cap P) = \nu^+(E),
 \end{align*}
-Com isso, segue a primeira desigualdade. Mais ainda, note que, como $\lambda(E) < +\infty$, 
-$\nu(E)$ não assume o valor $-\infty$ para nenhum $E \in \mcal F$. Desse modo, 
-já que $\nu^+$ é uma medida positiva, temos $\nu^-(E) < +\infty$ para todo $E \in \mcal F$.
-Desse modo, $\nu^+(E) = \nu(E) + \nu^-(E)$ para todo $E \in \mcal F$. Da desigualdade já 
-obtida, 
+Com isso, segue a primeira desigualdade. Daqui, note que da decomposição 
+de Jordan,
 \begin{align*}
-    \mu(E) \ge \nu^+(E) \implies \nu(E)+\lambda(E) \ge \nu(E) +\nu^-(E).
+  \nu^-(E) = -\nu(E\cap N) = - \cparth{\mu(E \cap N) - \lambda(E \cap N)} 
+  = \lambda(E \cap N) - \mu(E \cap N).
 \end{align*}
-Daqui, se $\nu(E)< +\infty$, segue diretamente que $\lambda(E) \ge \nu^-(E)$. Por outro lado, 
-se $\nu(E) = +\infty$,
+Como $\lambda$ e $\mu$ são medidas positivas, 
+\begin{align*}
+  \nu^-(E) = \lambda(E\cap N) - \mu(E\cap N) \le \lambda(E\cap N) \le \lambda(E),
+\end{align*}
+ou seja, a segunda desigualdade também é satisfeita.
 \end{proof}
 
 %ex 2 
@@ -72,9 +74,253 @@ Dada a decomposição de Jordan $\nu = \nu^+ - \nu^-$, mostre que
 %ex 4
 \nextexe{seis}
 \textbf{Sejam $\mu_1, \mu_2$ e $\mu_3$ medidas positivas num espaço mensurável $(X, \mcal F)$. 
-Mostre que $\mu_1 \ll \mu_2$ e que $\mu_1 \ll \mu_2$ e $\mu_2 \ll \mu_3$
+Mostre que $\mu_1 \ll \mu_1$ e que $\mu_1 \ll \mu_2$ e $\mu_2 \ll \mu_3$
 implicam $\mu_1 \ll \mu_3$. Dê um exemplo para mostrar que $\mu_1 \ll \mu_2$ 
 não implica $\mu_2 \ll \mu_1$.}
-\begin{proof}[\textbf{Dem:}]
-  
+\begin{proof}[\textbf{Dem:}] Por definição, dado $\nu$ uma medida com sinal 
+  e $\mu$ uma medida positiva ambas em $(X,\mcal F)$, 
+  \begin{align*}
+    \nu \ll \mu \implies \parth{E\in \mcal F, \mu(E) = 0 \implies \nu(E) = 0}. 
+  \end{align*}
+  Desse modo, como $\mu_1, \mu_2$ e $\mu_3$ são medidas com sinal, em particular, 
+  medidas positivas por hipótese, 
+  \begin{align*}
+    E\in \mcal F, \mu_1(E) = 0 \implies \mu_1(E) = 0,\quad \therefore \mu_1 \ll \mu_1.
+  \end{align*}
+  Mais ainda, supondo $\mu_1 \ll \mu_2$ e $\mu_2 \ll \mu_3$, 
+  \begin{align*}
+    E\in \mcal F, \mu_3(E) =0 \quad\impliesex{\mu_2 \ll \mu_3}\quad \mu_2(E) = 0 
+    \quad\impliesex{\mu_1 \ll \mu_2}\quad \mu_1(E) = 0,
+  \end{align*}
+  portanto, $\mu_1 \ll \mu_3$, como queríamos.
+
+  Como exemplo para mostrar que $\mu_1 \ll \mu_2 $ não implica $\mu_2 \ll \mu_1$,
+  considere $(\bR, \mcal M)$ o espaço mensurável e a medida trivial $\mu(E) = 0$ 
+  para todo $E \in \mcal F$ e a medida de Lebesgue $m$. Note que para todo 
+  $E \in \mcal F$ satisfazendo $m(E) = 0$, segue que $\mu(E) = 0$, ou seja, 
+  $\mu \ll m$. Entretanto, dado $E = (a, b)$ com $a, b \in \bR$ tal que $a < b$,
+  temos $\mu(E) = 0$ e $m(E) = b - a$, ou seja $m$ não converge absolutamente 
+  com respeito a $\mu$
 \end{proof}
+
+%ex 5 
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável, $\nu$ uma medida com sinal 
+e $\mu$ uma medida positiva em $(X, \mcal F)$. Prove que $\nu \ll \mu$
+se, e somente se, $|v| \ll \mu$.}
+\begin{proof}[\textbf{Dem:}] Note que $E \in \mcal F$ é um 
+  conjunto nulo para $\nu$ se, e somente se, $\mparth \nu (E) = 0$. Desse modo, 
+  $\nu \ll \mparth \nu$. \\
+  $(\impliedby)$ Como $\mparth \nu \ll \mu$ e $\nu \ll \mparth \nu$, temos do 
+  exercício anterior que $\nu \ll \mu$. \\
+  $(\implies)$ Suponhamos $\nu \ll \mu$. Dado $E \in  \mcal F$ satisfazendo 
+  $\mu(E)=0$, temos $\nu(E) = 0$. Considere $P, N \in \mcal F$ conjuntos
+  que obedecem as hipóteses da Decomposição de Hahn para $\nu$, então, 
+  \begin{align*}
+    0\le \mu(E\cap P) \le \mu(E) = 0 \implies \parth{\mu(E\cap P) = 0 
+    \impliesex{\nu \ll \mu} \nu(E\cap P) = 0};
+  \end{align*}
+  e, 
+  \begin{align*}
+    0\le \mu(E\cap N) \le \mu(E) = 0 \implies \parth{\mu(E\cap N) = 0 
+    \impliesex{\nu \ll \mu} \nu(E\cap N) = 0};
+  \end{align*}
+  Considerando a Decomposição de Jordan de $\nu$, segue que 
+  \begin{align*}
+    \mparth \nu (E) = \nu^+(E) + \nu^-(E) = \nu(E\cap P) - \nu(E\cap N)
+    = 0 - 0 = 0,
+  \end{align*}
+  isto é, $\mparth \nu \ll \mu$.
+\end{proof}
+
+%ex 6 
+\newexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável, $\nu$ uma medida com sinal e $\mu$ 
+uma medida positiva em $(X,\mcal F)$. Prove que $\nu \ll \mu$
+se, e somente se, $\nu^+ \ll \mu$ e $\nu^- \ll \mu$}
+\begin{proof}[\textbf{Dem:}] Dada a Decomposição de Jordan de $\nu$, 
+  sabemos que $\nu^+$ e $\nu^-$ são medidas positivas em que $\nu^+ \perp \nu^-$
+  e $\nu = \nu^+ - \nu^-$. \\
+  $(\impliedby)$ Suponhamos que $\nu^+\ll \mu$ e $\nu^-\ll \mu$. Da definição 
+  de absolutamente continua em relação a $\mu$, segue que dado $E \in \mcal F$ 
+  satisfazendo $\mu(E) = 0$, temos $\nu^+(E) = 0$ e $\nu^-(E) = 0$, portanto,
+  $\nu(E) = \nu^+(E) - \nu^-(E) = 0 - 0 = 0$, i.e., $\nu \ll \mu$.\\
+  $(\implies)$ Suponhamos que $\nu \ll \mu$. Desse modo, 
+  temos do exercício anterior que $\mparth \nu \ll \mu$. Daqui, 
+  dado $E \in \mcal F$ satisfazendo $\mu(E) = 0$, temos $\mparth \nu(E) = 0$. 
+  Já que $\mparth \nu = \nu^+ + \nu^-$ onde $\nu^+$ e $\nu^-$, 
+  \begin{align*}
+    0 = \mparth \nu(E) = \nu^+(E) + \nu^-(E) \ge \nu^+(E) \ge 0 \implies \nu^+(E) = 0,
+  \end{align*}
+    analogamente segue que $\nu^-(E) = 0$. Portanto, 
+    $\nu^+ \ll \mu$ e $\nu^- \ll \mu$.
+\end{proof}
+
+%ex 7
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável e $\mu_1, \cdots, \mu_n$ 
+medidas positivas em $(X, \mcal F)$. Construa uma medida positiva $\mu$
+tal que $\mu_j \ll \mu$, para todo $j = 1, \cdots, n$.}
+\begin{proof}[\textbf{Dem:}] Note que a soma finita de medidas positivas 
+  é uma medida positiva. Desse modo, basta considerar $\mu = \sum_{j=1}^n \mu_j$. 
+  Note que, dado $E \in \mcal F$ satisfazendo $\mu(E) = 0$, temos 
+  para cada $k \in \set{1, 2, \cdots, n}$ que
+  \begin{align*}
+    0 = \mu(E) = \sum_{j = 1}^n \mu_j (E) \ge \mu_k (E) \ge 0 \implies \mu_k(E) = 0,
+  \end{align*}
+  ou seja, $\mu_k \ll \mu$ para todo $k \in \set{1, 2, \cdots, n}$.
+\end{proof}
+
+%ex 8 
+\newexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável, $\mu$ uma medida finita e 
+$\nu$ uma medida com sinal tal que $\nu \ll \mu$. Sejam $P_n, N_n$ 
+uma Decomposição de Hahn para $\nu - n \mu$ e considere $P = \bigcap P_n$, 
+$N = \bigcup N_n$. Mostre que $N$ é $\sigma$-finito para $\nu$ e 
+que se $E\subseteq P$, $E \in \mcal F$, então $\nu(E) = 0$ ou $\nu(E) = +\infty$.}
+\begin{proof}[\textbf{Dem:}] Primeiramente, vejamos que 
+  $N$ é $\sigma$-finita para $\nu$. Para cada $n \in \bN$, como $P_n, N_n \in \bN$
+  é uma decomposição de Hahn para $\nu - n\mu$, dado $E_n \subseteq N_n$,
+  \begin{align*}
+    (\nu(E_n) - n\mu(E_n)) \le 0\quad 
+    \impliestx{$\mu$ finito} \quad \nu(E_n) \le n \mu(E_n) <+\infty,
+  \end{align*}
+  em particular a desigualdade acima vale para $E_n = N_n$. Com isso, 
+  segue que para cada $n \in \bN$, $\nu(N_n) < +\infty$, isto é, $N$ é $\sigma$-finito.
+  Daqui, vejamos que dado $E \subseteq P$ e $E \in \mcal F$, temos $\nu(E) = 0$
+  ou $\nu(E) = +\infty$. Note que, dado $E \subseteq P = \bigcap P_n$, temos 
+  que para todo $n \in \bN$, $E \subseteq P_n$. Já que cada $P_n$ é um conjunto 
+  positivo, 
+  \begin{align*}
+    \parth{\nu(E) - n \mu(E)} \ge 0 \quad &\impliestx{$\mu$ finito} \quad
+    \nu(E) \ge n \mu(E) \\
+    &\implies \quad \nu(E) \ge \lim_{n \rightarrow \infty} n\mu(E).
+  \end{align*}
+  Note que, se $\mu(E)>0$ teremos da desigualdade acima que $\nu(E) = +\infty$,
+  por outro lado, se $\mu(E) = 0$, como $\nu \ll \mu$, temos $\nu(E) = 0$.
+\end{proof}
+
+%ex 9 
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f$ 
+uma função mensurável integrável estendida, isto é, $f^+$ ou $f^-$ são integráveis. 
+Para a medida com sinal $\nu$ dada por $d\nu = fd\mu$, mostre que $d\nu^+ = f^+d\mu$, 
+$d\nu^- = f^-d\mu$ e que $d\mparth \nu = \mparth f d\mu$.}
+\begin{proof}[\textbf{Dem:}] Considere $P = \set{x \in X \st f\ge 0}$ 
+  e $N = \set{x \in X \st f < 0}$. Vejamos que $P, N$ formam uma decomposição 
+  de Hahn para $\nu$. Ora, pela definição dos dois conjuntos segue que 
+  $P \cup N = f^{-1}(\bR) = X$ e $P \cap N = \emptyset$. Agora, vejamos 
+  que $P$ é positivo para $\nu$ e $N$ é negativo para $\nu$. Por hipótese, 
+  \begin{align*}
+    d\nu = f d\mu \implies \nu(E) = \int_E f d\mu.
+  \end{align*}
+  sendo assim, dado $E \subseteq P$ 
+  \begin{align*}
+    \nu(E) = \int_E f d\mu = \int_E f^+ d\mu \ge 0,
+  \end{align*}
+  e, dado $E \subseteq N$ 
+  \begin{align*}
+    \nu(E) = \int_E f d\mu = \int_E -f^- d\mu \le 0.
+  \end{align*}
+  Portanto, $P, N \in \mcal F$ é uma decomposição de Hahn para $\nu$. 
+  Com isso, das propriedades da decomposição de Jordan, 
+  \begin{align*}
+    \nu^+(E) = \nu(E\cap P) = \int_{E\cap P} f d\mu = \int_{E\cap P} f^+ d\mu 
+    = \int_{E} f^+ d\mu, 
+  \end{align*}
+  ou seja, $d\nu^+ = f^+ d\mu$. Mais ainda, 
+  \begin{align*}
+    \nu^-(E) = -\nu(E\cap N) = -\int_{E \cap N} f d\mu = \int_{E\cap N} f^- d\mu
+    =\int_E f^- d\mu,
+  \end{align*}
+  portanto, $d\nu^- = f^- d\mu$. Por fim, note que para todo $E \in \mcal F$, 
+  \begin{align*}
+    \mparth \nu(E) &= \nu^+(E) + \nu^-(E) = \int_E f^+ d\mu + \int_E f^- d\mu\\ 
+    &\impliestx{ambas são $M^+(X,\mcal F)$} \int_E f^+ + f^- d\mu = \int_E |f| d\mu.
+  \end{align*}
+  desse modo, $d\mparth \nu = \mparth f d\mu$.
+\end{proof}
+
+%ex 10 
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $f, g \in L^1(X, \mu)$. 
+Mostre que $\int_E f d\mu = \int_E g d\mu$, para todo $E \in \mcal F$, se, 
+e somente se, $\int \mparth{f - g} d\mu = 0$.} 
+\begin{proof}[\textbf{Dem:}] Considere os conjuntos 
+  $E^+ = \set{x \in X \st f - g \ge 0}$ e $E^- = \set{x \in X \st f - g < 0}$.
+  Note que $\mparth{f - g} = (f-g)\chi_{E^+} - (f-g)\chi_{E^-}$, mais ainda, 
+  $f-g = \mparth{f - g}\chi_{E^+} - \mparth{f - g}\chi_{E^-}$.\\ 
+  $(\implies)$ Como $\int_E f d\mu = \int_E g d\mu$ para todo $E \in \mcal F$ 
+  e $f, g \in L^1(X, \mu)$, tomando $E = X$,
+  \begin{align*}
+    \int f d\mu = \int g d\mu \implies \int (f - g) d\mu = 0 = - \int (f-g)d\mu.
+  \end{align*}
+  ou seja, 
+  \begin{align*}
+    \int (f - g) \chi_{E^+} d\mu = 0, \quad\text{e}\quad \int (f - g) \chi_{E^-} d\mu =0.
+  \end{align*}
+  Com isso, 
+  \begin{align*}
+    \int \mparth{f - g} d\mu &= \int (f-g)\chi_{E^+} - (f - g)\chi_{E^-} d\mu\\
+    &= \int (f - g)\chi_{E^+} d\mu - \int (f - g)\chi_{E^-} d\mu\\ 
+    &= 0 - 0 = 0.
+  \end{align*}
+  $(\impliedby)$ Supondo $\int \mparth{f - g} d\mu = 0$
+\end{proof}
+
+%ex 11 
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável e $\nu$ uma medida com sinal. 
+Definimos o espaço $L^1(X, \nu) \coloneq L^1(X, \nu^+) \cap L^1(X,\nu^-)$ 
+e a integral com respeito a medida com sinal $\nu$ por 
+\begin{align*}
+  \int f d\nu \coloneq \int f d\nu^+ - \int f d\nu^-.
+\end{align*}
+Mostre que:
+\begin{enumerate}[label=(\alph*)]
+  \item $L^1(X, \nu) = L^1(X, \mparth{v}).$
+  \item Se $f \in L^1(X, \nu)$, então 
+    \begin{align*}
+      \mparth{\int f d\nu} \le \int \mparth f d \mparth \nu.
+    \end{align*}
+  \item Se $E \in \mcal F$, então $\mparth \nu (E) = \sup \set{\mparth{\int_E f d\nu}
+    \st \mparth f \le 1}$.
+\end{enumerate}}
+
+%ex 12 
+\nextexe{seis}
+\textbf{Sejam $\mu$ e $\nu$ medidas com sinal finitas num espaço mensurável $(X, \mcal F)$. 
+Defina $\mu \wedge \nu = \frac{1}{2} \parth{\mu + \nu - \mparth{\mu - \nu}}$ e 
+$\mu \land \nu = \mu + \nu - \mu \wedge \nu$. 
+\begin{enumerate}[label=(\alph*)]
+  \item Mostre que a medida com sinal $\mu \wedge \nu$ é menor do que $\mu$ e $\nu$,
+    porém maior do que qualquer outra medida com sinal que seja menor do que $\mu$ e $\nu$. 
+  \item Mostre que a medida com sinal $\mu \land \nu$ é maior do que $\mu$ e $\nu$, 
+    porém menor do que qualquer outra medida que seja maior do que $\mu$ e $\nu$. 
+  \item Se $\mu$ e $\nu$ são medidas positivas, mostre que $\mu \perp \nu$ se, 
+    e somente se, $\mu \wedge \nu = 0$.
+\end{enumerate}}
+
+%ex 13 
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável e $\nu$ uma 
+medida com sinal. Prove que 
+\begin{enumerate}[label=(\alph*)]
+  \item Se $\set{E_n}$ é uma sequência crescente em $\mcal F$, isto é, $E_n \subseteq E_{n+1}$,
+    para todo $n \in \bN$, então 
+    \begin{align*}
+      \nu \parth{\bigcup_{n \in \bN} E_n} = \lim_{n \rightarrow \infty} \nu(E_n).
+    \end{align*}
+  \item Se $\set{F_n}$ é uma sequência decrescente em $\mcal F$, isto é, 
+    $F_n \supseteq F_{n+1}$, para todo $n \in \bN$, e $\nu(F_1) < +\infty$, então 
+    \begin{align*}
+      \nu\parth{\bigcap_{n \in \bN} F_n} = \lim_{n \rightarrow \infty} \nu(F_n).
+    \end{align*}
+\end{enumerate}}
+
+%ex 14
+\nextexe{seis}
+\textbf{Sejam $(X, \mcal F)$ um espaço mensurável e $\mcal B$ a 
+coleção e todas as medidas com sinal finitas definidas em $(X, \mcal F)$. 
+Mostre que $\mcal B$ é um espaço de Banach com as operações $(c\nu)(E) \coloneq c\nu(E), 
+(\nu_1 + \nu_2)(E) \coloneq \nu_1(E) + \nu_2(E)$ e $\snorm \nu \coloneq \mparth \nu (X)$.}
