@@ -247,25 +247,44 @@ $d\nu^- = f^-d\mu$ e que $d\mparth \nu = \mparth f d\mu$.}
 Mostre que $\int_E f d\mu = \int_E g d\mu$, para todo $E \in \mcal F$, se, 
 e somente se, $\int \mparth{f - g} d\mu = 0$.} 
 \begin{proof}[\textbf{Dem:}] Considere os conjuntos 
-  $E^+ = \set{x \in X \st f - g \ge 0}$ e $E^- = \set{x \in X \st f - g < 0}$.
-  Note que $\mparth{f - g} = (f-g)\chi_{E^+} - (f-g)\chi_{E^-}$, mais ainda, 
-  $f-g = \mparth{f - g}\chi_{E^+} - \mparth{f - g}\chi_{E^-}$.\\ 
+  $A = \set{x \in X \st f - g \ge 0}$ e $B = \set{x \in X \st f - g < 0}$.
+  Note que $A \cap B = \emptyset$, $A \cup B = X$, $(f-g)\chi_A = \mparth{f-g}\chi_A \ge 0$
+  e $-(f-g) \chi_B = \mparth{f-g}\chi_B \ge 0$.\\ 
   $(\implies)$ Como $\int_E f d\mu = \int_E g d\mu$ para todo $E \in \mcal F$ 
-  e $f, g \in L^1(X, \mu)$, tomando $E = X$,
+  e $f, g \in L^1(X, \mu)$,
   \begin{align*}
-    \int f d\mu = \int g d\mu \implies \int (f - g) d\mu = 0 = - \int (f-g)d\mu.
+    \int_E f d\mu = \int_E g d\mu \implies \int_E (f - g) d\mu = 0,
   \end{align*}
   ou seja, 
   \begin{align*}
-    \int (f - g) \chi_{E^+} d\mu = 0, \quad\text{e}\quad \int (f - g) \chi_{E^-} d\mu =0.
+    \int_A (f - g) d\mu = 0, \quad\text{e}\quad \int_B (f - g) d\mu =0.
   \end{align*}
   Com isso, 
   \begin{align*}
-    \int \mparth{f - g} d\mu &= \int (f-g)\chi_{E^+} - (f - g)\chi_{E^-} d\mu\\
-    &= \int (f - g)\chi_{E^+} d\mu - \int (f - g)\chi_{E^-} d\mu\\ 
-    &= 0 - 0 = 0.
+    \int \mparth{f - g} d\mu &= \int \mparth{f-g} (\chi_A + \chi_B) d\mu
+    = \int \mparth{f-g}\chi_{A} d\mu + \int \mparth{f-g}\chi_{B} d\mu\\ 
+    &= \int (f-g)\chi_{A} d\mu - \int (f-g)\chi_{B} d\mu = 0 - 0 = 0.
   \end{align*}
-  $(\impliedby)$ Supondo $\int \mparth{f - g} d\mu = 0$
+  $(\impliedby)$ Supondo $\int \mparth{f - g} d\mu = 0$, note que para 
+  todo $F \in \mcal F$,
+  \begin{align*}
+    0 = \int \mparth{f - g} d\mu \ge \int_F \mparth{f - g} \ge 0
+    \implies \int_F \mparth{f - g} d\mu = 0.
+  \end{align*}
+  Desse modo, para todo $E \in \mcal F$, temos $E \cap A, E \cap B \in \mcal F$ e
+  \begin{align*}
+    \int_{E} (f - g)\chi_A d\mu &= \int_{E} \mparth{f - g} \chi_A d\mu = 
+    \int_{E\cap A} \mparth{f - g} d\mu = 0; \\
+    - \int_{E} (f - g)\chi_B d\mu &= \int_{E} \mparth{f - g} \chi_B d\mu = 
+    \int_{E\cap B} \mparth{f - g} d\mu = 0.
+  \end{align*}
+  Ou seja, 
+  \begin{align*}
+    \int_E (f-g)d\mu &= \int_E (f-g)(\chi_A+\chi_B) d\mu\\ 
+    &= \int_E (f-g)\chi_A d\mu 
+    + \int_E (f-g)\chi_B d\mu\\ 
+    &= 0 + 0 = 0 \quad\impliesex{f,g \in L^1(X, \mu)}\quad \int_E fd\mu = \int_E gd\mu.
+  \end{align*}
 \end{proof}
 
 %ex 11 
@@ -279,6 +298,8 @@ e a integral com respeito a medida com sinal $\nu$ por
 Mostre que:
 \begin{enumerate}[label=(\alph*)]
   \item $L^1(X, \nu) = L^1(X, \mparth{v}).$
+  \begin{proof}[\textbf{Dem:}]teste
+  \end{proof}
   \item Se $f \in L^1(X, \nu)$, então 
     \begin{align*}
       \mparth{\int f d\nu} \le \int \mparth f d \mparth \nu.

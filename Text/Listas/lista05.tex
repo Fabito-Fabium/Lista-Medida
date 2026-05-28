@@ -1,0 +1,138 @@
+\mysec{Lista 5}
+\etocsetnexttocdepth{subsection}
+\localtableofcontents
+\newcounter{cinco}
+\stepcounter{cinco}
+
+\myexe{1}
+\bigline
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $1 \le p < +\infty$. 
+Mostre que se uma sequência $(f_n)$ converge em $L^p(X,\mu)$
+para uma função $f$, e uma subsequência de $(f_n)$ converge em $L^p$ 
+para $g$, então $f = g$ em $\mu$-quase todo ponto.}
+\begin{proof}[\textbf{Dem:}] Por hipótese, $(f_n)$ converge em $L^p(X, \mu)$
+para $f$, portanto, para todo $\epsilon > 0$ existe $N_0 \in \bN$ tal que, 
+\begin{align*}
+  n\ge N \implies \pnorm p {f - f_n} < \epsilon/3.
+\end{align*}
+Considere $(g_n)$ a subsequência de $(f_n)$ que converge em $L^p(X, \mu)$
+para $g$. Ou seja, dado $N_1 \in \bN$ suficientemente grande, 
+\begin{align*}
+  m \ge N_1 \implies \pnorm p {g - g_n} < \epsilon/3.
+\end{align*}
+Mais ainda, já que $(f_n)$ converge em $L^p(X, \mu)$, temos que $(f_n)$
+é Cauchy em $L^p(X, \mu)$, portanto, como $(g_n)$ é subsequência de $(f_n)$,
+existe $N_2 \in \bN$ tal que,
+\begin{align*}
+  n, m \ge N_2 \implies \pnorm p {f_n - g_m} < \epsilon/3.
+\end{align*}
+Daqui, tome $N = \max\set{N_0, N_1, N_2}$ e sejam $n, m \ge N$. Note que, 
+\begin{align*}
+  \pnorm p {f - g} &= \pnorm p {f - g + f_n - f_n} 
+  \le \pnorm p {f - f_n} + \pnorm p {g - f_n}\\
+  &< \frac{\epsilon}{3} + \pnorm p {g - f_n + g_m - g_m}\\
+  &\le \frac{\epsilon}{3} + \pnorm p {g - g_m} + \pnorm p {f_n - g_m} 
+  < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon.
+\end{align*}
+Como $\pnorm p {f - g} < \epsilon$ para todo $\epsilon > 0$, temos $\pnorm p {f - g} = 0$,
+ou seja,
+\begin{align*}
+  \int \mparth{f - g}^p d\mu = 0 &\implies \mparth{f - g}^p = 0 \quad \mu\text{-q.t.p.}\\
+  &\implies f = g \quad \mu\text{-q.t.p.}
+\end{align*}
+\end{proof}
+
+%ex 2 
+\nextexe{cinco}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $1 \le p < +\infty$. 
+Se $(f_n)$ é uma sequência de funções características de conjuntos em $\mcal F$, 
+e se $(f_n)$ converge para $f$ em $L^p(X, \mu)$, mostre que $f$ é igual em 
+quase todo ponto a função característica de um conjunto em $\mcal F$.}
+\begin{proof}[\textbf{Dem:}] Por hipótese, $(f_n)$ é uma sequência 
+de funções características de conjuntos em $\mcal F$, isto é, 
+para cada $n \in \bN$, existe $A_n \in \mcal F$ tal que $f_n = \chi_{A_n}$. 
+Sabendo que $(f_n)$ converge em $L^p(X, \mu)$ para $f$, temos que 
+existe uma subsequência $(g_n)$ de $(f_n)$ tal que $g_n$ converge para $f$
+$\mu$-q.t.p.. Ou seja, definindo $N=\set{x \in X \st \lim g_n(x) \neq f(x)}$,
+sabemos que $\mu(N) = 0$ e dado $x \in N^C$, para todo $\epsilon>0$, 
+existe $M \in \bN$ tal que 
+\begin{align*}
+  n \ge M \implies \mparth{g_n(x) - f(x)} < \epsilon.
+\end{align*}
+Fixado $x \in N^C$, note que da definição de $f_n$, segue que $g_n(x) \in\set{0, 1}$ 
+para todo $n \in \bN$. Desse modo, já que $(g_n(x))^2 = g_n(x)$, temos 
+$g_n(x)(g_n(x) - 1) = 0$ para todo $n \in \bN$, desse modo,
+\begin{align*}
+  \lim_{n \rightarrow \infty} g_n(x)(g_n(x) - 1) = f(x)(f(x) - 1) = 0.
+\end{align*}
+Sendo assim, $f(x) \in \set{0, 1}$. Com isso, definindo $A = \set{x \in N^C \st f(x) = 1}$,
+segue que para todo $x \in N^C$, $f(x) = \chi_A(x)$, ou seja, $f = \chi_A$ $\mu$-q.t.p..
+Mais ainda, $A = f^-(1)\cap N^C \in \mcal F$, ou seja, $f$ é igual em quase 
+todo ponto a função característica de um conjunto em $\mcal F$.
+\end{proof}
+
+%ex 3 
+\nextexe{cinco}
+\textbf{Sejam $(X, \mcal F, \mu)$ um espaço de medida e $(f_n)$ e $(g_n)$ 
+sequências de funções mensuráveis que convergem em medida para funções mensuráveis 
+$f$ e $g$, respectivamente. Mostre que $(f_n + g_n)$ converge em medida para a função 
+$f+g$. Além disso, se o espaço for de medida finita, então $(f_ng_n)$ converge para $fg$. 
+Dê um contra-exemplo que a última propriedade não vale para o caso de um espaço de medida 
+qualquer.}
+\begin{proof}[\textbf{Dem:}] Defina 
+$A_\alpha^{(n)} = \set{x \in X \st \mparth{f(x) - f_n(x)} \ge \frac{\alpha}{2}}$
+e 
+$B_\alpha^{(n)} = \set{x \in X \st \mparth{g(x) - g_n(x)} \ge \frac{\alpha}{2}}$.
+Como $(f_n)$ e $(g_n)$ convergem em medida para $f$ e $g$,
+respectivamente, para todo $\alpha, \epsilon>0$, existe $N = N(\alpha, \epsilon) \in \bN$
+tal que,
+\begin{align*}
+n \ge N &\implies \mu\parth{A_\alpha^{(n)}}<\frac{\epsilon}{2} \text{ e }
+\mu\parth{B_\alpha^{(n)}}< \frac{\epsilon}{2}
+\end{align*}
+Note que, para todo $x \in X$ satisfazendo $|(f(x) + g(x)) - (f_n(x) + g_n(x))| \ge \alpha$,
+temos $x \in A_\alpha^{(n)}\cup B_\alpha^{(n)}$, pois, caso contrário, temos 
+$\mparth{f(x) - f_n(x)} < \frac{\alpha}{2}$ e $\mparth{g(x) - g_n(X)} <\frac{\alpha}{2}$,
+ou seja,
+\begin{align*}
+  \alpha &\le \mparth{(f(x) + f_n(x)) - (g(x) + g_n(x))} \\
+  &\le \mparth{f(x) - f_n(x)}
+  + \mparth{g(x) - g_n(x)}\\
+  &< \frac{\alpha}{2}+ \frac{\alpha}{2} = \alpha,
+\end{align*}
+uma contradição. Com isso, dado $n \ge N$,
+\begin{align*}
+  \mu(\set{x \in X \st |(f(x) + g(x)) - (f_n(x) + g_n(x))| \ge \alpha})
+  &\le \mu(A_\alpha^{(n)} \cup B_\alpha^{(n)})\\
+  &\le \mu(A_\alpha^{(n)}) + \mu(B_\alpha^{(n)})\\
+  &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon,
+\end{align*}
+isto é, $(f_n + g_n)$ converge em medida para $f+g$. Vejamos que, 
+dado um espaço de medida finita, $(f_ng_n)$ converge em medida para $fg$ assumindo
+que $(f_n)$ e $(g_n)$ convergem em medida para $f$ e $g$, respectivamente. Note que, 
+\begin{align*}
+  \mparth{f_ng_n - fg} &= \mparth{f_ng_n - fg +f_ng - f_ng}
+  =\mparth{f_n(g_n - g) + g(f_n -f)}\\
+  &\le\mparth{f_n}\mparth{g_n - g} + \mparth{g}\mparth{f_n - f}.
+\end{align*}
+  Definindo $C_\alpha^{(n)} = \set{x \in X \st \mparth{f_n(x)} \ge \alpha}$ 
+  e $D_\alpha = \set{x \in X \st \mparth{g(x)} \ge \alpha}$.\\ 
+De maneira análoga à argumentação apresentada na primeira parte do exercício, 
+temos que dado $x \in E_{\alpha}^{(n)} = 
+\set{x \in X \st \mparth{(f_ng_n)(x) -(fg)(x)}\ge \alpha}$, 
+  temos $x \in A_{\alpha/M}^{(n)}\cup B_{\alpha/M}^{(n)}
+  C_{M}^{(n)}\cup D_{M}$. Portanto,
+\begin{align*}
+  \mu\parth{E_\alpha^{(n)}} &\le \mu\parth{A_{\alpha/M}^{(n)}\cup B_{\alpha/M}^{(n)}
+  C_{M}^{(n)}\cup D_{M}}\\
+&\le \mu\parth{A_{\alpha/M}^{(n)}} + \mu\parth{B_{\alpha/M}^{(n)}} 
++ \mu\parth{C_{M}^{(n)}} + \mu\parth{D_{M}}.
+\end{align*}
+Das hipóteses da convergência em medida, temos $f:X \rightarrow \bR$ e $g: X \rightarrow \bR$. 
+  Portanto, existe $M_0>0$ tal que $\mu(D_{M_0})<\frac{\epsilon}{4}$. 
+  Daqui, note que $\mparth{f_n(x)} \le \mparth{f(x)} + \mparth{f_n(x) - f(x)}$, 
+  portanto $C_{M}^{(n)} \subseteq A_{1}^{(n)} \cup F_{M-1}$, onde 
+  $F_M = \set{x\in X \st |f| \ge M}$. Como $f: X \rightarrow \bR$, 
+  existe $M_1 > 0$ tal que $\mu(F_{M_1}) < \frac{\epsilon}{2}$. Definindo 
+  $M = \max\set{M_0, M_1}$
+\end{proof}
